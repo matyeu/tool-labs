@@ -10,7 +10,7 @@
 <br>
 
 **TOOL-LABS** has all the tools you will need for your Discord server,<br>
-**TOOL-LABS** is a multi-function Discord bot developped by [matyeu](https://discord.com/users/916444775861850175).
+**TOOL-LABS** is a multi-function Discord bot developped by [matyeu](https://discord.com/users/916444775861850175).<br>
 **TOOL-LABS** also manages CTFS
 
 ## Commands
