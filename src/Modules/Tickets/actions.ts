@@ -9,7 +9,7 @@ import { EMBED_GENERAL, EMBED_INFO, FOOTER, FOOTER_CTF, FOOTER_TICKET } from "..
 const Logger = require("../../Library/logger");
 
 export function tickets(guild: Guild) {
-    return guild.channels.cache.filter((channel) => channel instanceof TextChannel && /(challenge|suspect)-\d*/g.test(channel.name)).map((channel) => <TextChannel>channel);
+    return guild.channels.cache.filter((channel) => channel instanceof TextChannel && /(chall-ctf|suspect)-\d*/g.test(channel.name)).map((channel) => <TextChannel>channel);
 };
 
 export async function warnSurcharge(channel: TextChannel) {
@@ -167,7 +167,7 @@ export async function createTicketPanel(client: ToolClient, channel: TextChannel
     const selectSuspectChallenge = createSelectSuspectChallenge(client);
     let message: any;
 
-    if (channel.name.includes("challenge-"))
+    if (channel.name.includes("chall-ctf-"))
         message = await channel.send({
             embeds: [challengeEmbed(client)], components: [buttonChallenge, selectChallenge]
         }); else if (channel.name.includes("suspect-"))
@@ -191,7 +191,7 @@ export async function createTicket(client: ToolClient, category: CategoryChannel
     const nbTicket = serverConfig.stats[dbPath];
 
     const channel = <TextChannel>await category.guild.channels.create({
-        name: `${prefix}-${nbTicket + 1}`,
+        name: `${prefix}-${member.displayName}`,
         parent: category,
         topic: `(TOOL-LABS:${member.id})`,
         type: ChannelType.GuildText

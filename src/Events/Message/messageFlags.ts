@@ -15,7 +15,7 @@ export default async function (client: ToolClient, message: Message) {
 
     const channelSend: any = await message.guild?.channels.fetch(message.channel.id);
 
-    if (channelSend?.name?.includes('challenge-')) {
+    if (channelSend?.name?.includes('chall-ctf')) {
 
         message.delete();
 

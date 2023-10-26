@@ -38,11 +38,11 @@ export default async function (client: ToolClient, guild: Guild) {
     let filter = () => true;
 
     await challengeMessage.createMessageComponentCollector({ filter }).on("collect", async (interaction: ButtonInteraction) => {
-        if (alreadyHasTicketOpen(interaction.user, "challenge-")) return warnUser(interaction);
+        if (alreadyHasTicketOpen(interaction.user, "chall-ctf-")) return warnUser(interaction);
         const member = await interaction.guild!.members.fetch(interaction.user.id);
         await interaction.reply({content: `**Ticket en cours de création !**`, ephemeral: true});
         if (interaction.customId === "open") {
-            await createTicket(client, challengeCategory, member, "challenge", "challenge", {users: [interaction.user]});
+            await createTicket(client, challengeCategory, member, "challenge", "chall-ctf", {users: [interaction.user]});
             await warnSurcharge(challengeChannel);
         }
     });
