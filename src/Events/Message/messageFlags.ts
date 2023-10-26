@@ -1,0 +1,183 @@
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, Message } from "discord.js";
+import { ToolClient, researchArray } from "../../Library";
+import { find as findServer } from "../../Models/server";
+import { find as findMember, edit as editMember } from "../../Models/member";
+import { EMBED_INFO, FOOTER_CTF } from "../../config";
+
+export default async function (client: ToolClient, message: Message) {
+
+    if (message.author.bot) return;
+
+    const serverConfig: any = await findServer(message.guild!.id);
+    const memberConfig: any = await findMember(message.guild!.id, message.author.id);
+
+    const member = await message.guild!.members.fetch(message.author.id);
+
+    const channelSend: any = await message.guild?.channels.fetch(message.channel.id);
+
+    if (channelSend?.name?.includes('challenge-')) {
+
+        message.delete();
+
+        if (channelSend.topic === `(TOOL-LABS:${member.id})`) {
+
+            const flagsSteganographie = serverConfig.challenge.flags.steganographie
+            const getFlagSteganographie = flagsSteganographie.find((e: any) => e.name == message.content);
+
+            const flagsCrackingReverse = serverConfig.challenge.flags.crackingReverse
+            const getFlagCrackingReverse = flagsCrackingReverse.find((e: any) => e.name == message.content);
+
+            const flagsOsint = serverConfig.challenge.flags.osint
+            const getFlagosint = flagsOsint.find((e: any) => e.name == message.content);
+
+            const flagsWebClient = serverConfig.challenge.flags.webClient
+            const getFlagWebClient = flagsWebClient.find((e: any) => e.name == message.content);
+
+            const flagsMisc = serverConfig.challenge.flags.misc
+            const getFlagMisc = flagsMisc.find((e: any) => e.name == message.content);
+
+            const embedInfo = new EmbedBuilder()
+            .setColor(EMBED_INFO)
+
+            const embed = new EmbedBuilder()
+                .setColor(EMBED_INFO)
+                .setAuthor({ name: member.displayName, iconURL: member?.displayAvatarURL({ extension: "png" }) })
+                .setThumbnail('https://ctftime.org/media/events/LOGO_CTF_nohand.png')
+                .setTimestamp()
+                .setFooter({ text: FOOTER_CTF, iconURL: client.user!.displayAvatarURL({ extension: "png" }) })
+
+
+            const button = new ActionRowBuilder<ButtonBuilder>()
+                .addComponents(
+                    new ButtonBuilder()
+                        .setCustomId("flags-button")
+                        .setEmoji("📝")
+                        .setLabel("Voir mes flags enregistrés")
+                        .setStyle(ButtonStyle.Primary)
+                );
+
+
+            if (getFlagSteganographie) {
+                const arrayFlags = memberConfig.challenge.flags.steganographie
+                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getRole = client.getRole(member.guild, getFlagSteganographie.role)
+
+                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagSteganographie.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+
+                if (getRole) await member.roles.add(getRole)
+
+                embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagSteganographie.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
+
+                arrayFlags.push(getFlagSteganographie.name)
+                await editMember(member.guild.id, member.id, memberConfig);
+
+                return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+            } else if (getFlagCrackingReverse) {
+                const arrayFlags = memberConfig.challenge.flags.crackingReverse
+                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getRole = client.getRole(member.guild, getFlagCrackingReverse.role)
+
+                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagCrackingReverse.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+
+                if (getRole) await member.roles.add(getRole)
+
+                embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagCrackingReverse.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
+
+                arrayFlags.push(getFlagCrackingReverse.name)
+                await editMember(member.guild.id, member.id, memberConfig);
+
+                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+            } else if (getFlagosint) {
+                const arrayFlags = memberConfig.challenge.flags.osint
+                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getRole = client.getRole(member.guild, getFlagosint.role)
+
+                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagosint.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+
+                if (getRole) await member.roles.add(getRole)
+
+                embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagosint.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
+
+                arrayFlags.push(getFlagosint.name)
+                await editMember(member.guild.id, member.id, memberConfig);
+
+                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+            } else if (getFlagWebClient) {
+                const arrayFlags = memberConfig.challenge.flags.webClient
+                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getRole = client.getRole(member.guild, getFlagWebClient.role)
+
+                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagWebClient.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+
+                if (getRole) await member.roles.add(getRole)
+
+                embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagWebClient.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
+
+                arrayFlags.push(getFlagWebClient.name)
+                await editMember(member.guild.id, member.id, memberConfig);
+
+                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+            }
+            else if (getFlagMisc) {
+                const arrayFlags = memberConfig.challenge.flags.misc
+                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getRole = client.getRole(member.guild, getFlagMisc.role)
+
+                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagMisc.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+
+                if (getRole) await member.roles.add(getRole)
+
+                embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagMisc.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
+
+                arrayFlags.push(getFlagMisc.name)
+                await editMember(member.guild.id, member.id, memberConfig);
+
+                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+            }
+
+        }
+
+    } else if (channelSend?.name?.includes('suspect-')) {
+
+        message.delete();
+
+        const flagsSuspect = serverConfig.challenge.flags.suspect
+        const getSuspect = flagsSuspect.find((e: any) => e.name == message.content);
+
+        if (getSuspect) {
+            await member.roles.remove(serverConfig.roles.suspect);
+
+            const embed = new EmbedBuilder()
+                .setColor(EMBED_INFO)
+                .setAuthor({ name: member.displayName, iconURL: member?.displayAvatarURL({ extension: "png" }) })
+                .setThumbnail('https://ctftime.org/media/events/LOGO_CTF_nohand.png')
+                .setDescription(`**Félicitation, vous n'êtes plus suspect !**`)
+                .setTimestamp()
+                .setFooter({ text: FOOTER_CTF, iconURL: client.user!.displayAvatarURL({ extension: "png" }) })
+
+            return message.channel.send({ embeds: [embed] }).then((msg: Message) => {
+                setTimeout(async() => {await msg.delete()}, 5000);
+            });
+        }
+    }
+}

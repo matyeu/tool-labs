@@ -32,11 +32,15 @@ export class ToolClient extends Client {
         this.invite = new Collection();
 
     }
-    
+
     getEmoji(id: Snowflake) {
         return this.emojis.cache.get(id);
     }
-    
+
+    getRole(guild: Guild, id: Snowflake) {
+        return guild.roles.cache.get(id);
+    }
+
     async getChannel(guild: Guild, snowflake: Snowflake, messageData: BaseMessageOptions) {
         if (snowflake) {
             let channel = <TextChannel>guild.channels.cache.get(snowflake);
@@ -121,15 +125,15 @@ CommandInteraction.prototype.editErrorMessage = async function (client: ToolClie
 
 Message.prototype.replySuccessMessage = async function (client: ToolClient, content: string) {
     embed.setColor(EMBED_SUCCESS).setDescription(`| ${content}`);
-    await this.channel.send({ embeds: [embed]});
+    await this.channel.send({ embeds: [embed] });
 };
 Message.prototype.replyErrorMessage = async function (client: ToolClient, content: string) {
     embed.setColor(EMBED_ERROR).setDescription(`| ${content}`);
-    await this.channel.send({ embeds: [embed]});
+    await this.channel.send({ embeds: [embed] });
 };
 Message.prototype.replyInfoMessage = async function (client: ToolClient, content: string) {
     embed.setColor(EMBED_INFO).setDescription(`| ${content}`);
-    await this.channel.send({ embeds: [embed]});
+    await this.channel.send({ embeds: [embed] });
 };
 
 ButtonInteraction.prototype.replySuccessMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
@@ -205,3 +209,7 @@ export function createMissingProperties(def: object, obj: object) {
 export function capitalize(firstLetter: string) {
     return firstLetter.charAt(0).toUpperCase() + firstLetter.slice(1)
 };
+
+export function researchArray(mot: string, array: string[]): boolean {
+    return array.includes(mot);
+}

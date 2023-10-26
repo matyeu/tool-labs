@@ -55,7 +55,7 @@ export default async function (client: ToolClient, interaction: Interaction) {
             }
             // END SYSTEM OF MAINTENANCE
 
-            await command.slash(client, interaction, serverConfig);
+            await command.slash(client, interaction);
 
         } catch (err) {
             return Logger.error(err);
@@ -74,7 +74,7 @@ export default async function (client: ToolClient, interaction: Interaction) {
             const getSelectMenu = client.selects.get(interaction.customId.split(':')[0]);
             if (!getSelectMenu) return;
             Logger.select(`The ${interaction.customId} select-menu was used by ${interaction.user.username} on the ${interaction.guild?.name} server.`);
-            getSelectMenu.default(client, interaction, serverConfig)
+            getSelectMenu.default(client, interaction)
         } catch (err) {
             return Logger.error(err);
         }
