@@ -1,5 +1,6 @@
 import {
     BaseMessageOptions,
+    ButtonInteraction,
     Client,
     ClientOptions,
     Collection, CommandInteraction, EmbedBuilder, Guild, Message, Snowflake, StringSelectMenuInteraction, TextChannel
@@ -72,6 +73,18 @@ declare module "discord.js" {
         editErrorMessage(client: ToolClient, content: string): any;
     }
 
+    interface ButtonInteraction {
+        replySuccessMessage(client: ToolClient, content: string, ephemeral: boolean): Promise<void>;
+
+        replyErrorMessage(client: ToolClient, content: string, ephemeral: boolean): Promise<void>;
+
+        replyInfoMessage(client: ToolClient, content: string, ephemeral: boolean): Promise<void>;
+
+        editSuccessMessage(client: ToolClient, content: string): any;
+
+        editErrorMessage(client: ToolClient, content: string): any;
+    }
+
     interface StringSelectMenuInteraction {
         replySuccessMessage(client: ToolClient, content: string, ephemeral: boolean): Promise<void>;
 
@@ -117,6 +130,27 @@ Message.prototype.replyErrorMessage = async function (client: ToolClient, conten
 Message.prototype.replyInfoMessage = async function (client: ToolClient, content: string) {
     embed.setColor(EMBED_INFO).setDescription(`| ${content}`);
     await this.channel.send({ embeds: [embed]});
+};
+
+ButtonInteraction.prototype.replySuccessMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
+    embed.setColor(EMBED_SUCCESS).setDescription(`| ${content}`);
+    await this.reply({ embeds: [embed], ephemeral: ephemeral });
+};
+ButtonInteraction.prototype.replyErrorMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
+    embed.setColor(EMBED_ERROR).setDescription(`| ${content}`);
+    await this.reply({ embeds: [embed], ephemeral: ephemeral });
+};
+ButtonInteraction.prototype.replyInfoMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
+    embed.setColor(EMBED_INFO).setDescription(`| ${content}`);
+    await this.reply({ embeds: [embed], ephemeral: ephemeral });
+};
+ButtonInteraction.prototype.editSuccessMessage = async function (client: ToolClient, content: string) {
+    embed.setColor(EMBED_SUCCESS).setDescription(` ${content}`);
+    await this.editReply({ embeds: [embed] });
+};
+ButtonInteraction.prototype.editErrorMessage = async function (client: ToolClient, content: string) {
+    embed.setColor(EMBED_ERROR).setDescription(`| ${content}`);
+    await this.editReply({ embeds: [embed] });
 };
 
 StringSelectMenuInteraction.prototype.replySuccessMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
