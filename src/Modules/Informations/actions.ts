@@ -39,10 +39,12 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
         .setTitle(`Classement C.T.F`)
         .setDescription(`**Les membres sont classés par nombre de flags validé, du plus grand au plus petit.**\n----------------------`)
         .setThumbnail('https://tool-labs.com/classement1.png')
-        .setFooter({text: FOOTER, iconURL: client.user?.displayAvatarURL({extension: "png"})})
+        .setFooter({ text: FOOTER, iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
     const sortedClassement = memberServerConfig.sort((a: any, b: any) =>
         a.challenge.flags.steganographie.length + a.challenge.flags.crackingReverse.length + a.challenge.flags.osint.length + a.challenge.flags.webClient.length + a.challenge.flags.misc.length
-            < b.challenge.flags.steganographie.length + b.challenge.flags.crackingReverse.length + b.challenge.flags.osint.length + b.challenge.flags.webClient.length + b.challenge.flags.misc.length ? 1 : -1
+            + a.challenge.flags.webServer.length + a.challenge.flags.realiste.length + a.challenge.flags.forensic.length + a.challenge.flags.machine.length < b.challenge.flags.steganographie.length
+            + b.challenge.flags.crackingReverse.length + b.challenge.flags.osint.length + b.challenge.flags.webClient.length + b.challenge.flags.misc.length + b.challenge.flags.webServer.length
+            + b.challenge.flags.realiste.length + b.challenge.flags.forensic.length + b.challenge.flags.machine.length ? 1 : -1
     );
     for (const e of sortedClassement.splice(0, 10)) {
 
@@ -59,20 +61,24 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
             { name: 'crackingReverse', data: flags.crackingReverse },
             { name: 'osint', data: flags.osint },
             { name: 'webClient', data: flags.webClient },
-            { name: 'misc', data: flags.misc }
-          ];
-                    
+            { name: 'misc', data: flags.misc },
+            { name: 'webServer', data: flags.webServer },
+            { name: 'realiste', data: flags.realiste },
+            { name: 'forensic', data: flags.forensic },
+            { name: 'machine', data: flags.machine },
+        ];
+
         flagTop.sort((a, b) => b.data - a.data);
-    
+
         if (i < 3) {
-            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: `Nombre de Flags: ${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**`,});
+            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: `Nombre de Flags: ${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**`, });
         } else {
             embed.addFields({ name: `🚩 ${member.displayName}`, value: `${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**` });
         }
 
     }
-    
-    embed.addFields({name: `\u200b`, value: `Dernire actualisation : <t:${timeStamp}:R>`})
-    return interaction.update({embeds: [embed], components: [button]})
+
+    embed.addFields({ name: `\u200b`, value: `Dernire actualisation : <t:${timeStamp}:R>` })
+    return interaction.update({ embeds: [embed], components: [button] })
 
 }

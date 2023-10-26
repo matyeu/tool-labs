@@ -15,7 +15,11 @@ const Members = model("Members", new Schema({
             crackingReverse: Array,
             osint: Array,
             webClient: Array,
-            misc: Array
+            misc: Array,
+            webServer: Array,
+            realiste: Array,
+            forensic: Array,
+            machine: Array,
         }
     },
     cooldowns: {
@@ -34,7 +38,11 @@ export const def = {
             crackingReverse: Array,
             osint: Array,
             webClient: Array,
-            misc: Array
+            misc: Array,
+            webServer: Array,
+            realiste: Array,
+            forensic: Array,
+            machine: Array,
         } 
     },
     cooldowns: {

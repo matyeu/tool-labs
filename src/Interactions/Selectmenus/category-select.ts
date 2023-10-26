@@ -27,12 +27,13 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
         case 'cracking-challenge-1': break;
         case 'cracking-challenge-2': break;
         case 'cracking-challenge-3': break;
-        case 'cracking-challenge-3': break;
         case 'osint-challenge-1': break;
         case 'osint-challenge-2': break;
         case 'osint-challenge-3': break;
-        case 'osint-challenge-3': break;
         case 'misc-challenge-1': break;
+        case 'misc-challenge-2': break;
+        case 'misc-challenge-3': break;
+        case 'misc-challenge-4': break;
         case 'webclient-challenge-1': break;
         case 'webclient-challenge-2': break;
         case 'webclient-challenge-3': break;

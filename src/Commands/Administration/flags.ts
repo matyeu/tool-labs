@@ -66,10 +66,14 @@ export const cmd = {
                         type: ApplicationCommandOptionType.String,
                         choices: [
                             {name: "Steganographie", value: "steganographie"},
-                            {name: "CrackingReverse", value: "crackingReverse"},
+                            {name: "Cracking & Reverse", value: "crackingReverse"},
                             {name: "Osint", value: "osint"},
-                            {name: "WebClient", value: "webClient"},
+                            {name: "Web Client", value: "webClient"},
+                            {name: "Web Serveur", value: "webServer"},
                             {name: "MISC", value: "misc"},
+                            {name: "Réaliste", value: "realiste"},
+                            {name: "Forensic", value: "forensic"},
+                            {name: "Machine", value: "machine"},
                             {name: "Suspect", value: "suspect"},
                         ],
                         required: true
@@ -99,10 +103,14 @@ export const cmd = {
                         type: ApplicationCommandOptionType.String,
                         choices: [
                             {name: "Steganographie", value: "steganographie"},
-                            {name: "CrackingReverse", value: "crackingReverse"},
+                            {name: "Cracking & Reverse", value: "crackingReverse"},
                             {name: "Osint", value: "osint"},
-                            {name: "WebClient", value: "webClient"},
+                            {name: "Web Client", value: "webClient"},
+                            {name: "Web Serveur", value: "webServer"},
                             {name: "MISC", value: "misc"},
+                            {name: "Réaliste", value: "realiste"},
+                            {name: "Forensic", value: "forensic"},
+                            {name: "Machine", value: "machine"},
                             {name: "Suspect", value: "suspect"},
                         ],
                         required: true

@@ -42,6 +42,10 @@ const Server = model(
                 osint: Array,
                 webClient: Array,
                 misc: Array,
+                webServer: Array,
+                realiste: Array,
+                forensic: Array,
+                machine: Array,
                 suspect: Array
             }
         },
@@ -88,6 +92,10 @@ export const def = {
             osint: Array,
             webClient: Array,
             misc: Array,
+            webServer: Array,
+            realiste: Array,
+            forensic: Array,
+            machine: Array,
             suspect: Array
         }
     },

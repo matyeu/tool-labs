@@ -36,6 +36,19 @@ export default async function (client: ToolClient, message: Message) {
             const flagsMisc = serverConfig.challenge.flags.misc
             const getFlagMisc = flagsMisc.find((e: any) => e.name == message.content);
 
+            const flagsWebServer = serverConfig.challenge.flags.webServer
+            const getFlagebServer = flagsWebServer.find((e: any) => e.name == message.content);
+
+            const flagsRealiste = serverConfig.challenge.flags.realiste
+            const getFlagRealiste = flagsRealiste.find((e: any) => e.name == message.content);
+
+            const flagsForensic = serverConfig.challenge.flags.forensic
+            const getFlagForensic = flagsForensic.find((e: any) => e.name == message.content);
+
+            const flagsMachine = serverConfig.challenge.flags.machine
+            const getFlagMachine = flagsMachine.find((e: any) => e.name == message.content);
+            
+
             const embedInfo = new EmbedBuilder()
             .setColor(EMBED_INFO)
 
@@ -148,6 +161,82 @@ export default async function (client: ToolClient, message: Message) {
                 embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagMisc.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
 
                 arrayFlags.push(getFlagMisc.name)
+                await editMember(member.guild.id, member.id, memberConfig);
+
+                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+            } else if (getFlagebServer) {
+                const arrayFlags = memberConfig.challenge.flags.webServer
+                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getRole = client.getRole(member.guild, getFlagebServer.role)
+
+                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagebServer.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+
+                if (getRole) await member.roles.add(getRole)
+
+                embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagebServer.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
+
+                arrayFlags.push(getFlagebServer.name)
+                await editMember(member.guild.id, member.id, memberConfig);
+
+                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+            } else if (getFlagRealiste) {
+                const arrayFlags = memberConfig.challenge.flags.realiste
+                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getRole = client.getRole(member.guild, getFlagRealiste.role)
+
+                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagRealiste.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+
+                if (getRole) await member.roles.add(getRole)
+
+                embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagRealiste.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
+
+                arrayFlags.push(getFlagRealiste.name)
+                await editMember(member.guild.id, member.id, memberConfig);
+
+                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+            } else if (getFlagForensic) {
+                const arrayFlags = memberConfig.challenge.flags.forensic
+                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getRole = client.getRole(member.guild, getFlagForensic.role)
+
+                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagForensic.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+
+                if (getRole) await member.roles.add(getRole)
+
+                embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagForensic.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
+
+                arrayFlags.push(getFlagForensic.name)
+                await editMember(member.guild.id, member.id, memberConfig);
+
+                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+            } else if (getFlagMachine) {
+                const arrayFlags = memberConfig.challenge.flags.machine
+                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getRole = client.getRole(member.guild, getFlagMachine.role)
+
+                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagMachine.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
+                    setTimeout(async() => {await msg.delete()}, 5000);
+                });
+
+                if (getRole) await member.roles.add(getRole)
+
+                embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagMachine.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
+
+                arrayFlags.push(getFlagMachine.name)
                 await editMember(member.guild.id, member.id, memberConfig);
 
                  return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
