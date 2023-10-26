@@ -15,7 +15,7 @@ const client = new ToolClient({
 loadCommands(client);
 loadEvents(client);
 //loadButtons(client);
-//loadSelectMenus(client);
+loadSelectMenus(client);
 //loadModals(client);*/
 
 process.on('exit', code => {
