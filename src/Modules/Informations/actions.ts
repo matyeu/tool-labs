@@ -4,9 +4,6 @@ import { findServer } from "../../Models/member";
 import { find, edit } from "../../Models/member";
 import { EMBED_INFO, FOOTER } from "../../config";
 
-const date = (Date.now()) / 1000;
-const timeStamp = date.toString().split('.')[0];
-
 export async function updateClassement(client: ToolClient, interaction: ButtonInteraction) {
 
     const memberServerConfig: any = await findServer(interaction.guild!.id);

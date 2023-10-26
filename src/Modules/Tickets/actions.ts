@@ -1,10 +1,10 @@
-import { CategoryChannel, ChannelType, Guild, PermissionFlagsBits, Role, TextChannel, User, ActionRowBuilder, ButtonBuilder, ButtonStyle, GuildMember, EmbedBuilder, StringSelectMenuBuilder, StringSelectMenuInteraction, Message, Interaction } from "discord.js";
+import { CategoryChannel, ChannelType, Guild, PermissionFlagsBits, Role, TextChannel, User, ActionRowBuilder, ButtonBuilder, ButtonStyle, GuildMember, EmbedBuilder, StringSelectMenuBuilder, StringSelectMenuInteraction, Message, Interaction, ButtonInteraction } from "discord.js";
 import { ToolClient } from "../../Library";
 import { edit as editServer, find as findServer } from "../../Models/server";
-import { edit as editMember, find as findMember } from "../../Models/member";
+import { edit as editMember, find as findMember, findServer as findServerMember } from "../../Models/member";
 import { challengeEmbed, openEmbed, closeEmbed } from "./embeds";
 import transcript from "./transcript";
-import { EMBED_GENERAL, EMBED_INFO, FOOTER_CTF, FOOTER_TICKET } from "../../config";
+import { EMBED_GENERAL, EMBED_INFO, FOOTER, FOOTER_CTF, FOOTER_TICKET } from "../../config";
 
 const Logger = require("../../Library/logger");
 
@@ -52,6 +52,7 @@ export async function createCollector(client: ToolClient, ticketChannel: TextCha
             }
             await interaction.reply({ content: `Demande prise en compte !`, ephemeral: true });
             if (interaction.customId === "flags") await getFlags(client, interaction);
+            if (interaction.customId === "classement") await updateClassement(client, interaction)
             if (interaction.customId === "close") await closeTicket(client, ticketChannel, member);
         });
 
@@ -264,6 +265,46 @@ export async function getFlags(client: ToolClient, interaction: StringSelectMenu
 
     return interaction.followUp({embeds: [embed], ephemeral: true})
 
+
+}
+
+
+
+export async function updateClassement(client: ToolClient, interaction: ButtonInteraction) {
+
+    const memberServerConfig: any = await findServerMember(interaction.guild!.id);
+    let memberConfig: any = await findMember(interaction.guild!.id, interaction.user.id)
+    let i = 0;
+
+
+    const embed = new EmbedBuilder()
+        .setColor(EMBED_INFO)
+        .setTitle(`Classement C.T.F`)
+        .setDescription(`**Les membres sont classés par nombre de flags validé, du plus grand au plus petit.**\n----------------------`)
+        .setThumbnail('https://tool-labs.com/classement1.png')
+        .setFooter({text: FOOTER, iconURL: client.user?.displayAvatarURL({extension: "png"})})
+    const sortedClassement = memberServerConfig.sort((a: any, b: any) =>
+        a.challenge.flags.steganographie.length + a.challenge.flags.crackingReverse.length + a.challenge.flags.osint.length + a.challenge.flags.webClient.length + a.challenge.flags.misc.length
+            < b.challenge.flags.steganographie.length + b.challenge.flags.crackingReverse.length + b.challenge.flags.osint.length + b.challenge.flags.webClient.length + b.challenge.flags.misc.length ? 1 : -1
+    );
+    for (const e of sortedClassement.splice(0, 10)) {
+
+        let member = await interaction.guild?.members.fetch(e.userId)!;
+        const emojiArray = ["🥇", "🥈", "🥉"];
+
+        memberConfig = await findMember(interaction.guild!.id, member.id)
+        const flags = memberConfig.challenge.flags;
+        const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length
+
+        if (i < 3) {
+            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: `Nombre de Flags: ${flagsTotal}` });
+        } else {
+            embed.addFields({ name: `🚩 ${member.displayName}`, value: `Nombre de Flags: ${flagsTotal}` });
+        }
+
+    }
+    
+    return interaction.followUp({embeds: [embed], ephemeral: true})
 
 }
 
