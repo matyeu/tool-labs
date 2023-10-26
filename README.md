@@ -19,7 +19,7 @@
 
 | Name          | Description                          | Sub-commands                | Usage                             | Cd     |
 | ------------- | ------------------------------------ | --------------------------- | --------------------------------- | ------ |
-| flags         | Add or remove flags.                 | ajout, supprimer            | /flags \<ajout|supprimer> (emoji) | 10secs |
+| flags         | Add or remove flags.                 | ajout, supprimer            | /flags \<ajout\|supprimer> (emoji) | 10secs |
 
 ### Developpement
 
