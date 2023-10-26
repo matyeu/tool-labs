@@ -55,13 +55,15 @@ export function challengeEmbed(client: ToolClient) {
     return new EmbedBuilder()
         .setColor(EMBED_GENERAL)
         .setTitle("Challenges C.T.F")
-        .setDescription(`**Bonjour et bienvenue !
+        .setThumbnail('https://ctftime.org/media/events/LOGO_CTF_nohand.png')
+        .setDescription(`***Bonjour et bienvenue !
+
 Avant de commencer les challenges, souviens-toi qu'il faut lire 
 la documentation et le règlement dans :
   
 <#1161679951209168966>
 
-L'équipe de Tool-Labs te souhaite bonne chance !**`)
+L'équipe de Tool-Labs te souhaite bonne chance !***`)
 .setImage("https://cdn.discordapp.com/attachments/1166027524506140692/1166027580336521237/selectBorder.png?ex=6548fece&is=653689ce&hm=766dda6294591951dca9548ee9f1445df78d953bc4405bbc637983a94e75171f&")
         .setFooter({ text: FOOTER_CTF, iconURL: client.user!.displayAvatarURL({ extension: "png" }) })
 };

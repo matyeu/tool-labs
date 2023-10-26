@@ -41,8 +41,8 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
         case 'webclient-challenge-6': break;
         case 'webclient-challenge-7': break;
         case 'webclient-challenge-8': break;
-        case 'uspect-challenge-1': break;
-        default: return interaction.editErrorMessage(client, `**Le topic \`${interaction.values[0]}\` est introuvable par le bo**`);
+        case 'suspect-challenge-1': break;
+        default: return interaction.followUp({content: `**Le topic \`${interaction.values[0]}\` est introuvable par le bo**`, ephemeral: true});
     }
 
     await interaction.update({content: null})

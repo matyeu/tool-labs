@@ -1,5 +1,5 @@
 import { CategoryChannel, ChannelType, Guild, PermissionFlagsBits, Role, TextChannel, User, ActionRowBuilder, ButtonBuilder, ButtonStyle, GuildMember, EmbedBuilder, StringSelectMenuBuilder, StringSelectMenuInteraction, Message, Interaction, ButtonInteraction } from "discord.js";
-import { ToolClient } from "../../Library";
+import { ToolClient, capitalize } from "../../Library";
 import { edit as editServer, find as findServer } from "../../Models/server";
 import { edit as editMember, find as findMember, findServer as findServerMember } from "../../Models/member";
 import { challengeEmbed, openEmbed, closeEmbed } from "./embeds";
@@ -50,7 +50,7 @@ export async function createCollector(client: ToolClient, ticketChannel: TextCha
             if (interaction.isStringSelectMenu()) {
                 if (interaction.customId === "select-challenge") return selectChallenge(client, ticketChannel, interaction);
             }
-            await interaction.reply({ content: `Demande prise en compte !`, ephemeral: true });
+
             if (interaction.customId === "flags") await getFlags(client, interaction);
             if (interaction.customId === "classement") await updateClassement(client, interaction)
             if (interaction.customId === "close") await closeTicket(client, ticketChannel, member);
@@ -149,7 +149,10 @@ export async function createTicketPanel(client: ToolClient, channel: TextChannel
         }); else if (channel.name.includes("suspect-"))
         message = await channel.send({ embeds: [challengeEmbed(client)], components: [buttonChallenge, selectSuspectChallenge] });
 
-    await message.pin()
+    await message.pin().then(async () => {
+        const messageSystem = channel.messages.cache.get(`${channel.lastMessageId}`)
+        await messageSystem?.delete()
+    })
     return message;
 };
 
@@ -223,7 +226,7 @@ export async function closeTicket(client: ToolClient, channel: TextChannel, memb
         })
     }
     await channel.delete();
-    await warnSurcharge(<TextChannel>channel.guild.channels.cache.get(serverConfig.channels.support));
+    await warnSurcharge(<TextChannel>channel.guild.channels.cache.get(serverConfig.channels.challenge));
     Logger.client(`The ${channel.name} ticket has been closed by ${member.displayName}`)
 
 }
@@ -263,7 +266,7 @@ export async function getFlags(client: ToolClient, interaction: StringSelectMenu
     .setTimestamp()
     .setFooter({text: FOOTER_CTF, iconURL: client.user?.displayAvatarURL()})
 
-    return interaction.followUp({embeds: [embed], ephemeral: true})
+    return interaction.reply({embeds: [embed], ephemeral: true})
 
 
 }
@@ -296,15 +299,25 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
         const flags = memberConfig.challenge.flags;
         const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length
 
+        const flagTop = [
+            { name: 'steganographie', data: flags.steganographie },
+            { name: 'crackingReverse', data: flags.crackingReverse },
+            { name: 'osint', data: flags.osint },
+            { name: 'webClient', data: flags.webClient },
+            { name: 'misc', data: flags.misc }
+          ];
+                    
+        flagTop.sort((a, b) => b.data - a.data);
+    
         if (i < 3) {
-            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: `Nombre de Flags: ${flagsTotal}` });
+            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: `Nombre de Flags: ${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**`,});
         } else {
-            embed.addFields({ name: `🚩 ${member.displayName}`, value: `Nombre de Flags: ${flagsTotal}` });
+            embed.addFields({ name: `🚩 ${member.displayName}`, value: `${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**` });
         }
 
     }
     
-    return interaction.followUp({embeds: [embed], ephemeral: true})
+    return interaction.reply({embeds: [embed], ephemeral: true})
 
 }
 

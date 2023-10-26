@@ -1,5 +1,5 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonInteraction, ButtonStyle, EmbedBuilder } from "discord.js";
-import { ToolClient } from "../../Library";
+import { ToolClient, capitalize } from "../../Library";
 import { findServer } from "../../Models/member";
 import { find, edit } from "../../Models/member";
 import { EMBED_INFO, FOOTER } from "../../config";
@@ -50,13 +50,24 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
         const emojiArray = ["🥇", "🥈", "🥉"];
 
         memberConfig = await find(interaction.guild!.id, member.id)
+
         const flags = memberConfig.challenge.flags;
         const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length
 
+        const flagTop = [
+            { name: 'steganographie', data: flags.steganographie },
+            { name: 'crackingReverse', data: flags.crackingReverse },
+            { name: 'osint', data: flags.osint },
+            { name: 'webClient', data: flags.webClient },
+            { name: 'misc', data: flags.misc }
+          ];
+                    
+        flagTop.sort((a, b) => b.data - a.data);
+    
         if (i < 3) {
-            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: `Nombre de Flags: ${flagsTotal}` });
+            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: `Nombre de Flags: ${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**`,});
         } else {
-            embed.addFields({ name: `🚩 ${member.displayName}`, value: `Nombre de Flags: ${flagsTotal}` });
+            embed.addFields({ name: `🚩 ${member.displayName}`, value: `${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**` });
         }
 
     }

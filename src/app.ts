@@ -14,7 +14,7 @@ const client = new ToolClient({
 
 loadCommands(client);
 loadEvents(client);
-//loadButtons(client);
+loadButtons(client);
 loadSelectMenus(client);
 //loadModals(client);*/
 
