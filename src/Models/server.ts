@@ -19,8 +19,11 @@ const Server = model(
             },
             challenge: String,
             challengeSuspect: String,
-            support: String,
-            classement: String
+            classement: String,
+            candidature: String,
+            createMission: String,
+            mission: String,
+            staff: String,
         },
         roles: {
             suspect: String,
@@ -69,8 +72,11 @@ export const def = {
         },
         challenge: "",
         challengeSuspect: "",
-        support: "",
-        classement: ""
+        classement: "",
+        candidature: "",
+        createMission: "",
+        mission: "",
+        staff: ""
     },
     roles: {
         suspect: "",

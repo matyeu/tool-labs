@@ -1,8 +1,10 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonInteraction, ButtonStyle, EmbedBuilder } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ButtonInteraction, ButtonStyle, EmbedBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from "discord.js";
 import { ToolClient, capitalize } from "../../Library";
 import { findServer } from "../../Models/member";
 import { find, edit } from "../../Models/member";
 import { EMBED_INFO, FOOTER } from "../../config";
+
+const Logger = require("../../Library/logger");
 
 export async function updateClassement(client: ToolClient, interaction: ButtonInteraction) {
 
@@ -81,4 +83,91 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
     embed.addFields({ name: `\u200b`, value: `Dernire actualisation : <t:${timeStamp}:R>` })
     return interaction.update({ embeds: [embed], components: [button] })
 
+}
+
+export async function candidatureModal(client: ToolClient, interaction: ButtonInteraction) {
+
+    const modalSuggestion: any = new ModalBuilder()
+        .setCustomId('candidature-modal')
+        .setTitle('Menu de candidature');
+
+    const descriptionWeb = new TextInputBuilder()
+        .setCustomId('descriptionWeb')
+        .setLabel("Description de vous")
+        .setPlaceholder('Décrivez-vous sans runier votre OPSEC')
+        .setStyle(TextInputStyle.Paragraph)
+        .setMinLength(50)
+        .setRequired(true);
+
+    const descriptionCompt = new TextInputBuilder()
+        .setCustomId('descriptionCompt')
+        .setLabel("Description de vos compétences")
+        .setPlaceholder('Décriver vos compétences en tant que modérateur et aussi en informatique')
+        .setStyle(TextInputStyle.Paragraph)
+        .setMinLength(50)
+        .setRequired(true);
+
+    const age = new TextInputBuilder()
+        .setCustomId('age')
+        .setLabel("ÂGE")
+        .setPlaceholder('Renseigner votre âge')
+        .setStyle(TextInputStyle.Short)
+        .setMaxLength(2)
+        .setRequired(true);
+
+    const descriptionWhy = new TextInputBuilder()
+        .setCustomId('descriptionWhy')
+        .setLabel("Pourquoi vous et pas un autre ?")
+        .setStyle(TextInputStyle.Paragraph)
+        .setRequired(false);
+
+    const descriptionRow = new ActionRowBuilder().addComponents(descriptionWeb);
+    const descriptionCompRow = new ActionRowBuilder().addComponents(descriptionCompt);
+    const ageRow = new ActionRowBuilder().addComponents(age);
+    const whyRow = new ActionRowBuilder().addComponents(descriptionWhy);
+
+
+    modalSuggestion.addComponents(descriptionRow, descriptionCompRow, ageRow, whyRow);
+
+    await interaction.showModal(modalSuggestion);
+
+    Logger.button(`The ${interaction.customId} button was used by ${interaction.user.username} on the ${interaction.guild?.name} server.`);
+}
+
+export async function missionModal(client: ToolClient, interaction: ButtonInteraction) {
+
+    const modalSuggestion: any = new ModalBuilder()
+        .setCustomId('mission-modal')
+        .setTitle('Menu de Mission');
+
+    const titleMission = new TextInputBuilder()
+        .setCustomId('titleMission')
+        .setLabel("Titre de la mission")
+        .setStyle(TextInputStyle.Short)
+        .setRequired(true);
+
+    const descriptionMission = new TextInputBuilder()
+        .setCustomId('descriptionMission')
+        .setLabel("Description de la mission")
+        .setStyle(TextInputStyle.Paragraph)
+        .setMinLength(50)
+        .setRequired(true);
+
+    const price = new TextInputBuilder()
+        .setCustomId('price')
+        .setLabel("Prix")
+        .setStyle(TextInputStyle.Short)
+        .setRequired(true);
+
+
+    const titleRow = new ActionRowBuilder().addComponents(titleMission);
+    const descriptionRow = new ActionRowBuilder().addComponents(descriptionMission);
+    const priceRow = new ActionRowBuilder().addComponents(price);
+
+
+    modalSuggestion.addComponents(titleRow, descriptionRow, priceRow);
+
+    await interaction.showModal(modalSuggestion);
+
+    Logger.button(`The ${interaction.customId} button was used by ${interaction.user.username} on the ${interaction.guild?.name} server.`);
 }

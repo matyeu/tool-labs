@@ -11,7 +11,7 @@ export async function createClassementEmbed(client: ToolClient, channel: TextCha
     const date = (Date.now()) / 1000;
     const timeStamp = date.toString().split('.')[0];
 
-    let button = new ActionRowBuilder<ButtonBuilder>()
+    const button = new ActionRowBuilder<ButtonBuilder>()
         .addComponents(
             new ButtonBuilder()
                 .setCustomId("classement-button")
@@ -64,9 +64,65 @@ export async function createClassementEmbed(client: ToolClient, channel: TextCha
 
     embed.addFields({ name: `\u200b`, value: `Dernire actualisation : <t:${timeStamp}:R>` })
 
-    let message = await channel.send({ embeds: [embed], components: [button] });
+    const message = await channel.send({ embeds: [embed], components: [button] });
     await message.pin();
     return message;
 
+}
+
+export async function createCandidatureEmbed(client: ToolClient, channel: TextChannel) {
+
+    const button = new ActionRowBuilder<ButtonBuilder>()
+        .addComponents(
+            new ButtonBuilder()
+                .setCustomId("candidature-button")
+                .setLabel("Créer une candidature")
+                .setStyle(ButtonStyle.Primary)
+        );
+
+    const embed = new EmbedBuilder()
+        .setColor(EMBED_INFO)
+        .setAuthor({ name: "Tool'Labs™ Candidature Systeme", iconURL: `${channel.guild.iconURL()}` })
+        .setThumbnail(`${channel.guild.iconURL()}`)
+        .setDescription(`**Bonjour à tous !
+
+Aujourd'hui nous avons besoin d'agrandir notre équipe c'est pourquoi nous recherchons 2 modérateurs.**
+
+
+Nous recherchons donc **2 personnes** pour tenir ce poste.
+Aucun pré-requis ni conditions n'est néccessaire cependant soyez conscient que nous attendons des modérateurs un **comportement exemplaire.**
+
+Si vous pensez être apte a tenir ce poste et **ses responsabilités**, merci de cliquer ci-dessous pour ouvrir une candidature.`)
+        .setTimestamp()
+        .setFooter({ text: FOOTER })
+
+    const message = await channel.send({ embeds: [embed], components: [button] });
+    await message.pin();
+    return message;
+
+}
+
+export async function createMissionEmbed(client: ToolClient, channel: TextChannel) {
+
+    const button = new ActionRowBuilder<ButtonBuilder>()
+        .addComponents(
+            new ButtonBuilder()
+                .setCustomId("mission-button")
+                .setLabel("Créer une mission")
+                .setStyle(ButtonStyle.Primary)
+        );
+
+    const embed = new EmbedBuilder()
+        .setColor(EMBED_INFO)
+        .setAuthor({ name: "Tool'Labs™ Mission Systeme", iconURL: `${channel.guild.iconURL()}` })
+        .setTitle("Créer une mission")
+        .setDescription(`En cliquant sur le bouton ci dessous vous pourrez ouvrir un formulaire et proposer une mission. 
+Soyez sérieux et précis dans votre demande !`)
+        .setTimestamp()
+        .setFooter({ text: FOOTER, iconURL: client.user?.displayAvatarURL() })
+
+    const message = await channel.send({ embeds: [embed], components: [button] });
+    await message.pin();
+    return message;
 
 }
