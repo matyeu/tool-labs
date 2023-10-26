@@ -15,6 +15,12 @@
 
 ## Commands
 
+### Developpement
+
+| Name          | Description                          | Sub-commands                | Usage                 | Cd     |
+| ------------- | ------------------------------------ | --------------------------- | --------------------- | ------ |
+| ping          | Ping the bot.                        | none                        | none                  | 10secs |
+
 ## Configuration
 
 1. Clone the repo
