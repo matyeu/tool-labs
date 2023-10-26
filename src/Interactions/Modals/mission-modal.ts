@@ -25,7 +25,7 @@ export default async function (client: ToolClient, interaction: ModalSubmitInter
             },
             {
                 name: "💰 Rémunération :",
-                value: `\`${priceMission}\``,
+                value: `\`${priceMission}\` €`,
                 inline: true
             },
             {
