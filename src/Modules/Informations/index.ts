@@ -13,7 +13,7 @@ export default async function (client: ToolClient, guild: Guild) {
     if (!serverConfig.modules.informations) return Logger.warn(`Loading informations from the ${guild.name} server - SKIPPED (The module is disabled)`);
 
     const classementChannel = <TextChannel>guild.channels.cache.get(serverConfig.channels.classement);
-    if (!classementChannel) return Logger.error(`Loading informations from the ${guild.name} server - FAILURE (The channel informations is not filled in or cannot be found)`);
+    if (!classementChannel) return Logger.error(`Loading informations from the ${guild.name} server - FAILURE (The channel classement is not filled in or cannot be found)`);
 
     const candidatureChannel =  <TextChannel>guild.channels.cache.get(serverConfig.channels.candidature);
     if (!candidatureChannel) return Logger.error(`Loading informations from the ${guild.name} server - FAILURE (The channel candidature is not filled in or cannot be found)`);
