@@ -10,12 +10,35 @@ const Server = model(
         serverId: String,
         prefix: String,
         administrators: Array,
+        category: {
+            challenge: String,
+        },
+        channels: {
+            logs: {
+                tickets: String,
+            },
+            challenge: String,
+            challengeSuspect: String,
+            support: String,
+            classement: String
+        },
+        roles: {
+            suspect: String,
+        },
         maintenance: {
             state: Boolean,
             reason: String,
             commandes: Array,
             category: Array,
         },
+        modules: {
+            tickets: Boolean,
+            informations: Boolean,
+        },
+        stats: {
+            challenge: Number,
+            suspect: Number
+        }
     })
 )
 
@@ -23,11 +46,34 @@ export const def = {
     serverId: "",
     prefix: "!",
     administrators: "916444775861850175",
+    category: {
+        challenge: "",
+    },
+    channels: {
+        logs: {
+            tickets: "",
+        },
+        challenge: "",
+        challengeSuspect: "",
+        support: "",
+        classement: ""
+    },
+    roles: {
+        suspect: "",
+    },
     maintenance: {
         state: false,
         reason: "",
         commandes: Array,
         category: Array,
+    },
+    modules: {
+        tickets: false,
+        informations: false
+    },
+    stats: {
+        challenge: 0,
+        suspect: 0
     }
 };
 

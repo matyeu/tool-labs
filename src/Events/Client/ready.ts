@@ -2,7 +2,8 @@ import { ToolClient } from "../../Library";
 import chalk from "chalk";
 import mongoose from "mongoose";
 import { SERVER_DEV, SERVER_LIVE } from "../../config";
-import {edit, find, update} from "../../Models/server";
+import {edit as editServer, find as findServer, update as updateServer} from "../../Models/server";
+import {edit as editMember, find as findMember, update as updateMember} from "../../Models/member";
 import { readdirSync } from "fs";
 
 const Logger = require("../../Library/logger");
@@ -45,9 +46,17 @@ export default async function (client: ToolClient) {
     for (const guild of client.guilds.cache.map(guild => guild)) {
         if (guild.id !== SERVER_LIVE && guild.id !== SERVER_DEV) continue;
 
-        const serverConfig: any = await find(guild.id);
+        const serverConfig: any = await findServer(guild.id);
         
-        await update(guild.id);
+        await updateServer(guild.id);
+
+        for (const member of guild.members.cache.map(member => member)) {
+            if (member.user.bot) continue;
+            await updateMember(guild.id, member.id);
+        }
+
+        await import("../../Modules/Tickets").then(exports => exports.default(client, guild));
+        await import("../../Modules/Informations").then(exports => exports.default(client, guild));
         
         const categoryFolder = readdirSync('./src/Commands');
         for (const categoryName of categoryFolder) {
@@ -56,7 +65,7 @@ export default async function (client: ToolClient) {
 
             if (!moduleAlready) {
                 categoryDatabase.push({ categoryName, state: false, reason: "" });
-                await edit(guild.id, serverConfig);
+                await editServer(guild.id, serverConfig);
             }
         }
 
@@ -70,7 +79,7 @@ export default async function (client: ToolClient) {
 
             if (!commandAlready) {
                 cmdDatabase.push({ cmdName, state: false, reason: "" });
-                await edit(guild.id, serverConfig);
+                await editServer(guild.id, serverConfig);
             }
         }
     }
