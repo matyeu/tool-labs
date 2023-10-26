@@ -2,7 +2,7 @@ import { ToolClient } from "../../Library";
 import { CommandInteraction, EmbedBuilder, Message } from "discord.js";
 import { EMBED_INFO, FOOTER } from "../../config";
 
-export async function slash(client: ToolClient, interaction: CommandInteraction, serverConfig: any) {
+export async function slash(client: ToolClient, interaction: CommandInteraction) {
 
     const start = Date.now();
     interaction.reply({ content: "Pong !" }).then(() => {
