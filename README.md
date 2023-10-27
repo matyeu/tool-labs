@@ -21,6 +21,12 @@
 | ------------- | ------------------------------------ | --------------------------- | --------------------------------- | ------ |
 | flags         | Add or remove flags.                 | ajout, supprimer            | /flags \<ajout\|supprimer> (role) | 10secs |
 
+### General
+
+| Name          | Description                          | Sub-commands                | Usage                             | Cd     |
+| ------------- | ------------------------------------ | --------------------------- | --------------------------------- | ------ |
+| profil         | View member information.            | none                        | /profil (utilisateur)             | 10secs |
+
 ### Developpement
 
 | Name          | Description                          | Sub-commands                | Usage                 | Cd     |
