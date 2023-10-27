@@ -18,8 +18,8 @@ export default async function (client: ToolClient, message: Message) {
     const memberConfig: any = await findMember(message.guild!.id, message.author.id);
 
     // MESSAGE
-    if (memberConfig.messageCount < 5) {
-        memberConfig.messageCount++
+    if (memberConfig.stats.messageCount < 5) {
+        memberConfig.stats.messageCount++
         await editMember(member.guild!.id, member.id, memberConfig)
     } else {
         const roleInvite = client.getRole(member.guild, serverConfig.roles.invite);

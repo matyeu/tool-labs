@@ -28,7 +28,7 @@ export async function slash(client: ToolClient, interaction: CommandInteraction)
 
 }
 
-export async function command(client: ToolClient, message: Message, args: any, serverConfig: any) {
+export async function command(client: ToolClient, message: Message, args: any) {
 
     const tryPong = await message.channel.send("Pong !");
 
