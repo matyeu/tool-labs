@@ -24,6 +24,7 @@ const Server = model(
             createMission: String,
             mission: String,
             staff: String,
+            documentation: String,
         },
         roles: {
             suspect: String,
@@ -77,7 +78,8 @@ export const def = {
         candidature: "",
         createMission: "",
         mission: "",
-        staff: ""
+        staff: "",
+        documentation: "",
     },
     roles: {
         suspect: "",

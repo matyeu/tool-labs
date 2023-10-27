@@ -68,6 +68,60 @@ L'équipe de Tool-Labs te souhaite bonne chance !***`)
         .setFooter({ text: FOOTER_CTF, iconURL: client.user!.displayAvatarURL({ extension: "png" }) })
 };
 
+export async function createDocumentationEmbed(client: ToolClient, channel: TextChannel) {
+
+    const buttons = new ActionRowBuilder<ButtonBuilder>()
+    .addComponents(
+        new ButtonBuilder()
+            .setCustomId("page1-button")
+            .setLabel("Page précedente")
+            .setStyle(ButtonStyle.Secondary)
+            .setDisabled(true)
+            
+    ).addComponents(
+        new ButtonBuilder()
+            .setCustomId("page2-button")
+            .setLabel("Page suivante")
+            .setStyle(ButtonStyle.Primary)
+    );
+
+    const embed =  new EmbedBuilder()
+        .setColor(EMBED_GENERAL)
+        .setTitle("Documentation")
+        .setThumbnail('https://tool-labs.com/doc.png')
+        .setDescription(`Page 1`)
+        .setFooter({ text: FOOTER_CTF, iconURL: client.user!.displayAvatarURL({ extension: "png" }) })
+
+        let message = await channel.send({ embeds: [embed], components: [buttons] });
+        await message.pin();
+        return message;
+};
+
+export async function documentationEmbed(client: ToolClient) {
+
+    const buttons = new ActionRowBuilder<ButtonBuilder>()
+    .addComponents(
+        new ButtonBuilder()
+            .setCustomId("page1-button")
+            .setLabel("Page précedente")
+            .setStyle(ButtonStyle.Secondary)
+            .setDisabled(true)
+            
+    ).addComponents(
+        new ButtonBuilder()
+            .setCustomId("page2-button")
+            .setLabel("Page suivante")
+            .setStyle(ButtonStyle.Primary)
+    );
+
+    const embed =  new EmbedBuilder()
+        .setColor(EMBED_GENERAL)
+        .setTitle("Documentation")
+        .setThumbnail('https://tool-labs.com/doc.png')
+        .setDescription(`Page 1`)
+};
+
+
 export function ticketAlreadyOpenEmbed() {
     return new EmbedBuilder()
     .setColor(EMBED_CLOSE)

@@ -615,4 +615,75 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
 
     Logger.select(`The ${interaction.customId} select-menu was used by ${interaction.user.username} on the ${interaction.guild?.name} server.`);
 
-}
+};
+
+export async function page1Documentation(client: ToolClient, interaction: ButtonInteraction) {
+
+    const buttons = new ActionRowBuilder<ButtonBuilder>()
+    .addComponents(
+        new ButtonBuilder()
+            .setCustomId("page1-button")
+            .setLabel("Page précedente")
+            .setStyle(ButtonStyle.Secondary)
+            .setDisabled(true)
+            
+    ).addComponents(
+        new ButtonBuilder()
+            .setCustomId("page2-button")
+            .setLabel("Page suivante")
+            .setStyle(ButtonStyle.Primary)
+    );
+
+    const embed =  new EmbedBuilder()
+        .setColor(EMBED_GENERAL)
+        .setTitle("Documentation")
+        .setThumbnail('https://tool-labs.com/doc.png')
+        .setDescription(`Page 1`)
+
+        return interaction.update({embeds: [embed], components: [buttons]})
+};
+
+export async function page2Documentation(client: ToolClient, interaction: ButtonInteraction) {
+
+    const buttons = new ActionRowBuilder<ButtonBuilder>()
+    .addComponents(
+        new ButtonBuilder()
+            .setCustomId("page1-button")
+            .setLabel("Page précédente")
+            .setStyle(ButtonStyle.Primary)
+    ) .addComponents(
+        new ButtonBuilder()
+            .setCustomId("page3-button")
+            .setLabel("Page suivante")
+            .setStyle(ButtonStyle.Primary)
+    );
+
+    const embed = new EmbedBuilder()
+    .setColor(EMBED_GENERAL)
+    .setDescription('page 2')
+
+    return interaction.update({embeds: [embed], components: [buttons]})
+};
+
+export async function page3Documentation(client: ToolClient, interaction: ButtonInteraction) {
+
+    const buttons = new ActionRowBuilder<ButtonBuilder>()
+    .addComponents(
+        new ButtonBuilder()
+            .setCustomId("page2-button")
+            .setLabel("Page précédente")
+            .setStyle(ButtonStyle.Primary)
+    ) .addComponents(
+        new ButtonBuilder()
+            .setCustomId("page3-button")
+            .setLabel("Page suivante")
+            .setStyle(ButtonStyle.Secondary)
+            .setDisabled(true)
+    );
+
+    const embed = new EmbedBuilder()
+    .setColor(EMBED_GENERAL)
+    .setDescription('page 3')
+
+    return interaction.update({embeds: [embed], components: [buttons]})
+};
