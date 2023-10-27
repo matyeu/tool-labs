@@ -516,10 +516,10 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
 
                 options.push(
                     {
-                        label: "Challenge [En cours de construction] (Facile)",
+                        label: "Challenge WebServer (Facile)",
                         emoji: `🟡`,
-                        description: "Trouvez le flag dans le Q.R Code",
-                        value: `misc-challenge-2`,
+                        description: "En cours de construction",
+                        value: `webserver-challenge-1`,
                     })
 
                 break

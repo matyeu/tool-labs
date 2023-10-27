@@ -160,6 +160,14 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
                 .setThumbnail("https://tool-labs.com/moyen2.png");
 
             break;
+        case 'webserver-challenge-1':
+
+            embed.setTitle("CHALLENGE [WebServer](Facile) ")
+                .setDescription("Challenge en cours de construction")
+                .setColor("#000000")
+                .setThumbnail("https://tool-labs.com/facile2.png");
+
+            break;
         case 'suspect-challenge-1':
 
             embed.setTitle("CHALLENGE [OBLIGATOIRE] ")
