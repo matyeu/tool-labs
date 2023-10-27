@@ -1,5 +1,5 @@
 import { EmbedBuilder, ModalSubmitInteraction } from "discord.js";
-import { ToolClient } from "../../Library";
+import { ToolClient, tcheckNumber } from "../../Library";
 import { EMBED_INFO, FOOTER } from "../../config";
 import { find } from "../../Models/server";
 
@@ -12,6 +12,8 @@ export default async function (client: ToolClient, interaction: ModalSubmitInter
     const descriptionCompt = interaction.fields.getTextInputValue('descriptionCompt');
     const age = interaction.fields.getTextInputValue('age');
     const descriptionWhy = interaction.fields.getTextInputValue('descriptionWhy');
+
+    if (!tcheckNumber(age)) return interaction.reply({content: "**Merci d'indiquer un âge valide !**", ephemeral: true})
 
     const embed = new EmbedBuilder()
         .setColor(EMBED_INFO)

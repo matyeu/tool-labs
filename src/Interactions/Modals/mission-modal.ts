@@ -1,5 +1,5 @@
 import { EmbedBuilder, ModalSubmitInteraction } from "discord.js";
-import { ToolClient } from "../../Library";
+import { ToolClient, tcheckNumber } from "../../Library";
 import { EMBED_INFO, FOOTER } from "../../config";
 import { find } from "../../Models/server";
 
@@ -11,6 +11,8 @@ export default async function (client: ToolClient, interaction: ModalSubmitInter
     const titleMission = interaction.fields.getTextInputValue('titleMission');
     const descriptionMission = interaction.fields.getTextInputValue('descriptionMission');
     const priceMission = interaction.fields.getTextInputValue('price');
+
+    if (priceMission && !tcheckNumber(priceMission)) return interaction.reply({content: "**Merci d'indiquer un prix valide !**", ephemeral: true})
 
     const embed = new EmbedBuilder()
         .setColor(EMBED_INFO)
@@ -25,7 +27,7 @@ export default async function (client: ToolClient, interaction: ModalSubmitInter
             },
             {
                 name: "💰 Rémunération :",
-                value: `\`${priceMission}\` €`,
+                value: `\`${priceMission ? `${priceMission} €` : "Non rémunéré"}\``,
                 inline: true
             },
             {

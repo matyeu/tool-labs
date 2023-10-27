@@ -160,7 +160,7 @@ export async function missionModal(client: ToolClient, interaction: ButtonIntera
         .setCustomId('price')
         .setLabel("Prix")
         .setStyle(TextInputStyle.Short)
-        .setRequired(true);
+        .setRequired(false);
 
 
     const titleRow = new ActionRowBuilder().addComponents(titleMission);

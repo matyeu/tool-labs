@@ -213,3 +213,8 @@ export function capitalize(firstLetter: string) {
 export function researchArray(mot: string, array: string[]): boolean {
     return array.includes(mot);
 }
+
+export function tcheckNumber(text: string) {
+    var expression = /\d+/;
+    return expression.test(text);
+  }
