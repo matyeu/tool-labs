@@ -73,9 +73,9 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
         flagTop.sort((a, b) => b.data - a.data);
 
         if (i < 3) {
-            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: `Nombre de Flags: ${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**`, });
+            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: `Nombre de Flags: ${flagsTotal}\nCatégorie favorite : **${flagsTotal > 0 ? capitalize(flagTop[0].name) : "Aucune catégorie favorite"}**`,});
         } else {
-            embed.addFields({ name: `🚩 ${member.displayName}`, value: `${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**` });
+            embed.addFields({ name: `🚩 ${member.displayName}`, value: `${flagsTotal}\nCatégorie favorite : **${flagsTotal > 0 ? capitalize(flagTop[0].name) : "Aucune catégorie favorite"}**`,});
         }
 
     }
