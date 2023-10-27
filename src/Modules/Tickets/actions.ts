@@ -357,7 +357,6 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
 
         const valueFlags = `Nombre de Flags: ${flagsTotal}`
         const valueCategory = `Nombre de Flags: ${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**`
-        console.log(flagsTotal.length)
 
         if (i < 3) {
             embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags});
