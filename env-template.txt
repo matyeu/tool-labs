@@ -1,3 +1,0 @@
-APP_DISCORD_TOKEN=MTE2NjczODU0MDc4NTMxNTkxMQ.GunsO4.SNcwM5qtF96dEYyV13STzmDrhFsFmTFOFC-iCg
-
-APP_DATABASE=mongodb+srv://users:Xp15aoBoKZKzLcC2@botsdiscord.wqyyf.mongodb.net/TOOL-LABS?retryWrites=true&w=majority
