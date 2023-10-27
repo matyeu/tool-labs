@@ -12,9 +12,9 @@ console.log(chalk.blue(`
     ██║   ╚██████╔╝╚██████╔╝███████╗ ███████╗██║  ██║██████╔╝███████║
     ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝ ╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝
 `))
-console.log(chalk.bgBlue("                                                                 "));
-console.log(chalk.bgBlue(" © 2023 TOOL-LABS - Discord BOT CTF developed by matyeu & zulu.  "));
-console.log(chalk.bgBlue("                                                                 "));
+console.log(chalk.bgBlue("                                                                   "));
+console.log(chalk.bgBlue(" © 2023 TOOL-LABS - Discord BOT C.T.F developed by matyeu & zulu.  "));
+console.log(chalk.bgBlue("                                                                   "));
 console.log('')
 
 export function loadCommands(client: ToolClient) {
