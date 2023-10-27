@@ -27,6 +27,7 @@ const Server = model(
         },
         roles: {
             suspect: String,
+            invite: String,
         },
         maintenance: {
             state: Boolean,

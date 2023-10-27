@@ -1,5 +1,6 @@
 import { Message, EmbedBuilder } from "discord.js";
 import { find as findServer } from "../../Models/server";
+import { find as findMember, edit as editMember } from "../../Models/member";
 import { ToolClient } from "../../Library";
 import { EMBED_INFO } from "../../config";
 
@@ -14,6 +15,18 @@ export default async function (client: ToolClient, message: Message) {
     const member = await message.guild!.members.fetch(message.author.id);
     const administrators = serverConfig.administrators;
 
+    const memberConfig: any = await findMember(message.guild!.id, message.author.id);
+
+    // MESSAGE
+    if (memberConfig.messageCount < 5) {
+        memberConfig.messageCount++
+        await editMember(member.guild!.id, member.id, memberConfig)
+    } else {
+        const roleInvite = client.getRole(member.guild, serverConfig.roles.invite);
+        if (roleInvite) await member.roles.add(serverConfig.roles.invite)
+    }
+
+    // SYSTEM FLAG
     await client.emit("messageFlags", message);
 
     // COMMAND

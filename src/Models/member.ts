@@ -22,6 +22,7 @@ const Members = model("Members", new Schema({
             machine: Array,
         }
     },
+    messagesCount: Number,
     cooldowns: {
         classement: Number,
     }
@@ -45,6 +46,7 @@ export const def = {
             machine: Array,
         } 
     },
+    messagesCount: 0,
     cooldowns: {
         classement: 0,
     }
