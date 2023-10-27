@@ -25,6 +25,7 @@
 
 | Name          | Description                          | Sub-commands                | Usage                             | Cd     |
 | ------------- | ------------------------------------ | --------------------------- | --------------------------------- | ------ |
+| profil         | View bot information.               | none                        | none                              | 10secs |
 | profil         | View member information.            | none                        | /profil (utilisateur)             | 10secs |
 
 ### Developpement
