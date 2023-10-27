@@ -1,5 +1,5 @@
 export const SERVER_LIVE = "1151851676618215526";
-export const SERVER_DEV = "1098316625490481242";
+export const SERVER_DEV = "1155786063399366676";
 
 export const EMBED_GENERAL = "#2f3136";
 export const EMBED_ERROR = "#E04F5F";
