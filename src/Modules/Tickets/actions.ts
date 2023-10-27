@@ -339,7 +339,7 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
 
         memberConfig = await findMember(interaction.guild!.id, member.id)
         const flags = memberConfig.challenge.flags;
-        const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length + flags.webServer + flags.realiste + flags.forensic + flags.machine
+        const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length + flags.webServer.length + flags.realiste.length + flags.forensic.length + flags.machine.length
 
         const flagTop = [
             { name: 'steganographie', data: flags.steganographie },
@@ -355,10 +355,14 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
 
         flagTop.sort((a, b) => b.data - a.data);
 
+        const valueFlags = `Nombre de Flags: ${flagsTotal}`
+        const valueCategory = `Nombre de Flags: ${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**`
+        console.log(flagsTotal.length)
+
         if (i < 3) {
-            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: `Nombre de Flags: ${flagsTotal}\nCatégorie favorite : **${flagsTotal.length > 0 ? capitalize(flagTop[0].name) : "`Aucune catégorie favorite`"}**`,});
+            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags});
         } else {
-            embed.addFields({ name: `🚩 ${member.displayName}`, value: `${flagsTotal}\nCatégorie favorite : **${flagsTotal.length > 0 ? capitalize(flagTop[0].name) : "`Aucune catégorie favorite`"}**`,});
+            embed.addFields({ name: `🚩 ${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags});
         }
 
     }
