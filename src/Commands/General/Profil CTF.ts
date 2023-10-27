@@ -1,25 +1,32 @@
-import { ApplicationCommandOptionType, AttachmentBuilder, CommandInteraction, EmbedBuilder, Message } from "discord.js";
+import { ApplicationCommandType, AttachmentBuilder, ChatInputCommandInteraction, EmbedBuilder, Message } from "discord.js";
 import { ToolClient } from "../../Library";
 import { find as findServer } from "../../Models/server";
 import { find as findMember } from "../../Models/member";
 import { EMBED_GENERAL, FOOTER } from "../../config";
 import Canvas from "canvas";
 
-export async function slash(client: ToolClient, interaction: CommandInteraction) {
+export async function slash(client: ToolClient, interaction: ChatInputCommandInteraction) {
 
     const serverConfig: any = await findServer(interaction.guild!.id);
     const flagsServer = serverConfig.challenge.flags;
 
-    const memberOption: any = interaction.options.get('utilisateur', false);
-    const member = await interaction.guild!.members.fetch(memberOption ? memberOption.value : interaction.user);
+    //@ts-ignore
+    const member = await interaction.guild!.members.fetch(interaction.targetId);
 
-   if (member.user.bot) return interaction.replyErrorMessage(client, `**Impossible d'afficher le profil d'un bot !**`, true)
+    if (member.user.bot) return interaction.replyErrorMessage(client, `**Impossible d'afficher le profil d'un bot !**`, true)
     if (!member) return interaction.replyErrorMessage(client, `**Le membre indiqué est introuvable par le bot !**`, true);
 
     await interaction.deferReply()
 
     const memberConfig: any = await findMember(member.guild!.id, member.id);
     const flagsMember = memberConfig.challenge.flags;
+
+    const statusFlags = {
+        online: "En ligne",
+        idle: "Absent",
+        dnd: "Ne pas déranger",
+        offline: "Hors ligne",
+    };
 
 
     let customStatus;
@@ -91,6 +98,7 @@ export async function slash(client: ToolClient, interaction: CommandInteraction)
 **» Name & ID:** ${member.user} - ${member.user.id}
 » **Rejoint le : ** <t:${joinedTimestamp}:f>
 » **Compte créé :** <t:${createdTimestamp}:f>
+**» Statut:** \`${statusFlags[<keyof object>member.presence?.status]}\`
 **»** ${activities.length > 0 ? activities.join(', ') : "**Activité :** `Aucune`"}
 **» Nombre d'invitation :** \`${memberConfig.stats.invitations}\`
 
@@ -152,21 +160,13 @@ export async function slash(client: ToolClient, interaction: CommandInteraction)
     return interaction.editReply({ embeds: [embed], files: [iconesChall] })
 }
 
-export async function command(client: ToolClient, message: Message, args: any) { }
 
 export const cmd = {
     data: {
         name: __filename.slice(__dirname.length + 1, __filename.length - 3),
-        description: "Voir les informations d'un membre",
         category: "General",
         permissions: ["SendMessages"],
-        options: [
-            {
-                name: "utilisateur",
-                description: "Pour qui souhaitez-vous voir les informations ?",
-                type: ApplicationCommandOptionType.User
-            }
-        ]
+        type: ApplicationCommandType.User,
     }
 }
 
