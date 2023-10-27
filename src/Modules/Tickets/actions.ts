@@ -283,7 +283,7 @@ export async function getFlags(client: ToolClient, interaction: StringSelectMenu
                 value: `${flags.webClient.length <= 0 ? "`Aucun flag actuellement dans cette catégorie`" : flags.webClient.join('\n')}`
             },
             {
-                name: `Web Client (${flags.webServer.length})`,
+                name: `Web Server (${flags.webServer.length})`,
                 value: `${flags.webServer.length <= 0 ? "`Aucun flag actuellement dans cette catégorie`" : flags.webServer.join('\n')}`
             },
             {
@@ -458,7 +458,7 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
 
                 break
             case 'category-4':
-                embed.setAuthor({ name: "CHALLENGES WEB CLIEN", iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
+                embed.setAuthor({ name: "CHALLENGES WEB CLIENT", iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
 
                 options.push(
                     {
@@ -516,7 +516,7 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
 
                 options.push(
                     {
-                        label: "Challenge M.I.S.C (Facile)",
+                        label: "Challenge [En cours de construction] (Facile)",
                         emoji: `🟡`,
                         description: "Trouvez le flag dans le Q.R Code",
                         value: `misc-challenge-2`,
@@ -540,10 +540,10 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
 
                 options.push(
                     {
-                        label: "Challenge M.I.S.C (Facile)",
+                        label: "Challenge Realiste (Facile)",
                         emoji: `🟡`,
-                        description: "Trouvez le flag dans le Q.R Code",
-                        value: `misc-challenge-3`,
+                        description: "En cours de construction",
+                        value: `realiste-challenge-3`,
                     })
 
                 break
@@ -552,10 +552,10 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
 
                 options.push(
                     {
-                        label: "Challenge M.I.S.C (Facile)",
+                        label: "Challenge Forensic (Facile)",
                         emoji: `🟡`,
-                        description: "Trouvez le flag dans le Q.R Code",
-                        value: `misc-challenge-4`,
+                        description: "En cours de construction",
+                        value: `forensic-challenge-4`,
                     })
 
                 break
@@ -564,10 +564,10 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
 
                 options.push(
                     {
-                        label: "Challenge M.I.S.C (Facile)",
+                        label: "Challenge Machine (Facile)",
                         emoji: `🟡`,
-                        description: "Trouvez le flag dans le Q.R Code",
-                        value: `misc-challenge-5`,
+                        description: "En cours de construction",
+                        value: `machine-challenge-5`,
                     })
 
                 break
