@@ -81,6 +81,7 @@ export const def = {
     },
     roles: {
         suspect: "",
+        invite: "",
     },
     maintenance: {
         state: false,
