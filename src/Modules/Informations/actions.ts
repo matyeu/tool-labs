@@ -148,12 +148,14 @@ export async function missionModal(client: ToolClient, interaction: ButtonIntera
     const titleMission = new TextInputBuilder()
         .setCustomId('titleMission')
         .setLabel("Titre de la mission")
+        .setPlaceholder("Comment voulez-vous nommé votre mission")
         .setStyle(TextInputStyle.Short)
         .setRequired(true);
 
     const descriptionMission = new TextInputBuilder()
         .setCustomId('descriptionMission')
         .setLabel("Description de la mission")
+        .setPlaceholder("Soyez le plus précis pour avoir des réponses plus sérieuse")
         .setStyle(TextInputStyle.Paragraph)
         .setMinLength(50)
         .setRequired(true);
@@ -161,6 +163,7 @@ export async function missionModal(client: ToolClient, interaction: ButtonIntera
     const price = new TextInputBuilder()
         .setCustomId('price')
         .setLabel("Prix")
+        .setPlaceholder("Si la mission est non rémunerée laissez vide")
         .setStyle(TextInputStyle.Short)
         .setRequired(false);
 
