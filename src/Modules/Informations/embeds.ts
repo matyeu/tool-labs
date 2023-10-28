@@ -33,6 +33,8 @@ export async function createClassementEmbed(client: ToolClient, channel: TextCha
     );
     for (const e of sortedClassement.splice(0, 10)) {
 
+        i++
+
         let member = await channel.guild?.members.fetch(e.userId)!;
         const emojiArray = ["🥇", "🥈", "🥉"];
 
