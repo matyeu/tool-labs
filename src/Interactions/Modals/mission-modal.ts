@@ -31,7 +31,7 @@ export default async function (client: ToolClient, interaction: ModalSubmitInter
                 inline: true
             },
             {
-                name: "📃 Description :",
+                name: "❔ Description :",
                 value: descriptionMission,
                 inline: false
             },
