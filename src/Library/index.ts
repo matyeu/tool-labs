@@ -6,7 +6,7 @@ import {
     Collection, CommandInteraction, EmbedBuilder, Guild, Message, Snowflake, StringSelectMenuInteraction, TextChannel
 } from 'discord.js';
 import * as fs from "fs";
-import { EMBED_ERROR, EMBED_INFO, EMBED_SUCCESS } from '../config';
+import { EMBED_ERROR, EMBED_INFO, EMBED_SUCCESS, EMOJIS } from '../config';
 
 export class ToolClient extends Client {
     public config: Object;
@@ -137,44 +137,44 @@ Message.prototype.replyInfoMessage = async function (client: ToolClient, content
 };
 
 ButtonInteraction.prototype.replySuccessMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
-    embed.setColor(EMBED_SUCCESS).setDescription(`| ${content}`);
+    embed.setColor(EMBED_SUCCESS).setDescription(`${client.getEmoji(EMOJIS.check)} | ${content}`);
     await this.reply({ embeds: [embed], ephemeral: ephemeral });
 };
 ButtonInteraction.prototype.replyErrorMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
-    embed.setColor(EMBED_ERROR).setDescription(`| ${content}`);
+    embed.setColor(EMBED_ERROR).setDescription(`${client.getEmoji(EMOJIS.error)} | ${content}`);
     await this.reply({ embeds: [embed], ephemeral: ephemeral });
 };
 ButtonInteraction.prototype.replyInfoMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
-    embed.setColor(EMBED_INFO).setDescription(`| ${content}`);
+    embed.setColor(EMBED_INFO).setDescription(`${client.getEmoji(EMOJIS.info)} | ${content}`);
     await this.reply({ embeds: [embed], ephemeral: ephemeral });
 };
 ButtonInteraction.prototype.editSuccessMessage = async function (client: ToolClient, content: string) {
-    embed.setColor(EMBED_SUCCESS).setDescription(` ${content}`);
+    embed.setColor(EMBED_SUCCESS).setDescription(`${client.getEmoji(EMOJIS.check)} | ${content}`);
     await this.editReply({ embeds: [embed] });
 };
 ButtonInteraction.prototype.editErrorMessage = async function (client: ToolClient, content: string) {
-    embed.setColor(EMBED_ERROR).setDescription(`| ${content}`);
+    embed.setColor(EMBED_ERROR).setDescription(`${client.getEmoji(EMOJIS.error)} | ${content}`);
     await this.editReply({ embeds: [embed] });
 };
 
 StringSelectMenuInteraction.prototype.replySuccessMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
-    embed.setColor(EMBED_SUCCESS).setDescription(`| ${content}`);
+    embed.setColor(EMBED_SUCCESS).setDescription(`${client.getEmoji(EMOJIS.check)} | ${content}`);
     await this.reply({ embeds: [embed], ephemeral: ephemeral });
 };
 StringSelectMenuInteraction.prototype.replyErrorMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
-    embed.setColor(EMBED_ERROR).setDescription(`| ${content}`);
+    embed.setColor(EMBED_ERROR).setDescription(`${client.getEmoji(EMOJIS.error)} | ${content}`);
     await this.reply({ embeds: [embed], ephemeral: ephemeral });
 };
 StringSelectMenuInteraction.prototype.replyInfoMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
-    embed.setColor(EMBED_INFO).setDescription(`| ${content}`);
+    embed.setColor(EMBED_INFO).setDescription(`${client.getEmoji(EMOJIS.info)} | ${content}`);
     await this.reply({ embeds: [embed], ephemeral: ephemeral });
 };
 StringSelectMenuInteraction.prototype.editSuccessMessage = async function (client: ToolClient, content: string) {
-    embed.setColor(EMBED_SUCCESS).setDescription(` ${content}`);
+    embed.setColor(EMBED_SUCCESS).setDescription(`${client.getEmoji(EMOJIS.check)} | ${content}`);
     await this.editReply({ embeds: [embed] });
 };
 StringSelectMenuInteraction.prototype.editErrorMessage = async function (client: ToolClient, content: string) {
-    embed.setColor(EMBED_ERROR).setDescription(`| ${content}`);
+    embed.setColor(EMBED_ERROR).setDescription(`${client.getEmoji(EMOJIS.error)} | ${content}`);
     await this.editReply({ embeds: [embed] });
 };
 
