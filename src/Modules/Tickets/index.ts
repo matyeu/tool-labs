@@ -1,8 +1,8 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonInteraction, ButtonStyle, CategoryChannel, EmbedBuilder, Guild, TextChannel, User } from "discord.js";
+import { ButtonInteraction, CategoryChannel, Guild, TextChannel, User } from "discord.js";
 import { ToolClient } from "../../Library";
 import { find } from "../../Models/server";
-import { createChallengeEmbed, createDocumentationEmbed, ticketAlreadyOpenEmbed } from "./embeds";
-import { createCollector, createTicket, page1Documentation, page2Documentation, page3Documentation, tickets, warnSurcharge } from "./actions";
+import { createChallengeEmbed, ticketAlreadyOpenEmbed } from "./embeds";
+import { createCollector, createTicket, tickets, warnSurcharge } from "./actions";
 import { EMBED_GENERAL } from "../../config";
 
 const Logger = require("../../Library/logger");
@@ -22,17 +22,11 @@ export default async function (client: ToolClient, guild: Guild) {
     const challengeCategory = <CategoryChannel>guild.channels.cache.get(serverConfig.category.challenge);
     if (!challengeCategory) return Logger.error(`Loading tickets from the ${guild.name} server - FAILURE (The category challenge is not filled in or cannot be found)`);
 
-    const documentationChannel = <TextChannel>guild.channels.cache.get(serverConfig.channels.documentation);
-    if (!documentationChannel) return Logger.error(`Loading tickets from the ${guild.name} server - FAILURE (The channel documentation is not filled in or cannot be found)`);
-
     let challengeMessage = (await challengeChannel.messages.fetchPinned()).first();
     if (!challengeMessage) challengeMessage = await createChallengeEmbed(client, challengeChannel);
 
     let challengeSuspectMessage = (await challengeSuspectChannel.messages.fetchPinned()).first();
     if (!challengeSuspectMessage) challengeSuspectMessage = await createChallengeEmbed(client, challengeSuspectChannel);
-
-    let documentationMessage = (await documentationChannel.messages.fetchPinned()).first();
-    if (!documentationMessage) documentationMessage = await createDocumentationEmbed(client, documentationChannel);
 
     const openedTickets = tickets(guild);
     const alreadyHasTicketOpen = (user: User, prefix: string) => !!tickets(guild).find(ticket => ticket.topic!.includes(user.id) && ticket.name.includes(prefix));
@@ -64,39 +58,6 @@ export default async function (client: ToolClient, guild: Guild) {
         }
     });
 
-    await documentationMessage.createMessageComponentCollector({ filter }).on("collect", async (interaction: ButtonInteraction) => {
-        if (interaction.customId === "page1-button") {
-            await page1Documentation(client, interaction)
-        } else if (interaction.customId === "page2-button") {
-            await page2Documentation(client, interaction)
-        } else if (interaction.customId === "page3-button") {
-            await page3Documentation(client, interaction)
-        }
-
-        setTimeout(() => {
-            const buttons = new ActionRowBuilder<ButtonBuilder>()
-                .addComponents(
-                    new ButtonBuilder()
-                        .setCustomId("page1-button")
-                        .setLabel("Page précedente")
-                        .setStyle(ButtonStyle.Secondary)
-                        .setDisabled(true)
-
-                ).addComponents(
-                    new ButtonBuilder()
-                        .setCustomId("page2-button")
-                        .setLabel("Page suivante")
-                        .setStyle(ButtonStyle.Primary)
-                );
-
-            const embed = new EmbedBuilder()
-                .setColor(EMBED_GENERAL)
-                .setTitle("Documentation")
-                .setDescription("Vous pouvez consulter vos données et celle des autres participants CTF en faisant :\n```/profil @utilisateur```\nou en vous rendant sur le profil de l utilisateur > Applications > Profil C.T.F \n\n3️⃣Les FLAGS doivent être écris dans votre salon C.T.F privé, le bot réagira si vous trouvez le bon flag\n\n4️⃣ Tous les challenges sont testés et fonctionnels, et nous ne donnons aucun indice supplémentaire.** Si un challenge ne vous donne pas d indice dans la trame, cela veut dire que le challenge est réalisable sans\n\n3️⃣ Si vous validé un challenge et que vous ne gagniez aucun rôle, ou récompenses c est normal !\nTous les challenges n offre pas de récompense.\n\n3️⃣Les challenges de Tool-Labs sont pour la plupart fait maison cependant certains peuvent provenir d une célèbre plateforme permettant de mettre à disposition des challenges (libre d utilisation) néanmoins l ensemble du code a été modifié pour vous empêcher de reverse le code sur internet.")
-
-            documentationMessage?.edit({ embeds: [embed], components: [buttons] })
-        }, 180000);
-    });
 
     for (let challengeChannel of openedTickets) {
         await createCollector(client, challengeChannel);

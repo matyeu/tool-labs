@@ -2,7 +2,7 @@ import { ActionRowBuilder, ButtonBuilder, ButtonInteraction, ButtonStyle, EmbedB
 import { ToolClient, capitalize } from "../../Library";
 import { findServer } from "../../Models/member";
 import { find, edit } from "../../Models/member";
-import { EMBED_INFO, FOOTER, EMOJIS } from "../../config";
+import { EMBED_INFO, FOOTER, EMOJIS, EMBED_GENERAL, FOOTER_CTF } from "../../config";
 
 const Logger = require("../../Library/logger");
 
@@ -78,9 +78,9 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
         const valueCategory = `Nombre de Flags: ${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**`
 
         if (i < 3) {
-            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags});
+            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags });
         } else {
-            embed.addFields({ name: `🚩 ${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags});
+            embed.addFields({ name: `🚩 ${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags });
         }
 
         i++
@@ -181,3 +181,90 @@ export async function missionModal(client: ToolClient, interaction: ButtonIntera
 
     Logger.button(`The ${interaction.customId} button was used by ${interaction.user.username} on the ${interaction.guild?.name} server.`);
 }
+
+
+
+export async function pagesDocumentation(client: ToolClient, interaction: ButtonInteraction) {
+
+    const getPage: any = interaction.customId.split("-")[0]
+
+    const embedHome = new EmbedBuilder()
+        .setColor(EMBED_GENERAL)
+        .setDescription(`${client.getEmoji(EMOJIS.info)} Vous pouvez consulter vos données et celle des autres participants CTF en tapant la commande :\n
+    \`\`\`/profil @utilisateur\`\`\`
+ou en vous rendant sur le profil de l utilisateur > Applications > Profil C.T.F 
+    
+3️⃣Les FLAGS doivent être écris dans votre salon C.T.F privé, le bot réagira si vous trouvez le bon flag
+    
+4️⃣ Tous les challenges sont testés et fonctionnels, et nous ne donnons aucun indice supplémentaire.** Si un challenge ne vous donne pas d indice dans la trame, cela veut dire que le challenge est réalisable sans\
+    
+3️⃣ Si vous validé un challenge et que vous ne gagniez aucun rôle, ou récompenses c est normal !\nTous les challenges n offre pas de récompense.
+    
+3️⃣Les challenges de Tool-Labs sont pour la plupart fait maison cependant certains peuvent provenir d une célèbre plateforme permettant de mettre à disposition des challenges (libre d utilisation) néanmoins l ensemble du code a été modifié pour vous empêcher de reverse le code sur internet.") 
+`)
+        .setFooter({ text: FOOTER_CTF, iconURL: client.user!.displayAvatarURL({ extension: "png" }) })
+
+    const buttonsHome = new ActionRowBuilder<ButtonBuilder>()
+    buttonsHome.addComponents(
+        new ButtonBuilder()
+            .setCustomId(`page1-button`)
+            .setLabel("Page précédente")
+            .setStyle(ButtonStyle.Secondary)
+            .setDisabled(true)
+    ).addComponents(
+        new ButtonBuilder()
+            .setCustomId(`page2-button`)
+            .setLabel("Page suivante")
+            .setStyle(ButtonStyle.Primary)
+            .setDisabled(false)
+    );
+
+    let embed = new EmbedBuilder()
+        .setColor(EMBED_GENERAL)
+
+    let buttons = new ActionRowBuilder<ButtonBuilder>()
+
+
+    if (getPage === "page1") {
+        embed = embedHome
+        buttons = buttonsHome;
+
+    }
+    else if (getPage === "page2") {
+        embed.setDescription(`Page : ${getPage}`)
+
+        buttons.addComponents(
+            new ButtonBuilder()
+                .setCustomId(`page1-button`)
+                .setLabel("Page précédente")
+                .setStyle(ButtonStyle.Primary)
+                .setDisabled(false)
+        ).addComponents(
+            new ButtonBuilder()
+                .setCustomId(`page3-button`)
+                .setLabel("Page suivante")
+                .setStyle(ButtonStyle.Primary)
+                .setDisabled(false)
+        );
+
+    } else {
+        embed.setDescription(`Page : ${getPage}`)
+
+        buttons.addComponents(
+            new ButtonBuilder()
+                .setCustomId(`page2-button`)
+                .setLabel("Page précédente")
+                .setStyle(ButtonStyle.Primary)
+                .setDisabled(false)
+        ).addComponents(
+            new ButtonBuilder()
+                .setCustomId(`page3-button`)
+                .setLabel("Page suivante")
+                .setStyle(ButtonStyle.Secondary)
+                .setDisabled(true)
+        );
+    }
+
+    const embedMessage = await interaction.update({ embeds: [embed], components: [buttons] });
+    setTimeout(() => { embedMessage.edit({ embeds: [embedHome], components: [buttonsHome] }) }, 180000)
+};
