@@ -2,6 +2,8 @@ import { GuildMember } from "discord.js";
 import { ToolClient } from "../../Library";
 import { edit, find } from "../../Models/member";
 
+const Logger = require("../../Library/logger");
+
 export default async function (client: ToolClient, newMember: GuildMember) {
 
     newMember.guild.invites.fetch().then(async newInvite => {
@@ -16,4 +18,6 @@ export default async function (client: ToolClient, newMember: GuildMember) {
         await edit(newMember.guild!.id, memberInvite.id, memberConfig);
     
     });
+
+    await Logger.client(`${newMember.user.tag} has just joined ${newMember.guild.name}`);
 }
