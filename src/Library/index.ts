@@ -215,6 +215,6 @@ export function researchArray(mot: string, array: string[]): boolean {
 }
 
 export function tcheckNumber(text: string) {
-    var expression = /\d+/;
+    const expression = /^\d+$/;
     return expression.test(text);
   }
