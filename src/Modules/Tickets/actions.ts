@@ -364,6 +364,8 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
             embed.addFields({ name: `🚩 ${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags});
         }
 
+        i++
+
     }
 
     return interaction.reply({ embeds: [embed], ephemeral: true })

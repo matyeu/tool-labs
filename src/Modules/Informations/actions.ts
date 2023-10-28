@@ -52,8 +52,6 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
     );
     for (const e of sortedClassement.splice(0, 10)) {
 
-        i++
-
         let member = await interaction.guild?.members.fetch(e.userId)!;
         const emojiArray = ["🥇", "🥈", "🥉"];
 
@@ -84,6 +82,8 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
         } else {
             embed.addFields({ name: `🚩 ${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags});
         }
+
+        i++
 
     }
 

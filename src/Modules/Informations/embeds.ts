@@ -33,8 +33,6 @@ export async function createClassementEmbed(client: ToolClient, channel: TextCha
     );
     for (const e of sortedClassement.splice(0, 10)) {
 
-        i++
-
         let member = await channel.guild?.members.fetch(e.userId)!;
         const emojiArray = ["🥇", "🥈", "🥉"];
 
@@ -64,6 +62,8 @@ export async function createClassementEmbed(client: ToolClient, channel: TextCha
         } else {
             embed.addFields({ name: `🚩 ${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags});
         }
+
+        i++
     }
 
     embed.addFields({ name: `\u200b`, value: `Dernire actualisation : <t:${timeStamp}:R>` })
