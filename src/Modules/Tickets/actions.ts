@@ -639,8 +639,8 @@ export async function page1Documentation(client: ToolClient, interaction: Button
     const embed =  new EmbedBuilder()
         .setColor(EMBED_GENERAL)
         .setTitle("Documentation")
-        .setThumbnail('https://tool-labs.com/doc.png')
-        .setDescription(`Page 1`)
+        
+        .setDescription("Vous pouvez consulter vos données et celle des autres participants CTF en faisant :\n```/profil @utilisateur```\nou en vous rendant sur le profil de l utilisateur > Applications > Profil C.T.F \n\n3️⃣Les FLAGS doivent être écris dans votre salon C.T.F privé, le bot réagira si vous trouvez le bon flag\n\n4️⃣ Tous les challenges sont testés et fonctionnels, et nous ne donnons aucun indice supplémentaire.** Si un challenge ne vous donne pas d indice dans la trame, cela veut dire que le challenge est réalisable sans\n\n3️⃣ Si vous validé un challenge et que vous ne gagniez aucun rôle, ou récompenses c est normal !\nTous les challenges n offre pas de récompense.\n\n3️⃣Les challenges de Tool-Labs sont pour la plupart fait maison cependant certains peuvent provenir d une célèbre plateforme permettant de mettre à disposition des challenges (libre d utilisation) néanmoins l ensemble du code a été modifié pour vous empêcher de reverse le code sur internet.")
 
         return interaction.update({embeds: [embed], components: [buttons]})
 };
@@ -662,7 +662,7 @@ export async function page2Documentation(client: ToolClient, interaction: Button
 
     const embed = new EmbedBuilder()
     .setColor(EMBED_GENERAL)
-    .setDescription('page 2')
+    .setDescription("1️⃣ Les FLAGS changent de temps en temps.\n**[Le partage de solution est interdit]** & **[Les demandes de flags en privé sont interdits]** , si nous constatons que cette règle est outrepassé le bannissement sera immédiat.")
 
     return interaction.update({embeds: [embed], components: [buttons]})
 };
