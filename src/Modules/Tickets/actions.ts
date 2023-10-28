@@ -4,7 +4,7 @@ import { edit as editServer, find as findServer } from "../../Models/server";
 import { edit as editMember, find as findMember, findServer as findServerMember } from "../../Models/member";
 import { challengeEmbed, openEmbed, closeEmbed } from "./embeds";
 import transcript from "./transcript";
-import { EMBED_GENERAL, EMBED_INFO, FOOTER, FOOTER_CTF, FOOTER_TICKET } from "../../config";
+import { EMBED_GENERAL, EMBED_INFO, FOOTER, FOOTER_CTF, FOOTER_TICKET, EMOJIS } from "../../config";
 
 const Logger = require("../../Library/logger");
 
@@ -63,17 +63,17 @@ export function createButtonChallenge(client: ToolClient) {
         .addComponents(
             new ButtonBuilder()
                 .setCustomId("flags")
-                .setEmoji("📝")
+                .setEmoji(EMOJIS.flag)
                 .setLabel("Mes flags")
                 .setStyle(ButtonStyle.Primary),
             new ButtonBuilder()
                 .setCustomId("classement")
-                .setEmoji("📜")
+                .setEmoji(EMOJIS.stat)
                 .setLabel("Classement")
                 .setStyle(ButtonStyle.Secondary),
             new ButtonBuilder()
                 .setCustomId("close")
-                .setEmoji("🔒")
+                .setEmoji(EMOJIS.closectf)
                 .setLabel("Fermer le ticket")
                 .setStyle(ButtonStyle.Danger),
         );

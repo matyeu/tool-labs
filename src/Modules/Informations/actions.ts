@@ -2,9 +2,10 @@ import { ActionRowBuilder, ButtonBuilder, ButtonInteraction, ButtonStyle, EmbedB
 import { ToolClient, capitalize } from "../../Library";
 import { findServer } from "../../Models/member";
 import { find, edit } from "../../Models/member";
-import { EMBED_INFO, FOOTER } from "../../config";
+import { EMBED_INFO, FOOTER, EMOJIS } from "../../config";
 
 const Logger = require("../../Library/logger");
+
 
 export async function updateClassement(client: ToolClient, interaction: ButtonInteraction) {
 
@@ -32,8 +33,9 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
         .addComponents(
             new ButtonBuilder()
                 .setCustomId("classement-button")
+                .setEmoji(EMOJIS.refreshclassement)
                 .setLabel("Actualiser le classement")
-                .setStyle(ButtonStyle.Success)
+                .setStyle(ButtonStyle.Primary)
         );
 
     const embed = new EmbedBuilder()

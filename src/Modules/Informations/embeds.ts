@@ -1,6 +1,6 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, TextChannel } from "discord.js";
 import { ToolClient, capitalize } from "../../Library";
-import { EMBED_INFO, FOOTER } from "../../config";
+import { EMBED_INFO, FOOTER, EMOJIS } from "../../config";
 import { findServer, find } from "../../Models/member";
 
 export async function createClassementEmbed(client: ToolClient, channel: TextChannel) {
@@ -78,6 +78,7 @@ export async function createCandidatureEmbed(client: ToolClient, channel: TextCh
         .addComponents(
             new ButtonBuilder()
                 .setCustomId("candidature-button")
+                .setEmoji(EMOJIS.candidaturebutton)
                 .setLabel("Créer une candidature")
                 .setStyle(ButtonStyle.Primary)
         );
@@ -110,6 +111,7 @@ export async function createMissionEmbed(client: ToolClient, channel: TextChanne
         .addComponents(
             new ButtonBuilder()
                 .setCustomId("mission-button")
+                .setEmoji(EMOJIS.missionbutton)
                 .setLabel("Créer une mission")
                 .setStyle(ButtonStyle.Primary)
         );

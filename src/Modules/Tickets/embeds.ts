@@ -1,6 +1,6 @@
 import { TextChannel, GuildMember, ColorResolvable, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
 import { ToolClient } from "../../Library";
-import { EMBED_CLOSE, EMBED_ERROR, EMBED_GENERAL, EMBED_INFO, FOOTER_TICKET, FOOTER_CTF } from "../../config";
+import { EMBED_CLOSE, EMBED_ERROR, EMBED_GENERAL, EMBED_INFO, FOOTER_TICKET, FOOTER_CTF, EMOJIS } from "../../config";
 
 const embed = (client: ToolClient, channel: TextChannel, member: GuildMember, action: string, color: ColorResolvable) => {
     return new EmbedBuilder()
@@ -27,8 +27,9 @@ export async function createChallengeEmbed(client: ToolClient, channel: TextChan
         .addComponents(
             new ButtonBuilder()
                 .setCustomId("open")
+                .setEmoji(EMOJIS.ctf)
                 .setLabel("Ouvrir un salon CTF")
-                .setStyle(ButtonStyle.Success)
+                .setStyle(ButtonStyle.Primary)
         );
     let embed = new EmbedBuilder()
         .setColor(EMBED_GENERAL)

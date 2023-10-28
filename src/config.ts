@@ -16,3 +16,16 @@ export const FOOTER_TICKET = "Tool-Labs - Tickets";
 export const FOOTER_CTF = "Tool-Labs - CTF"
 
 export const IDLE_BUTTON = 60000;
+
+export const EMOJIS = {
+refresh: "1167600666617843732",
+missionbutton: "1167605474150064159",
+candidaturebutton: "1167605504235819138",
+flag: "1167609694240649337",
+refreshclassement: "1167611429025751060",
+closectf: "1167611518859358359",
+stat: "1167605549999869983",
+ctf: "1167617172302999602",
+
+
+}
