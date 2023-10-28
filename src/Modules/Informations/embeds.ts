@@ -16,7 +16,7 @@ export async function createClassementEmbed(client: ToolClient, channel: TextCha
             new ButtonBuilder()
                 .setCustomId("classement-button")
                 .setLabel("Actualiser le classement")
-                .setStyle(ButtonStyle.Success)
+                .setStyle(ButtonStyle.Primary)
         );
 
     const embed = new EmbedBuilder()
