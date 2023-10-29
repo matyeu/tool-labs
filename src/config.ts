@@ -15,6 +15,8 @@ export const FOOTER_LOG = "Tool-Labs - Logs";
 export const FOOTER_TICKET = "Tool-Labs - Tickets";
 export const FOOTER_CTF = "Tool-Labs - CTF"
 
+
+
 export const IDLE_BUTTON = 60000;
 
 export const EMOJIS = {
@@ -43,5 +45,7 @@ deuxieme: "1168189320058900570",
 troisieme: "1168189302086307852",
 horspodium: "1168190624260956170",
 missioncreate: "1168193349744857098",
-
+remu: "1168322691086954617",
+description: "1168322668576120852",
+missionsub: "1168322639698341979",
 }

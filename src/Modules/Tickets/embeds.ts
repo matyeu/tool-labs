@@ -57,15 +57,14 @@ export async function createChallengeSuspectEmbed(client: ToolClient, channel: T
             new ButtonBuilder()
                 .setCustomId("open")
                 .setEmoji(EMOJIS.ctf)
-                .setLabel("Ouvrir un salon CTF")
+                .setLabel("Ouvrir un salon C.T.F [Obligatoire]")
                 .setStyle(ButtonStyle.Primary)
         );
     let embed = new EmbedBuilder()
         .setColor(EMBED_GENERAL)
-        .setTitle("Tool-Labs C.T.F")
-        .setDescription(`Bienvenue ! Etes-vous prêt à vous lancer dans les challenges C.T.F de Tool-Labs !?\n
-${client.getEmoji(EMOJIS.info)} Pour ouvrir un salon privé et commencer les challenges, veuillez lire attentivement la documentation dans le salon ⁠
-<#1161679951209168966> et cliquez sur le bouton ci-dessous.
+        .setTitle("Tool-Labs C.T.F [Suspect]")
+        .setDescription(`Aie aie aie ! Si vous êtes ici c'est que vous êtes soupsonné d'avoir triché !\n
+${client.getEmoji(EMOJIS.info)} Pour ouvrir un salon privé et commencer le challenge imposé qui vous permettra de revenir parmis nous, veuillez cliquer sur le bouton ci-dessous.
     
 `)
         .setImage('https://tool-labs.com/tl.gif')
@@ -86,14 +85,14 @@ export function challengeEmbed(client: ToolClient) {
         .setColor(EMBED_GENERAL)
         .setTitle("Challenges C.T.F")
         .setThumbnail('https://ctftime.org/media/events/LOGO_CTF_nohand.png')
-        .setDescription(`***Bonjour et bienvenue !
+        .setDescription(`***Bonjour !
 
-Avant de commencer les challenges, souviens-toi qu'il faut lire 
+Avant de commencer les challenges, souvenez-vous qu'il faut lire 
 la documentation et le règlement dans :
   
 <#1161679951209168966>
 
-L'équipe de Tool-Labs te souhaite bonne chance !***`)
+L'équipe de Tool-Labs vous souhaite bonne chance !***`)
 .setImage("https://cdn.discordapp.com/attachments/1166027524506140692/1166027580336521237/selectBorder.png?ex=6548fece&is=653689ce&hm=766dda6294591951dca9548ee9f1445df78d953bc4405bbc637983a94e75171f&")
         .setFooter({ text: FOOTER_CTF, iconURL: client.user!.displayAvatarURL({ extension: "png" }) })
 };

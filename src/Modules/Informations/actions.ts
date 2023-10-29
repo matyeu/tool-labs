@@ -100,8 +100,8 @@ export async function candidatureModal(client: ToolClient, interaction: ButtonIn
 
     const descriptionWeb = new TextInputBuilder()
         .setCustomId('descriptionWeb')
-        .setLabel("Description de vous")
-        .setPlaceholder('Décrivez-vous sans runier votre OPSEC')
+        .setLabel("Decrivez-vous simplement")
+        .setPlaceholder('Décrivez-vous sans ruiner votre OPSEC')
         .setStyle(TextInputStyle.Paragraph)
         .setMinLength(50)
         .setRequired(true);
@@ -109,7 +109,7 @@ export async function candidatureModal(client: ToolClient, interaction: ButtonIn
     const descriptionCompt = new TextInputBuilder()
         .setCustomId('descriptionCompt')
         .setLabel("Description de vos compétences")
-        .setPlaceholder('Décriver vos compétences en tant que modérateur et aussi en informatique')
+        .setPlaceholder('Décrivez vos compétences en tant que modérateur mais aussi vos experiences informatique')
         .setStyle(TextInputStyle.Paragraph)
         .setMinLength(50)
         .setRequired(true);
@@ -117,14 +117,15 @@ export async function candidatureModal(client: ToolClient, interaction: ButtonIn
     const age = new TextInputBuilder()
         .setCustomId('age')
         .setLabel("ÂGE")
-        .setPlaceholder('Renseigner votre âge')
+        .setPlaceholder('Renseignez votre âge')
         .setStyle(TextInputStyle.Short)
         .setMaxLength(2)
         .setRequired(true);
 
     const descriptionWhy = new TextInputBuilder()
         .setCustomId('descriptionWhy')
-        .setLabel("Pourquoi vous et pas un autre ?")
+        .setLabel("Case Libre")
+        .setPlaceholder('Ecrivez ce qui vous semble important cette case est optionnelle et libre')
         .setStyle(TextInputStyle.Paragraph)
         .setRequired(false);
 
@@ -157,7 +158,7 @@ export async function missionModal(client: ToolClient, interaction: ButtonIntera
     const descriptionMission = new TextInputBuilder()
         .setCustomId('descriptionMission')
         .setLabel("Description de la mission")
-        .setPlaceholder("Soyez le plus précis pour avoir des réponses plus sérieuse")
+        .setPlaceholder("Soyez le plus précis possible pour avoir des réponses plus rapides et sérieuses")
         .setStyle(TextInputStyle.Paragraph)
         .setMinLength(50)
         .setRequired(true);
@@ -165,7 +166,7 @@ export async function missionModal(client: ToolClient, interaction: ButtonIntera
     const price = new TextInputBuilder()
         .setCustomId('price')
         .setLabel("Prix")
-        .setPlaceholder("Si la mission est non rémunerée laissez vide")
+        .setPlaceholder("Si la mission est non rémunerée laissez ce champ vide")
         .setStyle(TextInputStyle.Short)
         .setRequired(false);
 
