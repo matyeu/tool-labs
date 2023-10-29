@@ -51,6 +51,35 @@ ${client.getEmoji(EMOJIS.info)} Pour ouvrir un salon privé et commencer les cha
 
 }
 
+export async function createChallengeSuspectEmbed(client: ToolClient, channel: TextChannel) {
+    let buttons = new ActionRowBuilder<ButtonBuilder>()
+        .addComponents(
+            new ButtonBuilder()
+                .setCustomId("open")
+                .setEmoji(EMOJIS.ctf)
+                .setLabel("Ouvrir un salon CTF")
+                .setStyle(ButtonStyle.Primary)
+        );
+    let embed = new EmbedBuilder()
+        .setColor(EMBED_GENERAL)
+        .setTitle("Tool-Labs C.T.F")
+        .setDescription(`Bienvenue ! Etes-vous prêt à vous lancer dans les challenges C.T.F de Tool-Labs !?\n
+${client.getEmoji(EMOJIS.info)} Pour ouvrir un salon privé et commencer les challenges, veuillez lire attentivement la documentation dans le salon ⁠
+<#1161679951209168966> et cliquez sur le bouton ci-dessous.
+    
+`)
+        .setImage('https://tool-labs.com/tl.gif')
+        .setFooter({
+            text: `${FOOTER_CTF}`,
+            iconURL: client.user?.displayAvatarURL()
+        })
+        .setTimestamp();
+    let message = await channel.send({ embeds: [embed], components: [buttons] });
+    await message.pin();
+    return message;
+
+}
+
 export function challengeEmbed(client: ToolClient) {
 
     return new EmbedBuilder()

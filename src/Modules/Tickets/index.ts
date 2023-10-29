@@ -1,9 +1,8 @@
 import { ButtonInteraction, CategoryChannel, Guild, TextChannel, User } from "discord.js";
 import { ToolClient } from "../../Library";
 import { find } from "../../Models/server";
-import { createChallengeEmbed, ticketAlreadyOpenEmbed } from "./embeds";
+import { createChallengeEmbed, createChallengeSuspectEmbed, ticketAlreadyOpenEmbed } from "./embeds";
 import { createCollector, createTicket, tickets, warnSurcharge } from "./actions";
-import { EMBED_GENERAL } from "../../config";
 
 const Logger = require("../../Library/logger");
 
@@ -26,7 +25,7 @@ export default async function (client: ToolClient, guild: Guild) {
     if (!challengeMessage) challengeMessage = await createChallengeEmbed(client, challengeChannel);
 
     let challengeSuspectMessage = (await challengeSuspectChannel.messages.fetchPinned()).first();
-    if (!challengeSuspectMessage) challengeSuspectMessage = await createChallengeEmbed(client, challengeSuspectChannel);
+    if (!challengeSuspectMessage) challengeSuspectMessage = await createChallengeSuspectEmbed(client, challengeSuspectChannel);
 
     const openedTickets = tickets(guild);
     const alreadyHasTicketOpen = (user: User, prefix: string) => !!tickets(guild).find(ticket => ticket.topic!.includes(user.id) && ticket.name.includes(prefix));
