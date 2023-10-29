@@ -359,9 +359,9 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
         const valueCategory = `Nombre de Flags: ${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**`
 
         if (i < 3) {
-            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags});
+            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: flagsTotal > 0 ? valueCategory : valueFlags});
         } else {
-            embed.addFields({ name: `🚩 ${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags});
+            embed.addFields({ name: `${client.getEmoji(EMOJIS.horspodium)} ${member.displayName}`, value: flagsTotal > 0 ? valueCategory : valueFlags});
         }
 
         i++

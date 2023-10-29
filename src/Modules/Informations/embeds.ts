@@ -20,10 +20,11 @@ export async function createClassementEmbed(client: ToolClient, channel: TextCha
         );
 
     const embed = new EmbedBuilder()
-        .setColor(EMBED_INFO)
+        .setColor(EMBED_GENERAL)
         .setTitle(`Classement C.T.F`)
         .setDescription(`**Les membres sont classés par nombre de flags validé, du plus grand au plus petit.**\n----------------------`)
         .setThumbnail('https://tool-labs.com/classement1.png')
+        .setTimestamp()
         .setFooter({ text: FOOTER, iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
     const sortedClassement = memberServerConfig.sort((a: any, b: any) =>
         a.challenge.flags.steganographie.length + a.challenge.flags.crackingReverse.length + a.challenge.flags.osint.length + a.challenge.flags.webClient.length + a.challenge.flags.misc.length
@@ -34,7 +35,7 @@ export async function createClassementEmbed(client: ToolClient, channel: TextCha
     for (const e of sortedClassement.splice(0, 10)) {
 
         let member = await channel.guild?.members.fetch(e.userId)!;
-        const emojiArray = ["🥇", "🥈", "🥉"];
+        const emojiArray = [`${client.getEmoji(EMOJIS.premier)}`, `${client.getEmoji(EMOJIS.deuxieme)}`, `${client.getEmoji(EMOJIS.troisieme)}`];
 
         const memberConfig: any = await find(channel.guild!.id, member.id)
         const flags = memberConfig.challenge.flags;
@@ -58,9 +59,9 @@ export async function createClassementEmbed(client: ToolClient, channel: TextCha
         const valueCategory = `Nombre de Flags: ${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**`
 
         if (i < 3) {
-            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags });
+            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: flagsTotal > 0 ? valueCategory : valueFlags });
         } else {
-            embed.addFields({ name: `🚩 ${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags });
+            embed.addFields({ name: `${client.getEmoji(EMOJIS.horspodium)} ${member.displayName}`, value: flagsTotal > 0 ? valueCategory : valueFlags });
         }
 
         i++
@@ -94,10 +95,10 @@ export async function createCandidatureEmbed(client: ToolClient, channel: TextCh
 Aujourd'hui nous avons besoin d'agrandir notre équipe c'est pourquoi nous recherchons 2 modérateurs.**
 
 
-Nous recherchons donc **2 personnes** pour tenir ce poste.
-Aucun pré-requis ni conditions n'est néccessaire cependant soyez conscient que nous attendons des modérateurs un **comportement exemplaire.**
+**Nous recherchons donc 2 personnes pour tenir ce poste.
+Aucun pré-requis ni conditions n'est néccessaire cependant soyez conscient que nous attendons des modérateurs un comportement exemplaire.
 
-Si vous pensez être apte a tenir ce poste et **ses responsabilités**, merci de cliquer ci-dessous pour ouvrir une candidature.`)
+Si vous pensez être apte a tenir ce poste et ses responsabilités, merci de cliquer ci-dessous pour ouvrir une candidature.**`)
         .setTimestamp()
         .setFooter({ text: FOOTER })
 
@@ -121,9 +122,9 @@ export async function createMissionEmbed(client: ToolClient, channel: TextChanne
     const embed = new EmbedBuilder()
         .setColor(EMBED_INFO)
         .setAuthor({ name: "Tool'Labs™ Mission Systeme", iconURL: `${channel.guild.iconURL()}` })
-        .setTitle("Créer une mission")
-        .setDescription(`En cliquant sur le bouton ci dessous vous pourrez ouvrir un formulaire et proposer une mission. 
-Soyez sérieux et précis dans votre demande !`)
+        .setTitle(`${client.getEmoji(EMOJIS.missioncreate)} Créer une mission`)
+        .setDescription(`**En cliquant sur le bouton ci dessous vous pourrez ouvrir un formulaire et proposer une mission. 
+Soyez sérieux et précis dans votre demande !**`)
         .setTimestamp()
         .setFooter({ text: FOOTER, iconURL: client.user?.displayAvatarURL() })
 

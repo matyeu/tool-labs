@@ -53,7 +53,7 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
     for (const e of sortedClassement.splice(0, 10)) {
 
         let member = await interaction.guild?.members.fetch(e.userId)!;
-        const emojiArray = ["🥇", "🥈", "🥉"];
+        const emojiArray = [`${client.getEmoji(EMOJIS.premier)}`, `${client.getEmoji(EMOJIS.deuxieme)}`, `${client.getEmoji(EMOJIS.troisieme)}`];
 
         memberConfig = await find(interaction.guild!.id, member.id)
 
@@ -78,9 +78,9 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
         const valueCategory = `Nombre de Flags: ${flagsTotal}\nCatégorie favorite : **${capitalize(flagTop[0].name)}**`
 
         if (i < 3) {
-            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags });
+            embed.addFields({ name: `${emojiArray[i]}${member.displayName}`, value: flagsTotal > 0 ? valueCategory : valueFlags });
         } else {
-            embed.addFields({ name: `🚩 ${member.displayName}`, value: flagsTotal.length > 0 ? valueCategory : valueFlags });
+            embed.addFields({ name: `${client.getEmoji(EMOJIS.horspodium)} ${member.displayName}`, value: flagsTotal > 0 ? valueCategory : valueFlags });
         }
 
         i++
@@ -234,7 +234,7 @@ ${client.getEmoji(EMOJIS.quatre)} Les challenges de Tool-Labs sont pour la plupa
     }
     else if (getPage === "page2") {
         embed.setTitle("Informations C.T.F")
-        embed.setDescription(`${client.getEmoji(EMOJIS.information)} **Vous trouverez ici les règles qui concerne les chaenge C.T.F **
+        embed.setDescription(`${client.getEmoji(EMOJIS.information)} **Vous trouverez ici les informations qui concerne les challenges C.T.F **
         
 ${client.getEmoji(EMOJIS.uno)} Si vous avez un challenge à nous soumettre veuillez ouvrir un ticket dans 
 <#1151868897545420872> afin qu'il soit testé & approuvé puis posté.
