@@ -255,6 +255,7 @@ export default async function (client: ToolClient, message: Message) {
 
         if (getSuspect) {
             await member.roles.remove(serverConfig.roles.suspect);
+            await member.roles.add(serverConfig.roles.member);
 
             const embed = new EmbedBuilder()
                 .setColor(EMBED_INFO)

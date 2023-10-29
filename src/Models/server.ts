@@ -29,6 +29,7 @@ const Server = model(
         roles: {
             suspect: String,
             invite: String,
+            member: String,
         },
         maintenance: {
             state: Boolean,
@@ -84,6 +85,7 @@ export const def = {
     roles: {
         suspect: "",
         invite: "",
+        member: ""
     },
     maintenance: {
         state: false,
