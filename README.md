@@ -28,6 +28,12 @@
 | bot           | View bot information.               | none                        | none                               | 10secs |
 | profil        | View member information.            | none                        | /profil (utilisateur)              | 10secs |
 
+### Moderation
+
+| Name          | Description                          | Sub-commands                | Usage                             | Cd     |
+| ------------- | ------------------------------------ | --------------------------- | --------------------------------- | ------ |
+| suspect       | Send a user to the suspect room.     | none                        | /suspect \<utilisateur>           | 10secs |
+
 ### Developpement
 
 | Name          | Description                          | Sub-commands                | Usage                 | Cd     |

@@ -103,36 +103,36 @@ declare module "discord.js" {
 }
 
 CommandInteraction.prototype.replySuccessMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
-    embed.setColor(EMBED_SUCCESS).setDescription(`| ${content}`);
+    embed.setColor(EMBED_SUCCESS).setDescription(`${client.getEmoji(EMOJIS.check)} | ${content}`);
     await this.reply({ embeds: [embed], ephemeral: ephemeral });
 };
 CommandInteraction.prototype.replyErrorMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
-    embed.setColor(EMBED_ERROR).setDescription(`| ${content}`);
+    embed.setColor(EMBED_ERROR).setDescription(`${client.getEmoji(EMOJIS.error)} | ${content}`);
     await this.reply({ embeds: [embed], ephemeral: ephemeral });
 };
 CommandInteraction.prototype.replyInfoMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
-    embed.setColor(EMBED_INFO).setDescription(`| ${content}`);
+    embed.setColor(EMBED_INFO).setDescription(`${client.getEmoji(EMOJIS.info)} | ${content}`);
     await this.reply({ embeds: [embed], ephemeral: ephemeral });
 };
 CommandInteraction.prototype.editSuccessMessage = async function (client: ToolClient, content: string) {
-    embed.setColor(EMBED_SUCCESS).setDescription(`| ${content}`);
+    embed.setColor(EMBED_SUCCESS).setDescription(`${client.getEmoji(EMOJIS.check)} | ${content}`);
     await this.editReply({ embeds: [embed] });
 };
 CommandInteraction.prototype.editErrorMessage = async function (client: ToolClient, content: string) {
-    embed.setColor(EMBED_ERROR).setDescription(`| ${content}`);
+    embed.setColor(EMBED_ERROR).setDescription(`${client.getEmoji(EMOJIS.error)} | ${content}`);
     await this.editReply({ embeds: [embed] });
 };
 
 Message.prototype.replySuccessMessage = async function (client: ToolClient, content: string) {
-    embed.setColor(EMBED_SUCCESS).setDescription(`| ${content}`);
+    embed.setColor(EMBED_SUCCESS).setDescription(`${client.getEmoji(EMOJIS.check)} | ${content}`);
     await this.channel.send({ embeds: [embed] });
 };
 Message.prototype.replyErrorMessage = async function (client: ToolClient, content: string) {
-    embed.setColor(EMBED_ERROR).setDescription(`| ${content}`);
+    embed.setColor(EMBED_ERROR).setDescription(`${client.getEmoji(EMOJIS.error)} | ${content}`);
     await this.channel.send({ embeds: [embed] });
 };
 Message.prototype.replyInfoMessage = async function (client: ToolClient, content: string) {
-    embed.setColor(EMBED_INFO).setDescription(`| ${content}`);
+    embed.setColor(EMBED_INFO).setDescription(`${client.getEmoji(EMOJIS.info)} | ${content}`);
     await this.channel.send({ embeds: [embed] });
 };
 
