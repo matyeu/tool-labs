@@ -190,17 +190,19 @@ export async function pagesDocumentation(client: ToolClient, interaction: Button
 
     const embedHome = new EmbedBuilder()
         .setColor(EMBED_GENERAL)
-        .setDescription(`${client.getEmoji(EMOJIS.info)} Vous pouvez consulter vos données et celle des autres participants CTF en tapant la commande :\n
+        .setTitle("Documentation C.T.F")
+        .setDescription(`${client.getEmoji(EMOJIS.documentation)} **Vous pouvez consulter vos données et celle des autres participants CTF en tapant la commande :\n
     \`\`\`/profil @utilisateur\`\`\`
-ou en vous rendant sur le profil de l utilisateur > Applications > Profil C.T.F 
+ou en vous rendant sur** ***le profil de l'utilisateur > Applications > Profil C.T.F ***
+        
+${client.getEmoji(EMOJIS.uno)} Les FLAGS doivent être écris dans votre salon C.T.F privé, le bot réagira si vous trouvez le bon flag
     
-3️⃣Les FLAGS doivent être écris dans votre salon C.T.F privé, le bot réagira si vous trouvez le bon flag
+${client.getEmoji(EMOJIS.deux)} Tous les challenges sont testés et fonctionnels, et nous ne donnons\n **aucun indice(s) supplémentaire(s).** 
+Si un challenge ne vous donne pas d'indice dans la trame, cela veut dire que le challenge est réalisable sans\n
     
-4️⃣ Tous les challenges sont testés et fonctionnels, et nous ne donnons aucun indice supplémentaire.** Si un challenge ne vous donne pas d indice dans la trame, cela veut dire que le challenge est réalisable sans\
+${client.getEmoji(EMOJIS.trois)} Si vous validé un challenge et que vous ne gagniez aucun rôle, ou récompenses c'est normal !\n**Tous les challenges n'offre pas de récompense(s).**
     
-3️⃣ Si vous validé un challenge et que vous ne gagniez aucun rôle, ou récompenses c est normal !\nTous les challenges n offre pas de récompense.
-    
-3️⃣Les challenges de Tool-Labs sont pour la plupart fait maison cependant certains peuvent provenir d une célèbre plateforme permettant de mettre à disposition des challenges (libre d utilisation) néanmoins l ensemble du code a été modifié pour vous empêcher de reverse le code sur internet.") 
+${client.getEmoji(EMOJIS.quatre)} Les challenges de Tool-Labs sont pour la plupart fait maison cependant certains peuvent provenir d'une célèbre plateforme permettant de mettre à disposition des challenges **(libre d'utilisation)** néanmoins l'ensemble du code aura été modifier pour vous empêcher de reverse le code sur internet.") 
 `)
         .setFooter({ text: FOOTER_CTF, iconURL: client.user!.displayAvatarURL({ extension: "png" }) })
 
@@ -231,7 +233,19 @@ ou en vous rendant sur le profil de l utilisateur > Applications > Profil C.T.F
 
     }
     else if (getPage === "page2") {
-        embed.setDescription(`Page : ${getPage}`)
+        embed.setTitle("Informations C.T.F")
+        embed.setDescription(`${client.getEmoji(EMOJIS.information)} **Vous trouverez ici les règles qui concerne les chaenge C.T.F **
+        
+${client.getEmoji(EMOJIS.uno)} Si vous avez un challenge à nous soumettre veuillez ouvrir un ticket dans 
+<#1151868897545420872> afin qu'il soit testé & approuvé puis posté.
+    
+${client.getEmoji(EMOJIS.deux)} Le système de C.T.F est constement mis à jour, mais vous pouvez laissez vos salons privés ouvert les changements seront immédiats.
+
+${client.getEmoji(EMOJIS.trois)} Utilise la commande ci-dessous pour nous faire part d'amélioration(s) que tu aimerais voir. 
+L'ensemble des utilisateurs voteront et nous ajouteront vos  demandes en conséquence
+
+\`\`\`/suggest + votre suggestion\`\`\`
+`)
 
         buttons.addComponents(
             new ButtonBuilder()
@@ -248,8 +262,13 @@ ou en vous rendant sur le profil de l utilisateur > Applications > Profil C.T.F
         );
 
     } else {
-        embed.setDescription(`Page : ${getPage}`)
+        embed.setTitle("Règles C.T.F")
+        embed.setDescription(`${client.getEmoji(EMOJIS.interdit)} **Vous trouverez ici les règles qui concerne les chaenge C.T.F **
+        
+${client.getEmoji(EMOJIS.uno)} Les FLAGS changent de temps en temps.
+**[Le partage de solution est interdit] & [Les demandes de flags en privé sont interdits]** , si nous constatons que cette règle est outrepassé le bannissement sera immédiat.
 
+`)
         buttons.addComponents(
             new ButtonBuilder()
                 .setCustomId(`page2-button`)
