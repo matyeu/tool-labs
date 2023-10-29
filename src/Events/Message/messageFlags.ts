@@ -47,10 +47,10 @@ export default async function (client: ToolClient, message: Message) {
 
             const flagsMachine = serverConfig.challenge.flags.machine
             const getFlagMachine = flagsMachine.find((e: any) => e.name == message.content);
-            
+
 
             const embedInfo = new EmbedBuilder()
-            .setColor(EMBED_INFO)
+                .setColor(EMBED_INFO)
 
             const embed = new EmbedBuilder()
                 .setColor(EMBED_INFO)
@@ -75,8 +75,8 @@ export default async function (client: ToolClient, message: Message) {
                 const getFlag: boolean = researchArray(message.content, arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagSteganographie.role)
 
-                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagSteganographie.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagSteganographie.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
 
                 if (getRole) await member.roles.add(getRole)
@@ -87,15 +87,15 @@ export default async function (client: ToolClient, message: Message) {
                 await editMember(member.guild.id, member.id, memberConfig);
 
                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
             } else if (getFlagCrackingReverse) {
                 const arrayFlags = memberConfig.challenge.flags.crackingReverse
                 const getFlag: boolean = researchArray(message.content, arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagCrackingReverse.role)
 
-                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagCrackingReverse.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagCrackingReverse.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
 
                 if (getRole) await member.roles.add(getRole)
@@ -105,16 +105,16 @@ export default async function (client: ToolClient, message: Message) {
                 arrayFlags.push(getFlagCrackingReverse.name)
                 await editMember(member.guild.id, member.id, memberConfig);
 
-                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
             } else if (getFlagosint) {
                 const arrayFlags = memberConfig.challenge.flags.osint
                 const getFlag: boolean = researchArray(message.content, arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagosint.role)
 
-                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagosint.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagosint.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
 
                 if (getRole) await member.roles.add(getRole)
@@ -124,16 +124,16 @@ export default async function (client: ToolClient, message: Message) {
                 arrayFlags.push(getFlagosint.name)
                 await editMember(member.guild.id, member.id, memberConfig);
 
-                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
             } else if (getFlagWebClient) {
                 const arrayFlags = memberConfig.challenge.flags.webClient
                 const getFlag: boolean = researchArray(message.content, arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagWebClient.role)
 
-                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagWebClient.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagWebClient.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
 
                 if (getRole) await member.roles.add(getRole)
@@ -143,8 +143,8 @@ export default async function (client: ToolClient, message: Message) {
                 arrayFlags.push(getFlagWebClient.name)
                 await editMember(member.guild.id, member.id, memberConfig);
 
-                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
             }
             else if (getFlagMisc) {
@@ -152,8 +152,8 @@ export default async function (client: ToolClient, message: Message) {
                 const getFlag: boolean = researchArray(message.content, arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagMisc.role)
 
-                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagMisc.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagMisc.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
 
                 if (getRole) await member.roles.add(getRole)
@@ -163,16 +163,16 @@ export default async function (client: ToolClient, message: Message) {
                 arrayFlags.push(getFlagMisc.name)
                 await editMember(member.guild.id, member.id, memberConfig);
 
-                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
             } else if (getFlagebServer) {
                 const arrayFlags = memberConfig.challenge.flags.webServer
                 const getFlag: boolean = researchArray(message.content, arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagebServer.role)
 
-                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagebServer.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagebServer.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
 
                 if (getRole) await member.roles.add(getRole)
@@ -182,16 +182,16 @@ export default async function (client: ToolClient, message: Message) {
                 arrayFlags.push(getFlagebServer.name)
                 await editMember(member.guild.id, member.id, memberConfig);
 
-                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
             } else if (getFlagRealiste) {
                 const arrayFlags = memberConfig.challenge.flags.realiste
                 const getFlag: boolean = researchArray(message.content, arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagRealiste.role)
 
-                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagRealiste.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagRealiste.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
 
                 if (getRole) await member.roles.add(getRole)
@@ -201,16 +201,16 @@ export default async function (client: ToolClient, message: Message) {
                 arrayFlags.push(getFlagRealiste.name)
                 await editMember(member.guild.id, member.id, memberConfig);
 
-                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
             } else if (getFlagForensic) {
                 const arrayFlags = memberConfig.challenge.flags.forensic
                 const getFlag: boolean = researchArray(message.content, arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagForensic.role)
 
-                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagForensic.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagForensic.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
 
                 if (getRole) await member.roles.add(getRole)
@@ -220,16 +220,16 @@ export default async function (client: ToolClient, message: Message) {
                 arrayFlags.push(getFlagForensic.name)
                 await editMember(member.guild.id, member.id, memberConfig);
 
-                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
             } else if (getFlagMachine) {
                 const arrayFlags = memberConfig.challenge.flags.machine
                 const getFlag: boolean = researchArray(message.content, arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagMachine.role)
 
-                if (getFlag) return message.channel.send({embeds: [embedInfo.setDescription(`**Le flag \`${getFlagMachine.name}\` est déjà enregistré sur votre compt**`)]}).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagMachine.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
 
                 if (getRole) await member.roles.add(getRole)
@@ -239,8 +239,8 @@ export default async function (client: ToolClient, message: Message) {
                 arrayFlags.push(getFlagMachine.name)
                 await editMember(member.guild.id, member.id, memberConfig);
 
-                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
-                    setTimeout(async() => {await msg.delete()}, 5000);
+                return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
+                    setTimeout(async () => { await msg.delete() }, 5000);
                 });
             }
 
@@ -266,7 +266,11 @@ export default async function (client: ToolClient, message: Message) {
                 .setFooter({ text: FOOTER_CTF, iconURL: client.user!.displayAvatarURL({ extension: "png" }) })
 
             return message.channel.send({ embeds: [embed] }).then((msg: Message) => {
-                setTimeout(async() => {await msg.delete()}, 5000);
+                setTimeout(async () => {
+                    await msg.delete();
+                    await message.channel.delete();
+
+                }, 5000);
             });
         }
     }

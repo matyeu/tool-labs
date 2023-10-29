@@ -1,0 +1,138 @@
+<%- include('./includes/header'); %>
+
+<title><%= pathSite.nom_site %>  - Bienvenue</title>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="container-xl px-4 mt-n10">
+        <center>
+            <div class="alert alert-primary alert-solid" role="alert"><i class="fas fa-info-circle"></i>
+                <b>Information</b><br>
+                <marquee scrollamount="5">Plusieurs mises à jour se préparent pour notre site internet. Restez connectés
+                    ! </marquee>
+            </div>
+        </center>
+
+        <div class="row">
+            <div class="col-xxl-4 col-xl-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body h-100 p-5">
+                        <div class="row align-items-center">
+                            <div class="col-xl-8 col-xxl-12">
+                                <div class="text-center text-xl-start text-xxl-center mb-4 mb-xl-0 mb-xxl-4">
+                                    <h1 class="text-primary">Bienvenue sur TOOL-LABS !</h1>
+                                    <div class="h1 word text-center" style="min-height: 40px"></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-xxl-12 text-center"><img class="img-fluid"
+                                    src="<%= pathSite.image_chemin %>tool-labs/tool-labs.webp" style="max-width: 10rem" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xxl-4 col-xl-6 mb-4">
+                <div class="card card-header-actions h-100">
+                    <div class="card-header">
+                        Notre serveur Discord
+                        <div class="dropdown no-caret">
+                            <div class="dropdown-menu dropdown-menu-end animated--fade-in-up"
+                                aria-labelledby="dropdownMenuButton">
+                                <h6 class="dropdown-header">Filter Activity:</h6>
+                                <a class="dropdown-item" href="#!"><span
+                                        class="badge bg-green-soft text-green my-1">Commerce</span></a>
+                                <a class="dropdown-item" href="#!"><span
+                                        class="badge bg-blue-soft text-blue my-1">Reporting</span></a>
+                                <a class="dropdown-item" href="#!"><span
+                                        class="badge bg-yellow-soft text-yellow my-1">Server</span></a>
+                                <a class="dropdown-item" href="#!"><span
+                                        class="badge bg-purple-soft text-purple my-1">Users</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <center><iframe src="https://discord.com/widget?id=1098316625490481242&amp;theme=dark"
+                                width="300" height="300" allowtransparency="true" frameborder="0"
+                                sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-6 mb-4">
+                <div class="card card-icon">
+                    <div class="row no-gutters">
+                        <div class="col-auto card-icon-aside bg-success">
+                            <i data-feather="check-square"></i>
+                        </div>
+                        <div class="col">
+                            <div class="card-body py-5">
+                                <h5 class="card-title">Dernière mise à jour<br>
+                                    <font size="1">Datant du 14/09/2023</font>
+                                </h5>
+                                <p class="card-text">Développement du site web...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            </div>
+            <%- include('./includes/footer'); %>
+
+                <script src="../public/js/date-range-picker-demo.js"></script>
+                <script type="text/javascript">
+                    var
+                        words = ["Regarde gratuitement tes streams en HD.", "Animes, séries films sans PUB.", "Rejoins notre belle communauté !"],
+                        part,
+                        i = 0,
+                        offset = 0,
+                        len = words.length,
+                        forwards = true,
+                        skip_count = 0,
+                        skip_delay = 15,
+                        speed = 100;
+
+                    var wordflick = function () {
+                        setInterval(function () {
+                            if (forwards) {
+                                if (offset >= words[i].length) {
+                                    ++skip_count;
+                                    if (skip_count == skip_delay) {
+                                        forwards = false;
+                                        skip_count = 0;
+                                    }
+                                }
+                            }
+                            else {
+                                if (offset == 0) {
+                                    forwards = true;
+                                    i++;
+                                    offset = 0;
+                                    if (i >= len) {
+                                        i = 0;
+                                    }
+                                }
+                            }
+                            part = words[i].substr(0, offset);
+                            if (skip_count == 0) {
+                                if (forwards) {
+                                    offset++;
+                                }
+                                else {
+                                    offset--;
+                                }
+                            }
+                            $('.word').text(part);
+                        }, speed);
+                    };
+
+                    $(document).ready(function () {
+                        wordflick();
+                    });
+                </script>

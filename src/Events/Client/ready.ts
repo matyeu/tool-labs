@@ -41,6 +41,7 @@ export default async function (client: ToolClient) {
     })
 
     mongoose.Promise = global.Promise;
+    if (process.env.ENABLED === "ON") require("../../Library/dashboard")(client);
     console.log(chalk.grey('--------------------------------'));
 
     client.guilds.cache.forEach(async (guild) => {
