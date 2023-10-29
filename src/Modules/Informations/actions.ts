@@ -263,11 +263,11 @@ L'ensemble des utilisateurs voteront et nous ajouteront vos  demandes en conséq
 
     } else {
         embed.setTitle("Règles C.T.F")
-        embed.setDescription(`${client.getEmoji(EMOJIS.interdit)} **Vous trouverez ici les règles qui concerne les chaenge C.T.F **
+        embed.setDescription(`${client.getEmoji(EMOJIS.interdit)} **Vous trouverez ici les règles qui concerne les challenges C.T.F **
         
 ${client.getEmoji(EMOJIS.uno)} Les FLAGS changent de temps en temps.
-**[Le partage de solution est interdit] & [Les demandes de flags en privé sont interdits]** , si nous constatons que cette règle est outrepassé le bannissement sera immédiat.
-
+**[Le partage de solution est interdit] & [Les demandes de flags en privé sont interdits]** , si nous constatons que cette règle est outrepassé le bannissement sera immédiat.\n
+${client.getEmoji(EMOJIS.deux)} **Le classement n'est pas un moyen de trashtalk les autres utilisateurs, on avance tous à une vitesse différente, ne l'oubliez pas.**
 `)
         buttons.addComponents(
             new ButtonBuilder()
