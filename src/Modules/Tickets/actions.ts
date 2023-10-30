@@ -188,6 +188,8 @@ interface MentionsInterface {
 export async function createTicket(client: ToolClient, category: CategoryChannel, member: GuildMember, dbPath: string, prefix: string, mentions: MentionsInterface) {
 
     const serverConfig: any = await findServer(category.guild.id);
+    const memberConfig: any = await findMember(category.guild!.id, member.id);
+
     const nbTicket = serverConfig.stats[dbPath];
 
     const channel = <TextChannel>await category.guild.channels.create({
@@ -201,6 +203,8 @@ export async function createTicket(client: ToolClient, category: CategoryChannel
         id: member.id,
         allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages]
     }, ...category.permissionOverwrites.cache.map(permissionOverwrite => permissionOverwrite)])
+
+    memberConfig.challenge.channelId = channel.id;
 
     let content = "";
     if (mentions.users) content += mentions.users.map(user => `<@${user.id}>`).join(", ");
@@ -221,6 +225,7 @@ export async function createTicket(client: ToolClient, category: CategoryChannel
     serverConfig.stats[dbPath] = nbTicket + 1;
 
     await editServer(category.guild.id, serverConfig);
+    await editMember(category.guild!.id, member.id, memberConfig);
 
     Logger.module(`User ${member.displayName} created the ticket ${channel.name}`);
 }

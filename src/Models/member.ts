@@ -8,6 +8,7 @@ const Members = model("Members", new Schema({
     guildId: String,
     userId: String,
     challenge: {
+        channelId: String,
         lastChallengeId: String,
         lastCategoryMessageId: String,
         flags: {
@@ -35,6 +36,7 @@ export const def = {
     guildId: "",
     userId: "",
     challenge: {
+        channelId: "",
         lastChallengeId: "",
         lastCategoryMessageId: "",
         flags: {
