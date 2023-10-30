@@ -260,7 +260,10 @@ export async function getFlags(client: ToolClient, interaction: StringSelectMenu
     const memberConfig: any = await findMember(interaction.guild!.id, interaction.user.id);
     const flags = memberConfig.challenge.flags;
 
-    const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length
+    const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length + flags.webServer.length + flags.realiste.length + flags.forensic.length + flags.machine.length;
+
+    if (!flagsTotal) return interaction.replyInfoMessage(client, `**Vous avez actuellement 0 flag !**`, true);
+
     const embed = new EmbedBuilder()
         .setColor(EMBED_GENERAL)
         .setTitle(`🚩 **Total de flags :** \`${flagsTotal}\``)
