@@ -17,8 +17,8 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
         case 'steganographie-challenge-1':
 
             embed.setTitle("CHALLENGE STEGANOGRAPHIE #1")
-                .setDescription("Trouvez le FLAG dans l'image et écrivez le dans le chat pour validé ce challenge")
-                .setImage("https://tool-labs.com/steganographiediscordx.png")
+                .setDescription(" **Trouvez le FLAG dans cette image et écrivez le dans le chat pour validé ce challenge** ")
+                .setImage("https://tool-labs.com/steg1.png")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/facile2.png");
 
@@ -26,8 +26,8 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
         case 'steganographie-challenge-2':
 
             embed.setTitle("CHALLENGE STEGANOGRAPHIE #2")
-                .setDescription("Trouvez le FLAG dans l'image et écrivez le dans le chat pour validé ce challenge")
-                .setImage("https://tool-labs.com/stegano4.png")
+                .setDescription(" **Trouvez le FLAG dans cette l'image et écrivez le dans le chat pour validé ce challenge**")
+                .setImage("https://tool-labs.com/steg2.png")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/facile2.png");
 
@@ -35,8 +35,15 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
         case 'steganographie-challenge-3':
 
             embed.setTitle("CHALLENGE STEGANOGRAPHIE #3")
-                .setDescription("Trouvez le FLAG dans l'image et écrivez le dans le chat pour validé ce challenge\nAttention il va falloir usé de plusieurs compétences")
-                .setImage("https://tool-labs.com/stegano6.jpg")
+                .setDescription(" **Trouvez le FLAG dans cet audio et écrivez le dans le chat pour validé ce challenge**\n\n [Téllecharger l'audio](https://tool-labs.com/steg_easy.wav) ")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/facile.png");
+                break;
+        case 'steganographie-challenge-4':
+
+            embed.setTitle("CHALLENGE STEGANOGRAPHIE #4")
+                .setDescription(" **Trouvez le FLAG dans cette image et écrivez le dans le chat pour validé ce challenge** ")
+                .setImage("https://tool-labs.com/steg3.png")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/moyen2.png");
 
