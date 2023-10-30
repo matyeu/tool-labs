@@ -171,7 +171,7 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
         case 'suspect-challenge-1':
 
             embed.setTitle("CHALLENGE [OBLIGATOIRE] ")
-                .setDescription("Si vous êtes sur ce chalenge c'est que vous êtes suspecter d'avoir tricher\nPour retrouver vos rôles, veuillez validé ce challenge \n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis !\n\n[A venir](https://tool-labs.com")
+                .setDescription("**Si vous êtes sur ce chalenge c'est que vous êtes suspecter d'avoir tricher\nPour retrouver vos rôles, veuillez validé ce challenge** \n\n Infos Challenge : *** R.C.E & Bruteforce *** \n\n **Pour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis !**\n\n[Aller sur le challenge](https://discord.tool-labs.com/obligatoire/index.php)")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/dur1.png");
 
