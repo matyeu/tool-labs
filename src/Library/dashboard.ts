@@ -1,6 +1,6 @@
 import { EmbedBuilder } from "discord.js";
 import { ToolClient } from ".";
-import { SERVER_LIVE, SERVER_DEV, EMBED_SUCCESS, FOOTER_DASHBOARD, EMBED_ERROR } from "../config";
+import { SERVER_LIVE, SERVER_DEV, EMBED_SUCCESS, FOOTER_DASHBOARD, EMBED_ERROR, LINK_DISCORD } from "../config";
 import { find as findServer } from "../Models/server";
 import { find as findMember } from "../Models/member";
 
@@ -97,20 +97,27 @@ module.exports = (client: ToolClient) => {
         for (const guild of client.guilds.cache.map(guild => guild)) {
             if (guild.id !== SERVER_LIVE && guild.id !== SERVER_DEV) continue;
 
-            const serverConfig: any = await findServer(guild.id);
-            const member = await guild.members.fetch(req.user.id);
+            const member = await guild.members.cache.get(req.user.id);
 
-            const embedLogin = new EmbedBuilder()
-                .setColor(EMBED_SUCCESS)
-                .setAuthor({ name: `${member.displayName} (${member.id})`, iconURL: member.user.displayAvatarURL() })
-                .setDescription(`**${member} vient de se connecter au dashboard !**`)
-                .setTimestamp()
-                .setFooter({ text: FOOTER_DASHBOARD, iconURL: client.user?.displayAvatarURL() })
+            if (!member) {
+                res.redirect(LINK_DISCORD);
+            } else {
+                const serverConfig: any = await findServer(guild.id);
 
-            await client.getChannel(guild, serverConfig.channels.flux, { embeds: [embedLogin] });
-            Logger.client(`${member.displayName} login on the dashboard`);
+                const embedLogin = new EmbedBuilder()
+                    .setColor(EMBED_SUCCESS)
+                    .setAuthor({ name: `${member.displayName} (${member.id})`, iconURL: member.user.displayAvatarURL() })
+                    .setDescription(`**${member} vient de se connecter au dashboard !**`)
+                    .setTimestamp()
+                    .setFooter({ text: FOOTER_DASHBOARD, iconURL: client.user?.displayAvatarURL() })
+
+                await client.getChannel(guild, serverConfig.channels.flux, { embeds: [embedLogin] });
+
+                res.redirect("/home");
+
+                Logger.client(`${member.displayName} login on the dashboard`);
+            }
         };
-        res.redirect("/home");
     });
 
     dashboard.get("/home", (req: any, res: any) => {
