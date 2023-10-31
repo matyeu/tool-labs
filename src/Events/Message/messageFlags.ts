@@ -17,7 +17,7 @@ export default async function (client: ToolClient, message: Message) {
 
     if (channelSend?.name?.includes('chall-ctf')) {
 
-        message.delete();
+        setTimeout(async () => { await message.delete() }, 5000);
 
         if (channelSend.topic === `(TOOL-LABS:${member.id})`) {
 
