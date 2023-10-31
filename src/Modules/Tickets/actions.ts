@@ -329,7 +329,7 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
 
 
     const embed = new EmbedBuilder()
-        .setColor(EMBED_INFO)
+        .setColor(EMBED_GENERAL)
         .setTitle(`Classement C.T.F`)
         .setDescription(`**Les membres sont classés par nombre de flags validé, du plus grand au plus petit.**\n----------------------`)
         .setThumbnail('https://tool-labs.com/classement1.png')

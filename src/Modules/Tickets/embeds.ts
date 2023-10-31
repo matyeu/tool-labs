@@ -63,6 +63,7 @@ export async function createChallengeSuspectEmbed(client: ToolClient, channel: T
     let embed = new EmbedBuilder()
         .setColor(EMBED_GENERAL)
         .setTitle("Tool-Labs C.T.F [Suspect]")
+        .setThumbnail('https://tool-labs.com/logoctf.png')
         .setDescription(`Aie aie aie ! Si vous êtes ici c'est que vous êtes soupsonné d'avoir triché !\n
 ${client.getEmoji(EMOJIS.info)} Pour ouvrir un salon privé et commencer le challenge imposé qui vous permettra de revenir parmis nous, veuillez cliquer sur le bouton ci-dessous.
     
@@ -84,7 +85,7 @@ export function challengeEmbed(client: ToolClient) {
     return new EmbedBuilder()
         .setColor(EMBED_GENERAL)
         .setTitle("Challenges C.T.F")
-        .setThumbnail('https://ctftime.org/media/events/LOGO_CTF_nohand.png')
+        .setThumbnail('https://tool-labs.com/logoctf.png')
         .setDescription(`***Bonjour !
 
 Avant de commencer les challenges, souvenez-vous qu'il faut lire 
