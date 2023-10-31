@@ -17,7 +17,7 @@ const Logger = require("../Library/logger");
 
 module.exports = (client: ToolClient) => {
 
-    const dashboardDirectory = path.resolve(`${process.cwd()}${path.sep}src/dashboard`);
+    const dashboardDirectory = path.resolve(`${process.cwd()}${path.sep}src/Dashboard`);
 
     const templatesDirectory = path.resolve(`${dashboardDirectory}${path.sep}Templates`)
 
