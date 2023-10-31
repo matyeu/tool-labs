@@ -37,7 +37,7 @@
     "express-session": "^1.17.3",
     "memorystore": "^1.6.7",
     "moment": "^2.29.4",
-    "mongoose": "^5.13.21",
+    "mongoose": "^8.0.0",
     "nodemon": "^3.0.1",
     "passport": "^0.6.0",
     "passport-discord": "^0.1.4"
