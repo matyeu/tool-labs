@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link href="<%= pathSite.css_chemin %>style.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="<%= pathSite.image_chemin %>favicon.png" />
+    <script data-search-pseudo-elements defer
+        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="nav-fixed">
+
+    <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
+        id="sidenavAccordion">    
+        <!-- Navbar Brand-->
+        <a class="navbar-brand text-center" href="/home"><img
+            src="<%= pathSite.image_chemin %>tool-labs/tool-labs.png" style="height: 3rem"> by <%=
+            pathSite.nom_site %> </a>
+
+             <!-- Sidenav Toggle Button-->
+            <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i
+                data-feather="menu"></i></button>
+
+        <!-- Navbar Items-->
+        <ul class="navbar-nav align-items-center ms-auto">
+            <!-- Navbar Search Dropdown-->
+            <li class="nav-item dropdown no-caret me-3 d-lg-none">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="searchDropdown" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                        data-feather="search"></i></a>
+                <!-- Dropdown - Search-->
+                <div class="dropdown-menu dropdown-menu-end p-3 shadow animated--fade-in-up"
+                    aria-labelledby="searchDropdown">
+                    <form class="form-inline me-auto w-100">
+                        <div class="input-group input-group-joined input-group-solid">
+                            <input class="form-control pe-0" type="text" placeholder="Search for..." aria-label="Search"
+                                aria-describedby="basic-addon2" />
+                            <div class="input-group-text"><i data-feather="search"></i></div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <!-- User Dropdown-->
+            <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
+                    href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                        <img class="img-fluid"
+                            src="https://cdn.discordapp.com/avatars/<%= member.id %>/<%= member.user.avatar %>.webp?size=160" />
+                </a>
+                <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
+                    aria-labelledby="navbarDropdownUserImage">
+                    <h6 class="dropdown-header d-flex align-items-center">
+                        <img class="dropdown-user-img"
+                            src="https://cdn.discordapp.com/avatars/<%= member.id %>/<%= member.user.avatar %>.webp?size=160" />
+                        <div class="dropdown-user-details">
+                            <div class="dropdown-user-details-name"> <%= member.displayName %></div>
+                            <div class="dropdown-user-details-email">id : <%= member.id %></div>
+                            <div class="dropdown-user-details-email">Montant actuel : <%= memberConfig.shop.amount %></div>
+                        </div>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/logout">
+                        <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
+                        Déconnexion
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sidenav shadow-right sidenav-light">
+                <div class="sidenav-menu">
+                    <div class="nav accordion" id="accordionSidenav">
+
+                        <br>
+                        <a class="nav-link collapsed" href="/home">
+                            <div class="nav-link-icon"><i class="fa fa-home"></i></div>
+                            Accueil
+                        </a>
+                        <a class="nav-link collapsed" href="/a-propos-de-nous">
+                            <div class="nav-link-icon"><i class="fa fa-question"></i></div>
+                            À propos de nous
+                        </a>
+                        <a class="nav-link collapsed" href="#">
+                            <div class="nav-link-icon"><i class="fa fa-user-plus"></i></div>
+                            Recrutement <span class="badge badge-danger-soft text-danger ml-auto"><i class="fa fa-tools"></i></span>
+                        </a>
+                         <!-- Sidenav Menu Heading (SERVERS)-->
+                         <div class="sidenav-menu-heading">BOUTIQUE</div>
+                        <a class="nav-link collapsed" href="/ebooks">
+                            <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
+                            Ebooks
+                        </a>
+                        <a class="nav-link collapsed" href="/accounts">
+                            <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
+                            Accounts
+                        </a>
+                        <a class="nav-link collapsed" href="/logs">
+                            <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
+                            Logs
+                        </a>
+                        <a class="nav-link collapsed" href="/xpress">
+                            <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
+                            Divers
+                        </a>
+                         
+                        <!-- Sidenav Menu Heading (Member)-->
+                        <div class="sidenav-menu-heading">Espace membre</div>
+                        <a class="nav-link" href="#">
+                            <div class="nav-link-icon"><i class="fa fa-user"></i></div>
+                                <%= member.displayName %>
+                                  
+                        </a>
+                        <a class="nav-link" href="#">
+                            <div class="nav-link-icon"><i data-feather="dollar-sign"></i></i></div>
+                                Montant actuel : <%= memberConfig.shop.amount %>
+                                  
+                        </a>
+                            <a class="nav-link collapsed" href="/logout">
+                                <div class="nav-link-icon"><i class="fa fa-sign-out-alt"></i></div>
+                                Déconnexion
+                            </a>
+
+                        <!-- Sidenav Menu Heading (Community)-->
+                        <div class="sidenav-menu-heading">COMMUNAUTE</div>
+                        <a class="nav-link collapsed" href="<%=pathSite.link_site %>">
+                            <div class="nav-link-icon"><i class="fa fa-globe"></i></div>
+                            Site web
+                        </a>
+                        <a class="nav-link collapsed" href="<%=pathSite.link_discord %>">
+                            <div class="nav-link-icon"><i class="fab fa-discord"></i></div>
+                            Serveur discord
+                        </a>
+
+                        <!-- Sidenav Footer-->
+                            <div class="sidenav-footer">
+                                <div class="sidenav-footer-content">
+                                    <div class="sidenav-footer-subtitle">Connecté en tant que :</div>
+                                    <%= member.displayName %> (<%= member.id %>)
+                                </div>
+                            </div>
+                    </div>
+            </nav>
+        </div>
+</body>
+
+</html>

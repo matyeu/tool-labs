@@ -41,8 +41,6 @@ export default async function (client: ToolClient) {
     })
 
     mongoose.Promise = global.Promise;
-    if (process.env.ENABLED === "ON") require("../../Library/dashboard")(client);
-    console.log(chalk.grey('--------------------------------'));
 
     client.guilds.cache.forEach(async (guild) => {
         const firstInvite = await guild.invites.fetch();
@@ -53,6 +51,9 @@ export default async function (client: ToolClient) {
         if (guild.id !== SERVER_LIVE && guild.id !== SERVER_DEV) continue;
 
         const serverConfig: any = await findServer(guild.id);
+
+        if (serverConfig.dashboard) require("../../Library/dashboard")(client);
+        console.log(chalk.grey('--------------------------------'));
         
         await updateServer(guild.id);
 

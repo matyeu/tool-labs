@@ -23,6 +23,13 @@ const Members = model("Members", new Schema({
             machine: Array,
         }
     },
+    shop: {
+        amount: Number,
+        ebooks: Array,
+        accounts: Array,
+        logs: Array,
+        divers: Array
+    },
     stats: {
         messageCount: Number,
         invitations: Number
@@ -49,7 +56,15 @@ export const def = {
             realiste: Array,
             forensic: Array,
             machine: Array,
-        } 
+        }
+    },
+    shop: {
+        amount: 0,
+        ebooks: Array,
+        accounts: Array,
+        logs: Array,
+        divers: Array
+
     },
     stats: {
         messageCount: 0,

@@ -37,7 +37,7 @@ export default async function (client: ToolClient, message: Message) {
             const getFlagMisc = flagsMisc.find((e: any) => e.name == message.content);
 
             const flagsWebServer = serverConfig.challenge.flags.webServer
-            const getFlagebServer = flagsWebServer.find((e: any) => e.name == message.content);
+            const getFlagWebServer = flagsWebServer.find((e: any) => e.name == message.content);
 
             const flagsRealiste = serverConfig.challenge.flags.realiste
             const getFlagRealiste = flagsRealiste.find((e: any) => e.name == message.content);
@@ -83,7 +83,9 @@ export default async function (client: ToolClient, message: Message) {
 
                 embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagSteganographie.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
 
-                arrayFlags.push(getFlagSteganographie.name)
+                arrayFlags.push(getFlagSteganographie.name);
+                if (getFlagSteganographie.amount) memberConfig.shop.amount += getFlagSteganographie.amount;
+
                 await editMember(member.guild.id, member.id, memberConfig);
 
                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
@@ -102,7 +104,9 @@ export default async function (client: ToolClient, message: Message) {
 
                 embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagCrackingReverse.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
 
-                arrayFlags.push(getFlagCrackingReverse.name)
+                arrayFlags.push(getFlagCrackingReverse.name);
+                if (getFlagCrackingReverse.amount) memberConfig.shop.amount += getFlagCrackingReverse.amount;
+
                 await editMember(member.guild.id, member.id, memberConfig);
 
                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
@@ -121,7 +125,9 @@ export default async function (client: ToolClient, message: Message) {
 
                 embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagosint.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
 
-                arrayFlags.push(getFlagosint.name)
+                arrayFlags.push(getFlagosint.name);
+                if (getFlagosint.amount) memberConfig.shop.amount += getFlagosint.amount;
+
                 await editMember(member.guild.id, member.id, memberConfig);
 
                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
@@ -140,7 +146,9 @@ export default async function (client: ToolClient, message: Message) {
 
                 embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagWebClient.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
 
-                arrayFlags.push(getFlagWebClient.name)
+                arrayFlags.push(getFlagWebClient.name);
+                if (getFlagWebClient.amount) memberConfig.shop.amount += getFlagWebClient.amount;
+
                 await editMember(member.guild.id, member.id, memberConfig);
 
                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
@@ -160,26 +168,30 @@ export default async function (client: ToolClient, message: Message) {
 
                 embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagMisc.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
 
-                arrayFlags.push(getFlagMisc.name)
+                arrayFlags.push(getFlagMisc.name);
+                if (getFlagMisc.amount) memberConfig.shop.amount += getFlagMisc.amount;
+
                 await editMember(member.guild.id, member.id, memberConfig);
 
                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
                     setTimeout(async () => { await msg.delete() }, 5000);
                 });
-            } else if (getFlagebServer) {
+            } else if (getFlagWebServer) {
                 const arrayFlags = memberConfig.challenge.flags.webServer
                 const getFlag: boolean = researchArray(message.content, arrayFlags);
-                const getRole = client.getRole(member.guild, getFlagebServer.role)
+                const getRole = client.getRole(member.guild, getFlagWebServer.role)
 
-                if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagebServer.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
+                if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagWebServer.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
                     setTimeout(async () => { await msg.delete() }, 5000);
                 });
 
                 if (getRole) await member.roles.add(getRole)
 
-                embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagebServer.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
+                embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagWebServer.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
 
-                arrayFlags.push(getFlagebServer.name)
+                arrayFlags.push(getFlagWebServer.name);
+                if (getFlagWebServer.amount) memberConfig.shop.amount += getFlagWebServer.amount;
+
                 await editMember(member.guild.id, member.id, memberConfig);
 
                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
@@ -198,7 +210,9 @@ export default async function (client: ToolClient, message: Message) {
 
                 embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagRealiste.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
 
-                arrayFlags.push(getFlagRealiste.name)
+                arrayFlags.push(getFlagRealiste.name);
+                if (getFlagRealiste.amount) memberConfig.shop.amount += getFlagRealiste.amount;
+
                 await editMember(member.guild.id, member.id, memberConfig);
 
                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
@@ -217,7 +231,9 @@ export default async function (client: ToolClient, message: Message) {
 
                 embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagForensic.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
 
-                arrayFlags.push(getFlagForensic.name)
+                arrayFlags.push(getFlagForensic.name);
+                if (getFlagForensic.amount) memberConfig.shop.amount += getFlagForensic.amount;
+
                 await editMember(member.guild.id, member.id, memberConfig);
 
                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
@@ -236,7 +252,9 @@ export default async function (client: ToolClient, message: Message) {
 
                 embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagMachine.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
 
-                arrayFlags.push(getFlagMachine.name)
+                arrayFlags.push(getFlagMachine.name);
+                if (getFlagMachine.amount) memberConfig.shop.amount += getFlagMachine.amount;
+
                 await editMember(member.guild.id, member.id, memberConfig);
 
                 return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {

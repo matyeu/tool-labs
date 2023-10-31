@@ -1,7 +1,12 @@
 //Infos Site
 export const nom_site = "Tool-Labs";
 
-//Chemin Dossier
-export const css_chemin = "../../public/css/";
-export const image_chemin = "../../public/assets/images/";
-export const js_chemin = "../../public/js/";
+//Path Folder
+export const css_chemin = "../../Public/css/";
+export const image_chemin = "../../Public/assets/images/";
+export const js_chemin = "../../Public/js/";
+export const fonts_chemin = "../../Public/assets/fonts/";
+
+//LINKS
+export const link_site = "";
+export const link_discord = "";
