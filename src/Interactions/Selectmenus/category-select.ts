@@ -74,26 +74,27 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
         case 'osint-challenge-1':
 
             embed.setTitle("CHALLENGE OSINT #1")
-                .setDescription("Trouvez l'endroit d'où a été prise cete photo puis écrivez le nom du café derrière moi \n\n Ecrivez le nom en minuscule et sans espace dans le chat pour validé ce challenge \n\n(ex.micromania)")
-                .setImage("https://tool-labs.com/osint2.png")
+                .setDescription("**Quelle belle ville !**\n\n ** Pouvez-vous m'indiquer le nom du magasin qui se trouve sur ma gauche ? ** \n\n **Ecrivez le flag en minuscule (exemple: carrefour)**")
+                .setImage("https://tool-labs.com/osint1.png")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/facile2.png");
             break;
         case 'osint-challenge-2':
             embed.setTitle("CHALLENGE O.S.I.N.T #2 ")
-                .setDescription("Trouvez la rue d'où j'ai pris cette photo et écrivez le lieu sans espace ni minuscule dans le chat pour validé ce challenge\n\n(ex. 5ruedesbegonias)")
-                .setImage("https://tool-labs.com/osint1.png")
+                .setDescription('**Quelle tristesse... **\n\n**Pouvez-vous nous dire dans quelle ville cette photo à été prise ? **\n\n **Ecrivez le flag en minuscule (exemple: amsterdam)**')
+                .setImage("https://tool-labs.com/osint3.png")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/moyen2.png");
 
             break;
         case 'osint-challenge-3':
 
-            embed.setTitle("CHALLENGE O.S.I.N.T #3 ")
-                .setDescription("Trouvez la place d'où a été prise cette photo et écrivez le lieu sans espace ni minuscule dans le chat pour validé ce challenge\n\n(ex. 5ruedesbegonias)")
-                .setImage("https://tool-labs.com/osint4.png")
+            embed.setTitle("CHALLENGE OSINT #3")
+                .setDescription("**J'ai une petite faim !** \n\n**Quel est le nom du restaurant le plus proche d'où je suis sur la photo et qui propose des nouilles chinoises ?** \n\n**Ecrivez le flag en minuscule (exemple: buffalogrill)**")
+                .setImage("https://tool-labs.com/osint2.jpg")
                 .setColor(EMBED_GENERAL)
-                .setThumbnail("https://tool-labs.com/dur1.png");
+                .setThumbnail("https://tool-labs.com/moyen2.png");
+
 
             break;
         case 'misc-challenge-1':

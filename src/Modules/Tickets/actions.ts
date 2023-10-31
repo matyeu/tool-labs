@@ -343,7 +343,7 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
     for (const e of sortedClassement.splice(0, 10)) {
 
         let member = await interaction.guild?.members.fetch(e.userId)!;
-        const emojiArray = ["🥇", "🥈", "🥉"];
+        const emojiArray = [`${client.getEmoji(EMOJIS.premier)}`, `${client.getEmoji(EMOJIS.deuxieme)}`, `${client.getEmoji(EMOJIS.troisieme)}`];
 
         memberConfig = await findMember(interaction.guild!.id, member.id)
         const flags = memberConfig.challenge.flags;
@@ -456,20 +456,20 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
                 options.push(
                     {
                         label: "Challenge O.S.I.N.T #1 (Facile)",
-                        emoji: `🟡`,
+                        emoji: `${client.getEmoji(EMOJIS.facile)}`,
                         description: "Trouvez le lieu d'après une photo",
                         value: `osint-challenge-1`,
                     },
                     {
                         label: "Challenge O.S.I.N.T #2 (Moyen)",
-                        emoji: `🟠`,
-                        description: "Trouvez l'établissement d'après une photo",
+                        emoji: `${client.getEmoji(EMOJIS.moyen)}`,
+                        description: "Trouvez le lieu d'après une photo",
                         value: `osint-challenge-2`,
                     },
                     {
-                        label: "Challenge O.S.I.N.T #3 (Difficile)",
-                        emoji: `🔴`,
-                        description: "Trouvez le lieu d'après une photo",
+                        label: "Challenge O.S.I.N.T #3 (Moyen)",
+                        emoji: `${client.getEmoji(EMOJIS.moyen)}`,
+                        description: "Trouvez l'établissement d'après une photo",
                         value: `osint-challenge-3`,
                     })
 
