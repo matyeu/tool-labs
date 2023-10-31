@@ -1,7 +1,7 @@
 import { EmbedBuilder } from "discord.js";
-import { ToolClient } from ".";
+import { ToolClient, sendCommand } from ".";
 import { SERVER_LIVE, SERVER_DEV, EMBED_SUCCESS, FOOTER_DASHBOARD, EMBED_ERROR, LINK_DISCORD } from "../config";
-import { find as findServer } from "../Models/server";
+import { edit as editServer, find as findServer } from "../Models/server";
 import { find as findMember } from "../Models/member";
 
 const express = require("express");
@@ -75,7 +75,7 @@ module.exports = (client: ToolClient) => {
             pathSite: infosSite,
             member: req.isAuthenticated() ? member : null,
             serverConfig: serverConfig,
-            memberConfig: memberConfig
+            memberConfig: memberConfig,
         };
         res.render(
             path.resolve(`${templatesDirectory}${path.sep}${template}`),
@@ -103,6 +103,9 @@ module.exports = (client: ToolClient) => {
                 res.redirect(LINK_DISCORD);
             } else {
                 const serverConfig: any = await findServer(guild.id);
+                serverConfig.stats.visitor++
+
+                await editServer(guild.id, serverConfig);
 
                 const embedLogin = new EmbedBuilder()
                     .setColor(EMBED_SUCCESS)
@@ -128,8 +131,23 @@ module.exports = (client: ToolClient) => {
         renderTemplate(res, req, "a-propos-de-nous.ejs")
     });
 
-    dashboard.get("/recrutement", (req: any, res: any) => {
-        res.redirect("/maintenance");
+
+    dashboard.get("/shop/ebooks", async (req: any, res: any) => {
+        renderTemplate(res, req, "shop/ebooks.ejs", {
+            okep: sendCommand(client)
+        })
+    });
+
+    dashboard.get("/shop/accounts", (req: any, res: any) => {
+        renderTemplate(res, req, "shop/accounts.ejs")
+    });
+
+    dashboard.get("/shop/logs", (req: any, res: any) => {
+        renderTemplate(res, req, "shop/logs.ejs")
+    });
+
+    dashboard.get("/shop/divers", (req: any, res: any) => {
+        renderTemplate(res, req, "shop/divers.ejs")
     });
 
     dashboard.get('/logout', async (req: any, res: any, next: any) => {

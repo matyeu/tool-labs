@@ -1,0 +1,125 @@
+<%- include('../includes/header'); %>
+
+    <title>
+        <%= pathSite.nom_site %> - Boutique
+    </title>
+
+    <div id="layoutSidenav_content">
+        <main>
+            <header class="page-header page-header-dark bg-gradient-primary mb-4">
+                <div class="container-xl px-4">
+                    <div class="page-header-content pt-4">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-auto mt-4">
+                                <h1 class="page-header-title">
+                                    <div class="page-header-icon"><i class="fa fa-shop"></i></div>
+                                    Boutique Ebooks
+                                </h1>
+                                <div class="page-header-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit. Earum est unde autem ullam exercitationem delectus deleniti inventore,
+                                    necessitatibus quasi obcaecati deserunt perspiciatis nostrum totam accusantium aut
+                                    illum aliquid. Quo, reiciendis.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <hr class="mt-2 mb-4" />
+            <div style="margin-left: 1rem" class="row">
+                <% const shopEbooks=serverConfig.shop.ebooks; shopEbooks.forEach(item=> { %>
+                    <div class="col-lg-4 mb-4">
+                        <!-- Knowledge base category card 1-->
+                        <a class="card lift lift-sm h-100" href="#">
+                            <div class="card-body py-5">
+                                <h5 class="card-title text-primary mb-2">
+                                    <%= item.name %>
+                                </h5>
+                                <p class="card-text">
+                                    <%= item.description %>
+                                </p>
+
+                            </div>
+                            <div class="card-footer">
+                                <div class="small text-muted">
+                                    <center><button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">Acheter ce produit pour : <%= item.amount %>
+                                                </button>
+
+                                        <br><br>
+                                        <i data-feather="heart"></i>
+                                        <%= item.buyer %> personnes ont achété(s) ce produit
+                                    </center>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                      aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Confirmation de la commande</h5>
+                                  <button class="btn-close" type="button" data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                  Neque facere magnam quidem illum natus molestiae nostrum rerum! Ad voluptas
+                                  quisquam sapiente debitis, nulla porro modi reiciendis, sed quasi dignissimos
+                                  cum.</div>
+                              <% if (memberConfig.shop.amount >= item.amount) { 
+                                
+                                okep
+
+                                %>
+                                  <div class="modal-footer"><button class="btn btn-primary" type="button"
+                                          data-bs-dismiss="modal" id="toastSuccessId">Accepter</button><button
+                                          class="btn btn-danger" type="button" data-bs-dismiss="modal">Annuler
+                                  </div>
+                                  <% } else {  %>
+                                      <div class="modal-footer"><button class="btn btn-primary" type="button"
+                                              data-bs-dismiss="modal" id="toastErrorId">Accepter</button><button
+                                              class="btn btn-danger" type="button" data-bs-dismiss="modal">Annuler
+                                      </div>
+                                      <% } %>
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <!-- Toast container -->
+                  <div style="position: absolute; bottom: 1rem; left: 70rem;">
+                      <!-- Toast -->
+                      <div class="toast" id="toastSuccess" role="alert" aria-live="assertive" aria-atomic="true"
+                          data-bs-delay="3000">
+                          <div class="toast-header text-success">
+                              <i data-feather="bell"></i>
+                              <strong class="mr-auto">Merci pour votre achat !</strong>
+                              <button class="ml-2 mb-1 btn-close" type="button" data-bs-dismiss="toast"
+                                  aria-label="Close"></button>
+                          </div>
+                          <div class="toast-body">Regarde tes messages privés pour récupérés ton produit.</div>
+                      </div>
+                  </div>
+
+                  <!-- Toast container -->
+                  <div style="position: absolute; bottom: 1rem; left: 70rem;">
+                      <!-- Toast -->
+                      <div class="toast" id="toastError" role="alert" aria-live="assertive" aria-atomic="true"
+                          data-bs-delay="3000">
+                          <div class="toast-header text-danger">
+                              <i data-feather="bell"></i>
+                              <strong class="mr-auto">Achat refusé !</strong>
+                              <button class="ml-2 mb-1 btn-close" type="button" data-bs-dismiss="toast"
+                                  aria-label="Close"></button>
+                          </div>
+                          <div class="toast-body">Il vous manque <%= item.amount - memberConfig.shop.amount %>
+                                  points pour acheter ce produit.</div>
+                      </div>
+                  </div>
+                    <% }); %>
+
+        </main>
+
+        <%- include('../includes/footer'); %>

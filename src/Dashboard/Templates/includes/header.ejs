@@ -96,19 +96,19 @@
                         </a>
                          <!-- Sidenav Menu Heading (SERVERS)-->
                          <div class="sidenav-menu-heading">BOUTIQUE</div>
-                        <a class="nav-link collapsed" href="/ebooks">
+                        <a class="nav-link collapsed" href="/shop/ebooks">
                             <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
                             Ebooks
                         </a>
-                        <a class="nav-link collapsed" href="/accounts">
+                        <a class="nav-link collapsed" href="/shop/accounts">
                             <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
                             Accounts
                         </a>
-                        <a class="nav-link collapsed" href="/logs">
+                        <a class="nav-link collapsed" href="/shop/logs">
                             <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
                             Logs
                         </a>
-                        <a class="nav-link collapsed" href="/xpress">
+                        <a class="nav-link collapsed" href="/shop/divers">
                             <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
                             Divers
                         </a>
@@ -125,10 +125,6 @@
                                 Montant actuel : <%= memberConfig.shop.amount %>
                                   
                         </a>
-                            <a class="nav-link collapsed" href="/logout">
-                                <div class="nav-link-icon"><i class="fa fa-sign-out-alt"></i></div>
-                                Déconnexion
-                            </a>
 
                         <!-- Sidenav Menu Heading (Community)-->
                         <div class="sidenav-menu-heading">COMMUNAUTE</div>
@@ -140,6 +136,30 @@
                             <div class="nav-link-icon"><i class="fab fa-discord"></i></div>
                             Serveur discord
                         </a>
+
+
+                        <!-- Sidenav Menu Heading (STATS)-->
+                        <div class="sidenav-menu-heading">STATS</div>
+                        <a class="nav-link collapsed" href="#">
+                            <div class="nav-link-icon"><i class="fab fa-discord"></i></div>
+                            Membres discord : <%= member.guild.members.cache.size %>
+                        </a>
+                        <a class="nav-link collapsed" href="#">
+                            <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
+                            Produits disponible :  <%= serverConfig.shop.ebooks.length + serverConfig.shop.accounts.length + serverConfig.shop.logs.length + serverConfig.shop.divers.length %>
+                        </a>
+                        <a class="nav-link collapsed" href="#">
+                            <div class="nav-link-icon"><i class="fa fa-bar-chart"></i></div>
+                            Visiteurs : <%= serverConfig.stats.visitor %>
+                        </a>
+
+                        <br>
+                        <a class="nav-link collapsed" style="color: red" href="/logout">
+                            <div class="nav-link-icon"><i style="color: red" class="fa fa-sign-out-alt"></i></div>
+                            Déconnexion
+                        </a>
+
+                       <br>
 
                         <!-- Sidenav Footer-->
                             <div class="sidenav-footer">

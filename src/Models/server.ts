@@ -65,7 +65,8 @@ const Server = model(
         dashboard: Boolean,
         stats: {
             challenge: Number,
-            suspect: Number
+            suspect: Number,
+            visitor: Number
         }
     })
 )
@@ -129,7 +130,8 @@ export const def = {
     dashboard: false,
     stats: {
         challenge: 0,
-        suspect: 0
+        suspect: 0,
+        visitor: 0
     }
 };
 

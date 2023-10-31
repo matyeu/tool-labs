@@ -14,7 +14,7 @@ export async function slash(client: ToolClient, interaction: CommandInteraction)
 
     const memberConfig: any = await find(member.guild!.id, member.id);
 
-    return interaction.replyInfoMessage(client, `**${member.id === interaction.user.id ? "Vous possédez" : `${member.displayName}`} actuellement \`${memberConfig.shop.amount}\` points**`, false)
+    return interaction.replyInfoMessage(client, `**${member.id === interaction.user.id ? "Vous possédez" : `${member.displayName}`} actuellement \`${memberConfig.shop.amount}\`  point${memberConfig.shop.amount > 1 ? "s" : ""}**`, false)
 
 }
 
@@ -28,7 +28,7 @@ export async function command(client: ToolClient, message: Message, args: any) {
 
     const memberConfig: any = await find(member.guild!.id, member.id);
 
-    return message.replyInfoMessage(client, `**${member.id === message.author.id ? "Vous possédez" : `${member.displayName}`} actuellement \`${memberConfig.shop.amount}\` points**`)
+    return message.replyInfoMessage(client, `**${member.id === message.author.id ? "Vous possédez" : `${member.displayName}`} actuellement \`${memberConfig.shop.amount}\` point${memberConfig.shop.amount > 1 ? "s" : ""}**`)
 
 }
 
