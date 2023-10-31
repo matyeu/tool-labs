@@ -25,6 +25,7 @@ const Server = model(
             mission: String,
             staff: String,
             documentation: String,
+            flux: String
         },
         roles: {
             suspect: String,
@@ -55,6 +56,13 @@ const Server = model(
                 suspect: Array
             }
         },
+        shop: {
+            ebooks: Array,
+            accounts: Array,
+            logs: Array, 
+            divers: Array 
+        },
+        dashboard: Boolean,
         stats: {
             challenge: Number,
             suspect: Number
@@ -81,6 +89,7 @@ export const def = {
         mission: "",
         staff: "",
         documentation: "",
+        flux: ""
     },
     roles: {
         suspect: "",
@@ -111,6 +120,13 @@ export const def = {
             suspect: Array
         }
     },
+    shop: {
+        ebooks: Array,
+        accounts: Array,
+        logs: Array, 
+        divers: Array 
+    },
+    dashboard: false,
     stats: {
         challenge: 0,
         suspect: 0

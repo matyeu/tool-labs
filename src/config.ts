@@ -14,7 +14,7 @@ export const FOOTER_CASINO = "Tool-Labs - Casino";
 export const FOOTER_LOG = "Tool-Labs - Logs";
 export const FOOTER_TICKET = "Tool-Labs - Tickets";
 export const FOOTER_CTF = "Tool-Labs - CTF"
-
+export const FOOTER_DASHBOARD = "Tool-Labs - DASHBOARD"
 
 
 export const IDLE_BUTTON = 60000;

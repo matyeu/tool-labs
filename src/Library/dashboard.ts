@@ -1,3 +1,9 @@
+import { EmbedBuilder } from "discord.js";
+import { ToolClient } from ".";
+import { SERVER_LIVE, SERVER_DEV, EMBED_SUCCESS, FOOTER_DASHBOARD, EMBED_ERROR } from "../config";
+import { find as findServer } from "../Models/server";
+import { find as findMember } from "../Models/member";
+
 const express = require("express");
 const dashboard = express();
 const path = require("path");
@@ -9,13 +15,13 @@ const infosSite = require('../infos-site')
 
 const Logger = require("../Library/logger");
 
-module.exports = (client: any) => {
+module.exports = (client: ToolClient) => {
 
     const dashboardDirectory = path.resolve(`${process.cwd()}${path.sep}src/dashboard`);
 
-    const templatesDirectory = path.resolve(`${dashboardDirectory}${path.sep}templates`)
+    const templatesDirectory = path.resolve(`${dashboardDirectory}${path.sep}Templates`)
 
-    dashboard.use("/public", express.static(path.resolve(`${dashboardDirectory}${path.sep}public`)))
+    dashboard.use("/Public", express.static(path.resolve(`${dashboardDirectory}${path.sep}Public`)))
 
     passport.serializeUser((user: any, done: any) => {
         done(null, user);
@@ -27,13 +33,13 @@ module.exports = (client: any) => {
 
 
     passport.use(new Strategy({
-            clientID: process.env.CLIENT_ID,
-            clientSecret: process.env.OUATH_SECRET,
-            callbackURL: process.env.CALLBACK_URL,
-            scope: ["identify", "guilds"]
-        },
+        clientID: process.env.CLIENT_ID,
+        clientSecret: process.env.OUATH_SECRET,
+        callbackURL: process.env.CALLBACK_URL,
+        scope: ["identify", "guilds"]
+    },
         (accessToken: any, refreshToken: any, profile: any, done: any) => {
-            process.nextTick(() => done (null, profile))
+            process.nextTick(() => done(null, profile))
         }
     ))
 
@@ -50,12 +56,26 @@ module.exports = (client: any) => {
     dashboard.engine("html", require("ejs").renderFile)
     dashboard.set("view engine", "html")
 
-    const renderTemplate = (res: any, req: any, template: any, data = {}) =>  {
+    const renderTemplate = async (res: any, req: any, template: any, data = {}) => {
+        let serverConfig: any
+        let memberConfig: any
+
+        let member: any
+
+        for (const guild of client.guilds.cache.map(guild => guild)) {
+            if (guild.id !== SERVER_LIVE && guild.id !== SERVER_DEV) continue;
+            member = await guild.members.fetch(req.user.id);
+
+            serverConfig = await findServer(guild.id);
+            memberConfig = await findMember(guild!.id, member.id)
+        };
         const baseData = {
             bot: client,
             path: req.path,
             pathSite: infosSite,
-            user: req.isAuthenticated() ?  req.user: null
+            member: req.isAuthenticated() ? member : null,
+            serverConfig: serverConfig,
+            memberConfig: memberConfig
         };
         res.render(
             path.resolve(`${templatesDirectory}${path.sep}${template}`),
@@ -63,51 +83,68 @@ module.exports = (client: any) => {
         )
     }
 
-    dashboard.get("/", (req: any, res: any, next: any) => { 
-    res.redirect("/index");
-});
+    dashboard.get("/", (req: any, res: any, next: any) => {
+        res.redirect("/index");
+    });
 
-    dashboard.get("/login", (req: any, res: any, next: any) => {
-            req.session.backURL = "/callback"
-            next();
-        },
+    dashboard.get("/index", (req: any, res: any, next: any) => {
+        req.session.backURL = "/callback"
+        next();
+    },
         passport.authenticate("discord"));
 
-    dashboard.get("/callback", passport.authenticate("discord"), (req: any, res: any) => {
-        res.redirect("/index");
-        Logger.client("User login on the dashboard")
+    dashboard.get("/callback", passport.authenticate("discord"), async (req: any, res: any) => {
+        for (const guild of client.guilds.cache.map(guild => guild)) {
+            if (guild.id !== SERVER_LIVE && guild.id !== SERVER_DEV) continue;
+
+            const serverConfig: any = await findServer(guild.id);
+            const member = await guild.members.fetch(req.user.id);
+
+            const embedLogin = new EmbedBuilder()
+                .setColor(EMBED_SUCCESS)
+                .setAuthor({ name: `${member.displayName} (${member.id})`, iconURL: member.user.displayAvatarURL() })
+                .setDescription(`**${member} vient de se connecter au dashboard !**`)
+                .setTimestamp()
+                .setFooter({ text: FOOTER_DASHBOARD, iconURL: client.user?.displayAvatarURL() })
+
+            await client.getChannel(guild, serverConfig.channels.flux, { embeds: [embedLogin] });
+            Logger.client(`${member.displayName} login on the dashboard`);
+        };
+        res.redirect("/home");
     });
 
-    dashboard.get("/index", (req: any, res: any) => {
-        const members = client.users.cache.size
-        const channels = client.channels.cache.size
-        const guilds = client.guilds.cache.size
-        renderTemplate(res, req, "index.ejs", {
-            stats: {
-                serveurs: guilds,
-                utilisateurs : members,
-                salons: channels
-            }
-        })
+    dashboard.get("/home", (req: any, res: any) => {
+        renderTemplate(res, req, "home.ejs")
     });
 
-    dashboard.get("/a-propos-de-nous", (req: any, res: any) => {    
+    dashboard.get("/a-propos-de-nous", (req: any, res: any) => {
         renderTemplate(res, req, "a-propos-de-nous.ejs")
     });
 
-    dashboard.get("/recrutement", (req: any, res: any) => {    
+    dashboard.get("/recrutement", (req: any, res: any) => {
         res.redirect("/maintenance");
     });
 
-    dashboard.get("/maintenance", (req: any, res: any) => {    
-        renderTemplate(res, req, "maintenance.ejs")
-    });
+    dashboard.get('/logout', async (req: any, res: any, next: any) => {
+        for (const guild of client.guilds.cache.map(guild => guild)) {
+            if (guild.id !== SERVER_LIVE && guild.id !== SERVER_DEV) continue;
 
-    dashboard.get('/logout', (req: any, res: any, next: any) => {
-        req.logout(function(err: any) {
+            const serverConfig: any = await findServer(guild.id);
+            const member = await guild.members.fetch(req.user.id);
+
+            const embedLogin = new EmbedBuilder()
+                .setColor(EMBED_ERROR)
+                .setAuthor({ name: `${member.displayName} (${member.id})`, iconURL: member.user.displayAvatarURL() })
+                .setDescription(`**${member} vient de se déconnecter du dashboard !**`)
+                .setTimestamp()
+                .setFooter({ text: FOOTER_DASHBOARD, iconURL: client.user?.displayAvatarURL() })
+
+            await client.getChannel(guild, serverConfig.channels.flux, { embeds: [embedLogin] });
+            Logger.client(`${member.displayName} logout on the dashboard`);
+        };
+        req.logout(function (err: any) {
             if (err) { return next(err); }
             res.redirect('/');
-            Logger.client("User logout on the dashboard")
         });
     });
 

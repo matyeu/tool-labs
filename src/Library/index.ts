@@ -18,6 +18,7 @@ export class ToolClient extends Client {
     public selects: Collection<any, any>;
     public modals: Collection<any, any>;
     public invite: Collection<any, any>;
+    public site: Collection<any, any>;
 
     constructor(options: ClientOptions) {
         super(options);
@@ -30,6 +31,7 @@ export class ToolClient extends Client {
         this.selects = new Collection();
         this.modals = new Collection();
         this.invite = new Collection();
+        this.site = new Collection();
 
     }
 

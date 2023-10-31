@@ -16,10 +16,11 @@ export async function slash(client: ToolClient, interaction: CommandInteraction)
     switch (interaction.options.getSubcommand(false)) {
         case 'ajout': 
         const roleOption: any = interaction.options.get('rôle', false);
+        const amountOption: any = interaction.options.get('montant', false);
 
         if (getFlag) return interaction.replyErrorMessage(client, `Le flag **${nameOption}** est déjà présent dans la base de données`, true);
         
-        arrayFlags.push({name: nameOption, role: roleOption ? roleOption.value : ""});
+        arrayFlags.push({name: nameOption, role: roleOption ? roleOption.value : "", amount: amountOption ? amountOption : ""});
         await edit(interaction.guild!.id, serverConfig);
 
         await interaction.replySuccessMessage(client, `Le flag **${nameOption}** a été ajouté, avec comme rôle : ${roleOption ? `<@&${roleOption.value}>` : "`Aucun`"} `, true);
@@ -82,6 +83,12 @@ export const cmd = {
                         name: "rôle",
                         description: "Rôle du flags",
                         type: ApplicationCommandOptionType.Role,
+                        required: false
+                    },
+                    {
+                        name: "montant",
+                        description: "Montant du flag",
+                        type: ApplicationCommandOptionType.Number,
                         required: false
                     }
                 ]
