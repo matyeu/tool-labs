@@ -97,7 +97,7 @@ module.exports = (client: ToolClient) => {
         for (const guild of client.guilds.cache.map(guild => guild)) {
             if (guild.id !== SERVER_LIVE && guild.id !== SERVER_DEV) continue;
 
-            const member = await guild.members.cache.get(req.user.id);
+            const member = await guild.members.fetch(req.user.id);
 
             if (!member) {
                 res.redirect(LINK_DISCORD);
