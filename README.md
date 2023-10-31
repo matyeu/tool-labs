@@ -9,6 +9,8 @@
 
 <br>
 
+![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)
+
 **TOOL-LABS** has all the tools you will need for your Discord server,<br>
 **TOOL-LABS** is a multi-function Discord bot developped by [matyeu](https://discord.com/users/916444775861850175).<br>
 **TOOL-LABS** also manages CTFS
@@ -26,6 +28,7 @@
 | Name          | Description                          | Sub-commands                | Usage                             | Cd     |
 | ------------- | ------------------------------------ | --------------------------- | --------------------------------- | ------ |
 | bot           | View bot information.               | none                        | none                               | 10secs |
+| solde         | View member solde.                  | none                        | /profil (utilisateur)              | 10secs |
 | profil        | View member information.            | none                        | /profil (utilisateur)              | 10secs |
 
 ### Moderation
