@@ -20,7 +20,7 @@ export async function slash(client: ToolClient, interaction: CommandInteraction)
 
         if (getFlag) return interaction.replyErrorMessage(client, `Le flag **${nameOption}** est déjà présent dans la base de données`, true);
         
-        arrayFlags.push({name: nameOption, role: roleOption ? roleOption.value : "", amount: amountOption ? amountOption : ""});
+        arrayFlags.push({name: nameOption, role: roleOption ? roleOption.value : "", amount: amountOption ? amountOption.value : ""});
         await edit(interaction.guild!.id, serverConfig);
 
         await interaction.replySuccessMessage(client, `Le flag **${nameOption}** a été ajouté, avec comme rôle : ${roleOption ? `<@&${roleOption.value}>` : "`Aucun`"} `, true);
