@@ -25,6 +25,8 @@ const Members = model("Members", new Schema({
     },
     shop: {
         amount: Number,
+        ordered: Boolean,
+        commandTcheck: Boolean,
         ebooks: Array,
         accounts: Array,
         logs: Array,
@@ -60,6 +62,8 @@ export const def = {
     },
     shop: {
         amount: 0,
+        ordered: false,
+        commandTcheck: false,
         ebooks: Array,
         accounts: Array,
         logs: Array,

@@ -1,8 +1,8 @@
 import { EmbedBuilder } from "discord.js";
-import { ToolClient, sendCommand } from ".";
+import { ToolClient } from ".";
 import { SERVER_LIVE, SERVER_DEV, EMBED_SUCCESS, FOOTER_DASHBOARD, EMBED_ERROR, LINK_DISCORD } from "../config";
 import { edit as editServer, find as findServer } from "../Models/server";
-import { find as findMember } from "../Models/member";
+import { find as findMember, edit as editMember } from "../Models/member";
 
 const express = require("express");
 const dashboard = express();
@@ -59,7 +59,6 @@ module.exports = (client: ToolClient) => {
     const renderTemplate = async (res: any, req: any, template: any, data = {}) => {
         let serverConfig: any
         let memberConfig: any
-
         let member: any
 
         for (const guild of client.guilds.cache.map(guild => guild)) {
@@ -76,6 +75,7 @@ module.exports = (client: ToolClient) => {
             member: req.isAuthenticated() ? member : null,
             serverConfig: serverConfig,
             memberConfig: memberConfig,
+            editMember: memberConfig.save(),
         };
         res.render(
             path.resolve(`${templatesDirectory}${path.sep}${template}`),
@@ -114,7 +114,7 @@ module.exports = (client: ToolClient) => {
                     .setTimestamp()
                     .setFooter({ text: FOOTER_DASHBOARD, iconURL: client.user?.displayAvatarURL() })
 
-                await client.getChannel(guild, serverConfig.channels.flux, { embeds: [embedLogin] });
+                await client.getChannel(guild, serverConfig.channels.fluxDash, { embeds: [embedLogin] });
 
                 res.redirect("/home");
 
@@ -133,9 +133,7 @@ module.exports = (client: ToolClient) => {
 
 
     dashboard.get("/shop/ebooks", async (req: any, res: any) => {
-        renderTemplate(res, req, "shop/ebooks.ejs", {
-            okep: sendCommand(client)
-        })
+        renderTemplate(res, req, "shop/ebooks.ejs")
     });
 
     dashboard.get("/shop/accounts", (req: any, res: any) => {
@@ -164,7 +162,7 @@ module.exports = (client: ToolClient) => {
                 .setTimestamp()
                 .setFooter({ text: FOOTER_DASHBOARD, iconURL: client.user?.displayAvatarURL() })
 
-            await client.getChannel(guild, serverConfig.channels.flux, { embeds: [embedLogin] });
+            await client.getChannel(guild, serverConfig.channels.fluxDash, { embeds: [embedLogin] });
             Logger.client(`${member.displayName} logout on the dashboard`);
         };
         req.logout(function (err: any) {

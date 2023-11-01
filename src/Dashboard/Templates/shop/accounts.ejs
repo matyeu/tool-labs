@@ -13,7 +13,7 @@
                             <div class="col-auto mt-4">
                                 <h1 class="page-header-title">
                                     <div class="page-header-icon"><i class="fa fa-shop"></i></div>
-                                    Boutique Ebooks
+                                    Boutique Accounts
                                 </h1>
                                 <div class="page-header-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
                                     elit. Earum est unde autem ullam exercitationem delectus deleniti inventore,
@@ -26,7 +26,7 @@
             </header>
             <hr class="mt-2 mb-4" />
             <div style="margin-left: 1rem" class="row">
-                <% const shopEbooks=serverConfig.shop.ebooks; 
+                <% const shopEbooks=serverConfig.shop.accounts; 
                 shopEbooks.forEach(item=> { %>
                     <div class="col-lg-4 mb-4">
                         <!-- Knowledge base category card 1-->
@@ -54,8 +54,6 @@
                             </div>
                         </a>
                     </div>
-                    <% }); %>
-
 
                       <!-- Modal -->
                       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -71,17 +69,17 @@
                                   Neque facere magnam quidem illum natus molestiae nostrum rerum! Ad voluptas
                                   quisquam sapiente debitis, nulla porro modi reiciendis, sed quasi dignissimos
                                   cum.</div>
-                          
+                              <% if (memberConfig.shop.amount >= item.amount) { %>
                                   <div class="modal-footer"><button class="btn btn-primary" type="button"
-                                          data-bs-dismiss="modal" id="toastSuccessId" action>Accepter</button><button
+                                          data-bs-dismiss="modal" name="test" id="toastSuccessId" action>Accepter</button><button
                                           class="btn btn-danger" type="button" data-bs-dismiss="modal">Annuler
                                   </div>
-                                   <!--   
+                                  <% } else {  %>
                                       <div class="modal-footer"><button class="btn btn-primary" type="button"
                                               data-bs-dismiss="modal" id="toastErrorId">Accepter</button><button
                                               class="btn btn-danger" type="button" data-bs-dismiss="modal">Annuler
-                                      </div> -->
-                                     
+                                      </div>
+                                      <% } %>
                           </div>
                       </div>
                   </div>
@@ -113,10 +111,11 @@
                               <button class="ml-2 mb-1 btn-close" type="button" data-bs-dismiss="toast"
                                   aria-label="Close"></button>
                           </div>
-                          <div class="toast-body">Il vous manque NaN
+                          <div class="toast-body">Il vous manque <%= item.amount - memberConfig.shop.amount %>
                                   points pour acheter ce produit.</div>
                       </div>
                   </div>
+                    <% }); %>
 
         </main>
 

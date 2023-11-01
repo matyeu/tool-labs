@@ -220,7 +220,3 @@ export function tcheckNumber(text: string) {
     const expression = /^\d+$/;
     return expression.test(text);
   }
-
-  export function sendCommand(client: ToolClient) {
-    console.log('test')
-  } 
