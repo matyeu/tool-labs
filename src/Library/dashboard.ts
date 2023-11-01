@@ -2,7 +2,7 @@ import { EmbedBuilder } from "discord.js";
 import { ToolClient } from ".";
 import { SERVER_LIVE, SERVER_DEV, EMBED_SUCCESS, FOOTER_DASHBOARD, EMBED_ERROR, LINK_DISCORD } from "../config";
 import { edit as editServer, find as findServer } from "../Models/server";
-import { find as findMember, edit as editMember } from "../Models/member";
+import { edit as editMember, find as findMember } from "../Models/member";
 
 const express = require("express");
 const dashboard = express();
@@ -11,7 +11,9 @@ const passport = require("passport");
 const Strategy = require("passport-discord").Strategy;
 const session = require("express-session");
 const MemoryStore = require("memorystore")(session);
-const infosSite = require('../infos-site')
+const infosSite = require('../infos-site');
+const bodyParser = require('body-parser');
+
 
 const Logger = require("../Library/logger");
 
@@ -53,6 +55,9 @@ module.exports = (client: ToolClient) => {
     dashboard.use(passport.initialize());
     dashboard.use(passport.session());
 
+    dashboard.use(bodyParser.json()); 
+    dashboard.use(bodyParser.urlencoded({ extended: true }));
+
     dashboard.engine("html", require("ejs").renderFile)
     dashboard.set("view engine", "html")
 
@@ -93,6 +98,39 @@ module.exports = (client: ToolClient) => {
     },
         passport.authenticate("discord"));
 
+    dashboard.get('/api/get/server', async (req: any, res: any) => {
+        try {
+            const data = await findServer(SERVER_DEV);
+            res.json(data);
+        } catch (error) {
+            console.error('Erreur lors de la récupération des données :', error);
+            res.status(500).json({ error: 'Erreur lors de la récupération des données' });
+        }
+    });
+
+
+    dashboard.get('/api/get/members', async (req: any, res: any) => {
+        try {
+            const data = await findMember(SERVER_DEV, req.user.id);
+            res.json(data);
+        } catch (error) {
+            console.error('Erreur lors de la récupération des données :', error);
+            res.status(500).json({ error: 'Erreur lors de la récupération des données' });
+        }
+    });
+
+    dashboard.post('/api/update/members/amount', async (req: any, res: any) => {
+        try {
+            const data = req.body;
+            const memberConfig: any = await findMember(SERVER_DEV, req.user.id);
+            memberConfig.shop.amount = data.amount
+            editMember(SERVER_DEV, req.user.id, memberConfig);  
+        } catch (error) {
+          console.error('Erreur lors de la mise à jour :', error);
+          res.status(500).json({ error: 'Erreur lors de la mise à jour' });
+        }
+      });
+      
     dashboard.get("/callback", passport.authenticate("discord"), async (req: any, res: any) => {
         for (const guild of client.guilds.cache.map(guild => guild)) {
             if (guild.id !== SERVER_LIVE && guild.id !== SERVER_DEV) continue;
@@ -170,6 +208,8 @@ module.exports = (client: ToolClient) => {
             res.redirect('/');
         });
     });
+
+
 
     client.site = dashboard.listen(process.env.PORT);
     Logger.client(`Dashboard on: http://${process.env.DOMAIN}:${process.env.PORT}`)
