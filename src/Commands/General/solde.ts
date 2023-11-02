@@ -1,8 +1,7 @@
-import { ApplicationCommandOptionType, AttachmentBuilder, CommandInteraction, EmbedBuilder, Message } from "discord.js";
+import { ActionRowBuilder, ApplicationCommandOptionType, ButtonBuilder, ButtonStyle, CommandInteraction, EmbedBuilder, Message } from "discord.js";
 import { ToolClient } from "../../Library";
 import { find  } from "../../Models/member";
-import { EMBED_GENERAL, FOOTER } from "../../config";
-import Canvas from "canvas";
+import { EMBED_INFO, LINK_DASHBOARD } from "../../config";
 
 export async function slash(client: ToolClient, interaction: CommandInteraction) {
 
@@ -14,7 +13,19 @@ export async function slash(client: ToolClient, interaction: CommandInteraction)
 
     const memberConfig: any = await find(member.guild!.id, member.id);
 
-    return interaction.replyInfoMessage(client, `**${member.id === interaction.user.id ? "Vous possédez" : `${member.displayName}`} actuellement \`${memberConfig.shop.amount}\`  point${memberConfig.shop.amount > 1 ? "s" : ""}**`, false)
+    const embed = new EmbedBuilder()
+    .setColor(EMBED_INFO)
+    .setDescription( `**${member.id === interaction.user.id ? "Vous possédez" : `${member.displayName}`} actuellement \`${memberConfig.shop.amount}\`  point${memberConfig.shop.amount > 1 ? "s" : ""}**`);
+
+    const button = new ActionRowBuilder<ButtonBuilder>()
+    .addComponents(
+        new ButtonBuilder()
+            .setLabel("Accéder au dashboard")
+            .setURL(LINK_DASHBOARD)
+            .setStyle(ButtonStyle.Link)
+    );
+
+   return interaction.reply({embeds: [embed], components: [button]});
 
 }
 
@@ -28,8 +39,19 @@ export async function command(client: ToolClient, message: Message, args: any) {
 
     const memberConfig: any = await find(member.guild!.id, member.id);
 
-    return message.replyInfoMessage(client, `**${member.id === message.author.id ? "Vous possédez" : `${member.displayName}`} actuellement \`${memberConfig.shop.amount}\` point${memberConfig.shop.amount > 1 ? "s" : ""}**`)
+    const embed = new EmbedBuilder()
+    .setColor(EMBED_INFO)
+    .setDescription( `**${member.id === message.author.id ? "Vous possédez" : `${member.displayName}`} actuellement \`${memberConfig.shop.amount}\`  point${memberConfig.shop.amount > 1 ? "s" : ""}**`);
 
+    const button = new ActionRowBuilder<ButtonBuilder>()
+    .addComponents(
+        new ButtonBuilder()
+            .setLabel("Accéder au dashboard")
+            .setURL(LINK_DASHBOARD)
+            .setStyle(ButtonStyle.Link)
+    );
+
+   return message.channel.send({embeds: [embed], components: [button]});
 }
 
 export const cmd = {
