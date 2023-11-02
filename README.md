@@ -22,7 +22,7 @@
 | Name          | Description                          | Sub-commands                | Usage                                                             | Cd     |
 | ------------- | ------------------------------------ | --------------------------- | ----------------------------------------------------------------- | ------ |
 | flags         | Add or remove flags.                 | ajout, supprimer            | /flags \<ajout\|supprimer> \<name> \<catégorie> (role)            | 10secs |
-| flags         | Add or remove produit.               | ajout, supprimer            | /produit \<sub-cmd> \<name> \<description> \<catégorie> \<montant>| 10secs |
+| shop          | Add or remove produit.               | ajout, supprimer            | /produit \<sub-cmd> \<name> \<description> \<catégorie> \<montant>| 10secs |
 
 ### General
 
