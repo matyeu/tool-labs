@@ -42,8 +42,7 @@
                             <div class="card-footer">
                                 <div class="small text-muted">
                                     <% if (memberConfig.shop.amount>= item.amount) { %>
-                                        <center><button class="btn btn-primary" type="button" id="toastSuccessId"
-                                                name="<%= item.name %>">Acheter ce produit pour : <%= item.amount %>
+                                        <center><button class="btn btn-primary" type="button" id="toastSuccessId">Acheter ce produit pour : <%= item.amount %>
                                             </button>
                                             <% } else {%>
                                                 <center><button class="btn btn-primary" type="button" id="toastErrorId"

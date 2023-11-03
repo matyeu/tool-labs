@@ -43,10 +43,3 @@ produitTestId.addEventListener('click', event => {
         });
 
 });
-
-
-const test2 = document.querySelector("[name='produit deux']");
-
-test2.addEventListener('click', event => {
-    console.log('test 2')
-});
