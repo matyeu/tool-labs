@@ -26,7 +26,8 @@
             </header>
             <hr class="mt-2 mb-4" />
             <div style="margin-left: 1rem" class="row">
-                <% const shopEbooks=serverConfig.shop.ebooks; shopEbooks.forEach(item=> { %>
+                <% const shopEbooks=serverConfig.shop.ebooks; shopEbooks.forEach(item=> { 
+                    %>
                     <div class="col-lg-4 mb-4">
                         <!-- Knowledge base category card 1-->
                         <a class="card lift lift-sm h-100" href="#">
@@ -41,12 +42,13 @@
                             </div>
                             <div class="card-footer">
                                 <div class="small text-muted">
-                                    <% if (memberConfig.shop.amount>= item.amount) { %>
-                                        <center><button class="btn btn-primary" type="button" id="toastSuccessId">Acheter ce produit pour : <%= item.amount %>
+                                    <% if (memberConfig.shop.amount >= item.amount) {
+                                        console.log('test 2') %>
+                                        <center><button class="btn btn-primary" type="button" name="<%= item.name %> id="toastSuccessId">Acheter ce produit pour : <%= item.amount %>
                                             </button>
-                                            <% } else {%>
-                                                <center><button class="btn btn-primary" type="button" id="toastErrorId"
-                                                        name="<%= item.name %>">Acheter ce produit
+                                            <% } else {
+                                                console.log('test')%>
+                                                <center><button class="btn btn-primary" type="button" id="toastErrorId">Acheter ce produit
                                                         pour : <%= item.amount %>
                                                     </button>
                                                     <% }%>

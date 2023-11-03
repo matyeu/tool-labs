@@ -12,7 +12,6 @@ produitTestId.addEventListener('click', event => {
             fetch('/api/get/members')
                 .then(response => response.json())
                 .then(dataMember => {
-                    console.log(data.userId);
 
                     const amount = dataServer.shop.amount -= dataMember.shop.amount;
 
