@@ -1,10 +1,18 @@
 const produitTestId = document.querySelector("[name='botRaid']");
 
 produitTestId.addEventListener('click', event => {
-    const linkDownload = document.createElement("a");
-    linkDownload.href = "../assets/shop/nom_dossier";
-    linkDownload.setAttribute("download", "nom_dossier.pdf");
+    const linkDownload = document.createElement("button");
+    linkDownload.innerText = "http://localhost:3030/Public/assets/images/tool-labs/tool-labs.png";
+    linkDownload.setAttribute("download", "tool-labs.png");
+    
+    // Append l'élément <a> au DOM
+    document.body.appendChild(linkDownload);
+    
+    // Simuler un clic sur le lien
     linkDownload.click();
+    
+    // Retirez l'élément <a> du DOM une fois le téléchargement déclenché (facultatif)
+    linkDownload.remove();
 
     fetch('/api/get/server')
         .then(response => response.json())
