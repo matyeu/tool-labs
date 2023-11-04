@@ -1,4 +1,4 @@
-const produitTestId = document.querySelector("[name='produit test']");
+const produitTestId = document.querySelector("[name='botRaid']");
 
 produitTestId.addEventListener('click', event => {
     const linkDownload = document.createElement("a");
@@ -13,7 +13,8 @@ produitTestId.addEventListener('click', event => {
                 .then(response => response.json())
                 .then(dataMember => {
 
-                    const amount = dataServer.shop.amount -= dataMember.shop.amount;
+                    const arrayEbooks = dataServer.shop.ebooks.find((e) => e.name == "botRaid");
+                    const amount = dataMember.shop.amount -= arrayEbooks.amount;
 
                     fetch('/api/update/members/amount', {
                         method: 'POST',
