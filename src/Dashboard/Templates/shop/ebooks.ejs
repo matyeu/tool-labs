@@ -42,8 +42,7 @@
                             </div>
                             <div class="card-footer">
                                 <div class="small text-muted">
-                                    <% if (memberConfig.shop.amount >= item.amount) {
-                                        console.log('test 2') %>
+                                    <% if (memberConfig.shop.amount >= item.amount) {%>
                                         <center><button class="btn btn-primary" type="button" name="<%= item.name %>" id="toastSuccessId">Acheter ce produit pour : <%= item.amount %>
                                             </button>
                                             <% } else {
