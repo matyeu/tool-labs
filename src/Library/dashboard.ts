@@ -201,8 +201,18 @@ dashboard.post('/api/update/server/buyer', async (req: any, res: any) => {
         renderTemplate(res, req, "shop/accounts.ejs")
     });
 
-    dashboard.get("/shop/logs", (req: any, res: any) => {
-        renderTemplate(res, req, "shop/logs.ejs")
+    dashboard.get("/shop/logs", async (req: any, res: any) => {
+        for (const guild of client.guilds.cache.map(guild => guild)) {
+            const member = await guild.members.cache.get(req.user.id)!;
+
+            const serverConfig: any = await findServer(guild.id);
+
+            if (member.roles.cache.has(serverConfig.roles.logs)) {
+                renderTemplate(res, req, "shop/logs.ejs")
+            } else {
+                renderTemplate(res, req, "home.ejs")
+            }
+        }
     });
 
     dashboard.get("/shop/divers", (req: any, res: any) => {
