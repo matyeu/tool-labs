@@ -8,5 +8,5 @@ export const js_chemin = "../../Public/js/";
 export const fonts_chemin = "../../Public/assets/fonts/";
 
 //LINKS
-export const link_site = "";
+export const link_site = "https://tool-labs.com";
 export const link_discord = "";

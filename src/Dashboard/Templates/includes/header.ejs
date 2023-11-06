@@ -17,12 +17,14 @@
 
 <body class="nav-fixed">
 
-    <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white"
+    <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-#36393e"
         id="sidenavAccordion">    
         <!-- Navbar Brand-->
-        <a class="navbar-brand text-center" href="/home"><img
-            src="<%= pathSite.image_chemin %>tool-labs/tool-labs.png" style="height: 3rem"> by <%=
-            pathSite.nom_site %> </a>
+        <a class="navbar-brand text-center" href="/home">
+    <img src="<%= pathSite.image_chemin %>tool-labs/tool-labs.png" style="height: 3rem">
+    <span style="margin-left: 10px;">Shop C.T.F </span>
+</a>
+
 
              <!-- Sidenav Toggle Button-->
             <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i
@@ -47,6 +49,9 @@
                     </form>
                 </div>
             </li>
+            <span class="ma-classe"><i class="fa fa-question-circle" aria-hidden="true"></i></span>
+
+
             <!-- User Dropdown-->
             <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
@@ -63,110 +68,117 @@
                         <div class="dropdown-user-details">
                             <div class="dropdown-user-details-name"> <%= member.displayName %></div>
                             <div class="dropdown-user-details-email">id : <%= member.id %></div>
-                            <div class="dropdown-user-details-email">Montant actuel : <%= memberConfig.shop.amount %></div>
+                            <div class="dropdown-user-details-email">Solde : <%= memberConfig.shop.amount %> pièces</div>
                         </div>
                     </h6>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/logout">
-                        <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                        Déconnexion
-                    </a>
-                </div>
+<a class="dropdown-item" href="/logout">
+    <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
+    <span style="color: red;">Déconnexion</span>
+</a>
+</div>
+
             </li>
         </ul>
     </nav>
+
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sidenav shadow-right sidenav-light">
                 <div class="sidenav-menu">
                     <div class="nav accordion" id="accordionSidenav">
-
+  <!-- Sidenav Menu Heading (Member)-->
+                        <div class="sidenav-menu-heading">&#x1F464; Information Membre</div>
+                        <a class="nav-link" href="#">
+                            <div class="nav-link-icon"><i class="fa fa-user-circle"></i></div>
+                                Connecté :  <%= member.displayName %>
+                                  
+                        </a>
+                        <a class="nav-link" href="#">
+                            <div class="nav-link-icon"><i data-feather="dollar-sign"></i></div>
+                                Solde : <%= memberConfig.shop.amount %> pièces
+                                  
+                        </a>
                         <br>
+                        
+                        <!-- Sidenav Menu Heading (Community)-->
+                        <div class="sidenav-menu-heading">&#x1F310; Communauté</div>
+
                         <a class="nav-link collapsed" href="/home">
                             <div class="nav-link-icon"><i class="fa fa-home"></i></div>
                             Accueil
                         </a>
-                        <a class="nav-link collapsed" href="/a-propos-de-nous">
-                            <div class="nav-link-icon"><i class="fa fa-question"></i></div>
-                            À propos de nous
+                        
+                         <a class="nav-link collapsed" href="/maj">
+                            <div class="nav-link-icon"><i class="fa fa-refresh"></i></div>Mises à jour
                         </a>
-                        <a class="nav-link collapsed" href="#">
-                            <div class="nav-link-icon"><i class="fa fa-user-plus"></i></div>
-                            Recrutement <span class="badge badge-danger-soft text-danger ml-auto"><i class="fa fa-tools"></i></span>
-                        </a>
-                         <!-- Sidenav Menu Heading (SERVERS)-->
-                         <div class="sidenav-menu-heading">BOUTIQUE</div>
-                        <a class="nav-link collapsed" href="/shop/ebooks">
-                            <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
-                            Ebooks
-                        </a>
-                        <a class="nav-link collapsed" href="/shop/accounts">
-                            <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
-                            Accounts
-                        </a>
-                        <a class="nav-link collapsed" href="/shop/logs">
-                            <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
-                            Logs
-                        </a>
-                        <a class="nav-link collapsed" href="/shop/divers">
-                            <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
-                            Divers
-                        </a>
-                         
-                        <!-- Sidenav Menu Heading (Member)-->
-                        <div class="sidenav-menu-heading">Espace membre</div>
-                        <a class="nav-link" href="#">
-                            <div class="nav-link-icon"><i class="fa fa-user"></i></div>
-                                <%= member.displayName %>
-                                  
-                        </a>
-                        <a class="nav-link" href="#">
-                            <div class="nav-link-icon"><i data-feather="dollar-sign"></i></i></div>
-                                Montant actuel : <%= memberConfig.shop.amount %>
-                                  
-                        </a>
-
-                        <!-- Sidenav Menu Heading (Community)-->
-                        <div class="sidenav-menu-heading">COMMUNAUTE</div>
                         <a class="nav-link collapsed" href="<%=pathSite.link_site %>">
                             <div class="nav-link-icon"><i class="fa fa-globe"></i></div>
                             Site web
                         </a>
                         <a class="nav-link collapsed" href="<%=pathSite.link_discord %>">
-                            <div class="nav-link-icon"><i class="fab fa-discord"></i></div>
+                            <div class="nav-link-icon"><i class="fa-brands fa-discord"></i></div>
                             Serveur discord
                         </a>
-
-
-                        <!-- Sidenav Menu Heading (STATS)-->
-                        <div class="sidenav-menu-heading">STATS</div>
-                        <a class="nav-link collapsed" href="#">
-                            <div class="nav-link-icon"><i class="fab fa-discord"></i></div>
-                            Membres discord : <%= member.guild.members.cache.size %>
+                      
+                         <!-- Sidenav Menu Heading (SERVERS)-->
+                         <div class="sidenav-menu-heading">&#x1F6CD; BOUTIQUE</div>
+                        <a class="nav-link collapsed" href="/shop/ebooks">
+                            <div class="nav-link-icon"><i class="fa fa-book"></i></div>
+                            Ebooks
                         </a>
+                        <a class="nav-link collapsed" href="/shop/accounts">
+                            <div class="nav-link-icon"><i class="fa-solid fa-user"></i></div>
+                            Accounts
+                        </a>
+                        <% if (member.roles.cache.has(serverConfig.roles.logs)) {%>
+                        <a class="nav-link collapsed" href="/shop/logs">
+                            <div class="nav-link-icon"><i class="fa-solid fa-newspaper"></i></div>
+                            Logs
+                        </a>
+                        <% }%>
+                        <a class="nav-link collapsed" href="/shop/divers">
+                            <div class="nav-link-icon"><i class="fa fa-crosshairs"></i></div>
+                            Divers
+                        </a>
+                         <br>
+                        
+
+<br>
+                        <!-- Sidenav Menu Heading (STATS)-->
+                        <div class="sidenav-menu-heading">&#x1F4CA; Statistiques</div>
+                       
                         <a class="nav-link collapsed" href="#">
-                            <div class="nav-link-icon"><i class="fa fa-shop"></i></div>
+                            <div class="nav-link-icon"><i class="fa-solid fa-cart-shopping"></i></div>
                             Produits disponible :  <%= serverConfig.shop.ebooks.length + serverConfig.shop.accounts.length + serverConfig.shop.logs.length + serverConfig.shop.divers.length %>
                         </a>
                         <a class="nav-link collapsed" href="#">
-                            <div class="nav-link-icon"><i class="fa fa-bar-chart"></i></div>
+                            <div class="nav-link-icon"><i class="fa fa-users"></i></div>
                             Visiteurs : <%= serverConfig.stats.visitor %>
+
                         </a>
 
-                        <br>
-                        <a class="nav-link collapsed" style="color: red" href="/logout">
-                            <div class="nav-link-icon"><i style="color: red" class="fa fa-sign-out-alt"></i></div>
-                            Déconnexion
-                        </a>
+                       
+                        
+                       
 
                        <br>
 
-                        <!-- Sidenav Footer-->
+
+                        <!-- Sidenav Footer--><br>
+                       
+                    
                             <div class="sidenav-footer">
                                 <div class="sidenav-footer-content">
-                                    <div class="sidenav-footer-subtitle">Connecté en tant que :</div>
-                                    <%= member.displayName %> (<%= member.id %>)
+
+                                    <div class="sidenav-footer-subtitle" style="color: grey">Connecté en tant que :</div>
+<span style="color: white;"><%= member.displayName %> (<%= member.id %>)</span>
+
                                 </div>
+                                <a class="nav-link collapsed" style="color: red; position: relative; bottom: 10px; left: 20px;" href="/logout">
+    <div class="nav-link-icon"><i style="color: red;" class="fa fa-sign-out-alt"></i></div>
+</a>
+
                             </div>
                     </div>
             </nav>

@@ -23,7 +23,7 @@
   --bs-gray-700: #4a515b;
   --bs-gray-800: #363d47;
   --bs-gray-900: #212832;
-  --bs-primary: #022133;
+  --bs-primary: #e5e9ec;
   --bs-secondary: #6900c7;
   --bs-success: #00ac69;
   --bs-info: #00cfd5;
@@ -39,7 +39,7 @@
   --bs-green: #00ac69;
   --bs-teal: #00ba94;
   --bs-cyan: #00cfd5;
-  --bs-blue: #022133;
+  --bs-blue: #feffff;
   --bs-indigo: #5800e8;
   --bs-purple: #6900c7;
   --bs-pink: #e30059;
@@ -118,7 +118,7 @@
   --bs-border-radius-xl: 1rem;
   --bs-border-radius-2xl: 2rem;
   --bs-border-radius-pill: 50rem;
-  --bs-link-color: #022133;
+  /*! --bs-link-color: #022133; */
   --bs-link-hover-color: #004ec2;
   --bs-code-color: #e30059;
   --bs-highlight-bg: #fdeccc;
@@ -171,6 +171,10 @@ h1, .h1 {
 @media (min-width: 1200px) {
   h1, .h1 {
     font-size: 1.5rem;
+    text-align: left;
+    position: relative;
+    right: 230px;
+    color: grey;
   }
 }
 
@@ -632,7 +636,7 @@ progress {
   color: #69707a;
 }
 .blockquote-footer::before {
-  content: "— ";
+  content: " ";
 }
 
 .img-fluid {
@@ -3000,19 +3004,19 @@ textarea.form-control-lg {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #022133;
-  --bs-btn-border-color: #022133;
+  --bs-btn-bg: #0d9f46;
+  --bs-btn-border-color: #0cff2700;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #0052ce;
-  --bs-btn-hover-border-color: #004ec2;
+  --bs-btn-hover-bg: #129b41d4;
+  --bs-btn-hover-border-color: #939393;
   --bs-btn-focus-shadow-rgb: 38, 121, 244;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #004ec2;
-  --bs-btn-active-border-color: #0049b6;
+  --bs-btn-active-bg: #c6cad0;
+  --bs-btn-active-border-color: #34a415;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #022133;
-  --bs-btn-disabled-border-color: #022133;
+  --bs-btn-disabled-bg: #dde4e8;
+  --bs-btn-disabled-border-color: #f1f3f4;
 }
 
 .btn-secondary {
@@ -5273,7 +5277,7 @@ textarea.form-control-lg {
   --bs-card-cap-color: ;
   --bs-card-height: ;
   --bs-card-color: ;
-  --bs-card-bg: #fff;
+  
   --bs-card-img-overlay-padding: 1rem;
   --bs-card-group-margin: 0.75rem;
   position: relative;
@@ -5352,9 +5356,12 @@ textarea.form-control-lg {
   color: var(--bs-card-cap-color);
   background-color: var(--bs-card-cap-bg);
   border-top: var(--bs-card-border-width) solid var(--bs-card-border-color);
+  background-color: #282b30;
 }
 .card-footer:last-child {
   border-radius: 0 0 var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius);
+  position: relative;
+  bottom: 6px;
 }
 
 .card-header-tabs {
@@ -5443,30 +5450,7 @@ textarea.form-control-lg {
   }
 }
 
-.accordion {
-  --bs-accordion-color: #69707a;
-  --bs-accordion-bg: #fff;
-  --bs-accordion-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
-  --bs-accordion-border-color: var(--bs-border-color);
-  --bs-accordion-border-width: 1px;
-  --bs-accordion-border-radius: 0.35rem;
-  --bs-accordion-inner-border-radius: calc(0.35rem - 1px);
-  --bs-accordion-btn-padding-x: 1.25rem;
-  --bs-accordion-btn-padding-y: 1rem;
-  --bs-accordion-btn-color: #69707a;
-  --bs-accordion-btn-bg: var(--bs-accordion-bg);
-  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2369707a'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-  --bs-accordion-btn-icon-width: 1.25rem;
-  --bs-accordion-btn-icon-transform: rotate(-180deg);
-  --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
-  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230057da'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-  --bs-accordion-btn-focus-border-color: transparent;
-  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(0, 97, 242, 0.25);
-  --bs-accordion-body-padding-x: 1.25rem;
-  --bs-accordion-body-padding-y: 1rem;
-  --bs-accordion-active-color: #0057da;
-  --bs-accordion-active-bg: #e6effe;
-}
+
 
 .accordion-button {
   position: relative;
@@ -6981,11 +6965,15 @@ textarea.form-control-lg {
 .toast-header .btn-close {
   margin-right: calc(-0.5 * var(--bs-toast-padding-x));
   margin-left: var(--bs-toast-padding-x);
+  position: relative;
+  left: 180px;
 }
 
 .toast-body {
   padding: var(--bs-toast-padding-x);
   word-wrap: break-word;
+  
+
 }
 
 .modal {
@@ -10221,6 +10209,21 @@ textarea.form-control-lg {
 
 .p-5 {
   padding: 2.5rem !important;
+  background-color: #282b30;
+}
+.question-icon.question {
+  font-size: 2.8em; /* Rend l'icône un peu plus grande */
+  margin-left: 5px; /* Déplace l'icône de 1 cm vers la gauche */
+  cursor: pointer;
+  transition: color 0.2s; /* Ajoute une transition pour un effet fluide */
+  position: relative;
+  right: 10px;
+  top: 2.5px;
+  color: grey;
+}
+
+.question-icon.question:hover {
+  color: white; /* Change la couleur de l'icône au survol */
 }
 
 .p-10 {
@@ -10254,13 +10257,18 @@ textarea.form-control-lg {
 .px-4 {
   padding-right: 1.5rem !important;
   padding-left: 1.5rem !important;
+  background-color: #282b30;
 }
 
 .px-5 {
   padding-right: 2.5rem !important;
   padding-left: 2.5rem !important;
 }
-
+.px-6 {
+  padding-right: 1.5rem !important;
+  padding-left: 1.5rem !important;
+  background-color: #282b30;
+}
 .px-10 {
   padding-right: 6rem !important;
   padding-left: 6rem !important;
@@ -10299,6 +10307,14 @@ textarea.form-control-lg {
 .py-5 {
   padding-top: 2.5rem !important;
   padding-bottom: 2.5rem !important;
+  background-color: #282b30;
+  border-radius: 8px;
+}
+.py-6 {
+  padding-top: 2.5rem !important;
+  padding-bottom: 2.5rem !important;
+  background-color: #282b30;
+  border-radius: 8px;
 }
 
 .py-10 {
@@ -10600,7 +10616,7 @@ textarea.form-control-lg {
 /* rtl:end:remove */
 .text-primary {
   --bs-text-opacity: 1;
-  color: #022133;
+  color: #f4f8fb;
 }
 
 .text-secondary {
@@ -11136,9 +11152,733 @@ textarea.form-control-lg {
   .d-sm-inline {
     display: inline !important;
   }
+  #m-1163060365484118078 {
+  margin-left: 15px !important;
+}
   .d-sm-inline-block {
     display: inline-block !important;
   }
+  .maj{
+    position: relative;
+    left: 60px;
+  }
+   .hide {
+  display: none;
+}
+
+ .discord {
+  max-width: 710px;
+  margin: 2em auto;
+  padding-bottom: 1.286em;
+  font-family: "Whitney", "Helvetica Neue", "Lucida Grande", "Lucida Sans Unicode", "GNU Unifont", Verdana, Helvetica, Arial, sans-serif;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 0 8px #aaaa;
+   font-size: 14px;
+}
+
+ .darkmode {
+  background: #36393f;
+  color: #dcddde;
+}
+
+ .discord > div.message,
+ .discord > div.system {
+  margin: 17px 0;
+  padding: .125em 16px;
+  display: grid;
+  grid-template-columns: 2.7em 1fr;
+  column-gap: 16px;
+}
+
+ .discord > div.message p,
+ .discord > div.system p {
+  width: 100%;
+  margin: 0;
+}
+
+ .darkmode > div.message:hover,
+ .darkmode > div.system:hover {
+  background-color: rgba(4, 4, 5, 0.07);
+}
+
+ .discord > div p:first-child > img {
+  width: 2.7em;
+  height: 2.7em;
+  border-radius: 100%;
+  margin-top: 2px;
+}
+
+ .discord > .message > p:not(:first-child) img.large {
+  width: 400px;
+}
+
+ .discord .name {
+  cursor: pointer;
+}
+
+ .discord .name: hover {
+  text-decoration: underline;
+}
+
+ .discord .highlight {
+  background-color: dodgerblue;
+   font-weight:900;
+}
+.discord .link {
+  color: skyblue;
+  
+  padding-top: 2px;
+  padding-bottom: 3rem;
+}
+
+.discord .mention {
+  text-decoration: underline;
+}
+
+.discord .embed-text {
+  margin-top: 5.5rem;
+  font-size: 0.55rem;
+}
+
+.discord .embed-text2 {
+  margin-top: 0.5rem;
+  padding-bottom: 5rem;
+}
+
+.discord .embed-title {
+  margin-top: 0.5rem;
+  font-weight: 1;
+}
+
+ .discord .reaction {
+   padding: 0.125rem 0.375rem;
+  border-radius: 0.4rem;
+   margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+  border: 1px solid transparent;
+  height: 1.625rem;
+}
+
+ 
+
+.discord .reaction-count {
+  display: inline-flex;
+  font-size: 0.775rem;
+  min-width: 0.5625rem;
+  padding-left: 0.075rem;
+  padding-right: 0.5rem;
+}
+
+
+ .darkmode .system {
+  color: #8e9297;
+}
+
+.discord .embed {
+  display: block;
+  margin: ;
+  padding: ;
+  border-left: 0.25rem solid rgb(255, 0, 0);
+  border-radius: 0.25rem;
+  max-width: 432px;
+}
+
+.discord .embed-title {
+  margin-top: 0.9rem;
+  font-weight: 600;
+}
+
+.discord .emoji {
+   padding: .125rem  0.125rem 3.5rem;
+}
+
+.discord .special-image {
+ 
+  width: 1.6rem;
+  height: 1.6rem;
+  min-height: 1rem;
+}
+
+.discord .embed-image {
+  margin-top: 0rem;
+  border-radius: 0.15rem;
+} 
+
+ .discord .system::before {
+  content: "";
+  height: 16px;
+  width: 2.7em;
+  text-align: center;
+  display: block;
+  background: transparent no-repeat center;
+  background-size: 16px 16px;
+  margin-top: 4px;
+}
+
+ .discord .system.welcome::before {
+  background-image: url("https://i.imgur.com/4lneHce.png");
+}
+
+ .discord .system.pin::before {
+  background-image: url("https://i.imgur.com/SdqqXPO.png");
+}
+
+ .darkmode .name,
+ .darkmode .channel .channelname {
+  color: #fff;
+  font-weight: 600;
+   font-size: 14px;
+}
+
+ .darkmode .hash,
+ .darkmode > div:last-child .placeholder,
+ .darkmode .timestamp {
+  color: #72767d;
+}
+
+
+ .discord .channel > p {
+  padding: 6px 12px;
+  display: grid;
+  grid-template-columns: 24px auto 1fr auto;
+  margin: -3px 0 3px;
+}
+
+ .discord .channel *,
+ .discord .channel *::after {
+  margin: auto 0;
+}
+
+ .discord .hash {
+  font-size: 1.6em;
+  font-weight: normal;
+  text-align: center;
+}
+
+ .discord .channel .channelname {
+  font-size: 1.07em;
+  padding-left: 8px;
+}
+
+ .discord .channel .description {
+  font-size: 0.93em;
+  font-weight: 500;
+  margin-left: 8.25px;
+  padding: 0 8px;
+  border-left: solid thin;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
+ .discord .channel .description::after {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 2em;
+  position: absolute;
+  right: 2%;
+}
+
+ .darkmode .channel .description::after {
+  background: linear-gradient(90deg,rgba(54,57,63,0) 0,#36393f);
+}
+
+
+}
+
+ .darkmode .channel {
+  box-shadow: #2c2f33bd 0 2px 1px;
+}
+
+
+ .darkmode .channel > p {
+  color: #b9bbbe;
+}
+
+
+ .darkmode .channel .description {
+  border-left-color: #ffffff0f;
+}
+
+
+ .discord .channel > p::after {
+  grid-column: 4;
+  content: "";
+  height: 1.4em;
+  width: 6.7em;
+  background: transparent no-repeat center;
+  background-size: 6.7em auto;
+  margin-right: 10px;
+}
+
+ .darkmode .channel > p:not(.newpins)::after {
+  background-image: url(https://i.imgur.com/2Jo3bI3.png);
+}
+
+
+ .darkmode .channel > p.newpins::after {
+  background-image: url(https://i.imgur.com/GClC6WS.png);
+}
+
+
+ .discord .channeltop {
+  padding-left: 16px;
+  padding-right: 4.5%;
+}
+
+ .discord .channeltop h1:first-child::before {
+  content: '#';
+  display: block;
+  height: 1.41em;
+  width: 1.41em;
+  font-weight: 400;
+  font-size: 1.5em;
+  text-align: center;
+  line-height: 1.3;
+  border-radius: 100%;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+ .darkmode .channeltop h1::before {
+  background-color: #4f545c;
+}
+
+
+ .discord .channeltop h1 {
+  font-family: "Whitney", "Helvetica Neue", "Lucida Grande", "Lucida Sans Unicode", "GNU Unifont", Verdana, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 2.13em;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+ .darkmode .channeltop h1 {
+  color: #ffffff;
+}
+
+
+ .discord .channeltop p {
+  padding-bottom: 1em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  border-bottom: thin solid;
+}
+
+ .darkmode .channeltop p {
+  border-bottom-color: #ffffff0f;
+  color: #b9bbbe;
+}
+
+
+ .discord a {
+  border: none;
+  cursor: pointer;
+}
+
+ .discord a:not(.ping):hover {
+  text-decoration: underline;
+}
+
+ .discord a.ping,
+ .discord a.ping:link,
+ .discord a.ping:hover {
+  border-radius: 3px;
+  padding: 0 2px;
+  font-weight: 500;
+  transition-duration: .05s;
+}
+
+
+ .darkmode a.ping,
+ .darkmode a.ping:link {
+  color: #dee0fc;
+  background-color: rgba(88, 101, 242, 0.3);
+}
+
+ .darkmode a.ping:hover {
+  color: #fff;
+  background-color: #5865f2;
+}
+
+ .darkmode a,
+ .darkmode a:link,
+ .darkmode a:visited,
+ .darkmode a:hover,
+ .darkmode a:visited:hover {
+  color: #00b0f4;
+}
+
+ 
+
+ .discord .timestamp {
+  padding-left: 6px;
+  font-size: .75em;
+}
+
+ .discord .edited {
+  font-size: 0.625em;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+ .darkmode .edited {
+  color: #72767d;
+}
+
+ 
+
+ .discord .dateline {
+  margin: 1.5em 1em 0;
+  border-top: thin solid;
+}
+
+ .discord .dateline p {
+  padding: 2px 4px;
+  font-size: 0.8em;
+  margin: -1em auto -.75em;
+  font-weight: 600;
+  width: fit-content;
+}
+
+ .discord .dateline p {
+  width: -webkit-fit-content;
+}
+
+ .discord .dateline p {
+  width: -moz-fit-content;
+}
+
+ .darkmode .dateline {
+  border-top-color: #ffffff0f;
+}
+
+ .darkmode .dateline p {
+  color: #72767d;
+  background: #36393f;
+}
+
+ .discord > div:last-child {
+  margin: 0 2.5%;
+  padding: 11px;
+  border-radius: 8px;
+}
+
+ .darkmode > div:last-child {
+  background: #40444b;
+}
+
+
+ .discord > div:last-child > p {
+  margin: 0;
+  padding: 0;
+}
+
+ .discord > div:last-child .placeholder {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+ .discord > div:last-child > p.upload {
+  display: none;
+}
+
+ .discord > div:last-child > p:last-child {
+  display: grid;
+  grid-template-columns: 2em 1fr;
+  column-gap: 16px;
+}
+.gobu {
+  display: grid;
+  grid-template-columns: 2em 1fr;
+  column-gap: 16px;
+}
+
+ .discord > div:last-child > p:last-child::before {
+  content: '+';
+  font-size: 1.35em;
+  font-weight: 600;
+  text-align: center;
+  line-height: 0.725em;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 8px;
+  border-radius: 100%;
+}
+
+ .darkmode > div:last-child > p:last-child::before {
+  background: #b9bbbe;
+  color: #40444b;
+}
+
+
+ .discord .role1 {
+  color: rgb(26, 188, 156) !important;
+}
+
+ .discord .ping.role1 {
+  background-color: rgba(26, 188, 156, 0.1) !important;
+}
+
+ .discord .ping.role1:hover {
+  background-color: rgba(26, 188, 156, 0.3) !important;
+}
+
+ .discord .role2 {
+  color: rgb(179, 230, 230) !important;
+}
+
+ .discord .ping.role2 {
+  background-color: rgba(46, 204, 113, 0.1) !important;
+}
+
+ .discord .ping.role2:hover {
+  background-color: rgba(46, 204, 113, 0.3) !important;
+}
+
+ .discord .role3 {
+  color: rgb(52, 152, 219) !important;
+}
+
+ .discord .ping.role3 {
+  background-color: rgba(52, 152, 219, 0.1) !important;
+}
+
+ .discord .ping.role3:hover {
+  background-color: rgba(52, 152, 219, 0.3) !important;
+}
+
+ .discord .role4 {
+  color: rgb(155, 89, 182) !important;
+}
+
+ .discord .ping.role4 {
+  background-color: rgba(155, 89, 182, 0.1) !important;
+}
+
+ .discord .ping.role4:hover {
+  background-color: rgba(155, 89, 182, 0.3) !important;
+}
+
+ .discord .role5 {
+  color: rgb(233, 30, 99) !important;
+}
+
+ .discord .ping.role5 {
+  background-color: rgba(233, 30, 99, 0.1) !important;
+}
+
+ .discord .ping.role5:hover {
+  background-color: rgba(233, 30, 99, 0.3) !important;
+}
+
+ .discord .role6 {
+  color: rgb(241, 196, 15) !important;
+}
+
+ .discord .ping.role6 {
+  background-color: rgba(241, 196, 15, 0.1) !important;
+}
+
+ .discord .ping.role6:hover {
+  background-color: rgba(241, 196, 15, 0.3) !important;
+}
+
+ .discord .role7 {
+  color: rgb(230, 126, 34) !important;
+}
+
+ .discord .ping.role7 {
+  background-color: rgba(230, 126, 34, 0.1) !important;
+}
+
+ .discord .ping.role7:hover {
+  background-color: rgba(230, 126, 34, 0.3) !important;
+}
+
+ .discord .role8 {
+  color: rgb(231, 76, 60) !important;
+}
+
+ .discord .ping.role8 {
+  background-color: rgba(231, 76, 60, 0.1) !important;
+}
+
+ .discord .ping.role8:hover {
+  background-color: rgba(231, 76, 60, 0.3) !important;
+}
+
+ .discord .role9 {
+  color: rgb(149, 165, 166) !important;
+}
+
+ .discord .ping.role9 {
+  background-color: rgba(149, 165, 166, 0.1) !important;
+}
+
+ .discord .ping.role9:hover {
+  background-color: rgba(149, 165, 166, 0.3) !important;
+}
+
+ .discord .role10 {
+  color: rgb(96, 125, 139) !important;
+}
+
+.discord .role11 {
+  color: rgb(99, 165, 39) !important;
+}
+
+.discord .role12 {
+  color: rgb(207, 132, 150) !important;
+}
+ .discord .ping.role10 {
+  background-color: rgba(96, 125, 139, 0.1) !important;
+}
+
+ .discord .ping.role10:hover {
+  background-color: rgba(96, 125, 139, 0.3) !important;
+}
+
+ .discord .role1a {
+  color: rgb(17, 144, 106) !important;
+}
+
+ .discord .ping.role1a {
+  background-color: rgba(17, 144, 106, 0.1) !important;
+}
+
+ .discord .ping.role1a:hover {
+  background-color: rgba(17, 144, 106, 0.3) !important;
+}
+
+ .discord .role2a {
+  color: rgb(31, 139, 76) !important;
+}
+
+ .discord .ping.role2a {
+  background-color: rgba(31, 139, 76, 0.1) !important;
+}
+
+ .discord .ping.role2a:hover {
+  background-color: rgba(31, 139, 76, 0.3) !important;
+}
+
+ .discord .role3a {
+  color: rgb(32, 102, 148) !important;
+}
+
+ .discord .ping.role3a {
+  background-color: rgba(32, 102, 148, 0.1) !important;
+}
+
+ .discord .ping.role3a:hover {
+  background-color: rgba(32, 102, 148, 0.3) !important;
+}
+
+ .discord .role4a {
+  color: rgb(113, 54, 138) !important;
+}
+
+ .discord .ping.role4a {
+  background-color: rgba(113, 54, 138, 0.1) !important;
+}
+
+ .discord .ping.role4a:hover {
+  background-color: rgba(113, 54, 138, 0.3) !important;
+}
+
+ .discord .role5a {
+  color: rgb(173, 20, 87) !important;
+}
+
+ .discord .ping.role5a {
+  background-color: rgba(173, 20, 87, 0.1) !important;
+}
+
+ .discord .ping.role5a:hover {
+  background-color: rgba(173, 20, 87, 0.3) !important;
+}
+
+ .discord .role6a {
+  color: rgb(194, 124, 14) !important;
+}
+
+ .discord .ping.role6a {
+  background-color: rgba(194, 124, 14, 0.1) !important;
+}
+
+ .discord .ping.role6a:hover {
+  background-color: rgba(194, 124, 14, 0.3) !important;
+}
+
+ .discord .role7a {
+  color: rgb(168, 67, 0) !important;
+}
+
+ .discord .ping.role7a {
+  background-color: rgba(168, 67, 0, 0.1) !important;
+}
+
+ .discord .ping.role7a:hover {
+  background-color: rgba(168, 67, 0, 0.3) !important;
+}
+
+ .discord .role8a {
+  color: rgb(153, 45, 34) !important;
+}
+
+ .discord .ping.role8a {
+  background-color: rgba(153, 45, 34, 0.1) !important;
+}
+
+ .discord .ping.role8a:hover {
+  background-color: rgba(153, 45, 34, 0.3) !important;
+}
+
+ .discord .role9a {
+  color: rgb(151, 156, 159) !important;
+}
+
+ .discord .ping.role9a {
+  background-color: rgba(151, 156, 159, 0.1) !important;
+}
+
+ .discord .ping.role9a:hover {
+  background-color: rgba(151, 156, 159, 0.3) !important;
+}
+
+ .discord .role10a {
+  color: rgb(84, 110, 122) !important;
+}
+
+ .discord .ping.role10a {
+  background-color: rgba(84, 110, 122, 0.1) !important;
+}
+
+ .discord .ping.role10a:hover {
+  background-color: rgba(84, 110, 122, 0.3) !important;
+}
+
+ .discord .YOUR_ROLE_HERE {
+  color: rgb(255, 255, 255);
+}
+
+ .discord .ping.YOUR_ROLE_HERE {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+ .discord .ping.YOUR_ROLE_HERE:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+
+   
+ 
+ 
   .d-sm-block {
     display: block !important;
   }
@@ -15123,8 +15863,9 @@ body {
 }
 
 .bg-gradient-primary {
-  background-color: #022133 !important;
+  background-color: #282b30 !important;
 }
+
 
 .bg-transparent-light {
   color: rgba(255, 255, 255, 0.5) !important;
@@ -16203,7 +16944,11 @@ body {
 .card.lift {
   text-decoration: none;
   color: inherit;
+  border-radius: 8px;
+  position: relative;
+  top: 0px;
 }
+
 
 .o-visible {
   overflow: visible !important;
@@ -16445,9 +17190,12 @@ body {
 }
 
 .alert-primary.alert-solid {
-  --bs-alert-color: #fff;
-  --bs-alert-bg: #022133;
+   --bs-alert-color: #fff;
+  --bs-alert-bg: #7289da;
   --bs-alert-border-color: #022133;
+  z-index: 1;
+   position: relative;
+  bottom: -80px;
 }
 .alert-primary.alert-solid .alert-link {
   color: #cccccc;
@@ -16900,6 +17648,7 @@ body {
   margin-top: -1px;
   height: 0.875rem;
   width: 0.875rem;
+  color: white;
 }
 
 .btn-lg .feather, .btn-group-lg > .btn .feather {
@@ -17068,6 +17817,9 @@ body {
 
 .card {
   box-shadow: 0 0.15rem 1.75rem 0 rgba(33, 40, 50, 0.15);
+  position: relative;
+  top: -35px;
+  right: 1;
 }
 .card .card-header {
   font-weight: 500;
@@ -18109,6 +18861,7 @@ body {
 }
 .nav-fixed .topnav {
   z-index: 1039;
+  background-color: #36393e;
 }
 .nav-fixed #layoutSidenav #layoutSidenav_nav {
   width: 15rem;
@@ -18168,6 +18921,7 @@ body {
 .nav-fixed #layoutSidenav #layoutSidenav_content {
   padding-left: 15rem;
   top: 3.625rem;
+  background-color: #424549;
 }
 
 .layout-rtl #layoutSidenav #layoutSidenav_nav {
@@ -18380,6 +19134,7 @@ body {
 }
 .dropdown-user .dropdown-menu .dropdown-item .dropdown-item-icon svg {
   vertical-align: inherit;
+  color: red;
 }
 .dropdown-user .dropdown-menu .dropdown-item:active .dropdown-item-icon {
   color: #fff;
@@ -18395,6 +19150,7 @@ body {
 }
 .footer-admin.footer-light {
   color: #a7aeb8;
+  background-color: #424549;
 }
 
 .nav .nav-link .nav-link-icon,
@@ -18455,6 +19211,7 @@ body {
   height: 3.625rem;
   z-index: 1039;
   font-size: 0.9rem;
+  background-color: #142c3e;
 }
 .topnav .navbar-brand {
   width: 15rem;
@@ -18480,7 +19237,7 @@ body {
   color: #212832;
 }
 .topnav.navbar-light .navbar-brand {
-  color: #363d47;
+  color: #e8ebf0;
 }
 .topnav .dropdown {
   position: static;
@@ -18541,6 +19298,7 @@ body {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  background-color: #36393e;
 }
 .sidenav .sidenav-menu .nav .nav-link {
   display: flex;
@@ -18549,6 +19307,8 @@ body {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   position: relative;
+
+  background-color: #36393e;
 }
 .sidenav .sidenav-menu .nav .nav-link .nav-link-icon {
   font-size: 0.9rem;
@@ -18589,10 +19349,13 @@ body {
   align-items: center;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  height: 5rem;
+  height: 7rem; /* Réduire la hauteur de 2 pixels */
+}
+
 }
 .sidenav .sidenav-footer .sidenav-footer-content {
   font-size: 0.9rem;
+  color: white;
 }
 .sidenav .sidenav-footer .sidenav-footer-content .sidenav-footer-subtitle {
   font-size: 0.75rem;
@@ -18638,10 +19401,10 @@ body {
   color: #212832;
 }
 .sidenav-light .sidenav-menu .sidenav-menu-heading {
-  color: #a7aeb8;
+  color: #fff;
 }
 .sidenav-light .sidenav-menu .nav-link {
-  color: #212832;
+  color: #b2b2b2;
 }
 .sidenav-light .sidenav-menu .nav-link .nav-link-icon {
   color: #a7aeb8;
@@ -18650,19 +19413,19 @@ body {
   color: #a7aeb8;
 }
 .sidenav-light .sidenav-menu .nav-link:hover {
-  color: #022133;
+  color: #fff;
 }
 .sidenav-light .sidenav-menu .nav-link.active {
-  color: #022133;
+  color: #fff;
 }
 .sidenav-light .sidenav-menu .nav-link.active .nav-link-icon {
-  color: #022133;
+  color: #fff;
 }
 .sidenav-light .sidenav-menu-nested {
   border-left-color: #d4dae3;
 }
 .sidenav-light .sidenav-footer {
-  background-color: rgba(33, 40, 50, 0.05);
+  background-color: #36393e;
 }
 .sidenav-light .sidenav-footer .sidenav-footer-subtitle {
   color: #69707a;
@@ -18961,18 +19724,18 @@ body {
   --litepicker-month-weekday-color: #69707a;
   --litepicker-month-week-number-color: #69707a;
   --litepicker-day-width: 34px;
-  --litepicker-day-color: #363d47;
-  --litepicker-day-color-hover: #022133;
+  --litepicker-day-color: #f2f4f7;
+  --litepicker-day-color-hover: #dadfe1;
   --litepicker-is-today-color: #69707a;
-  --litepicker-is-in-range-color: rgba(0, 97, 242, 0.15);
+  --litepicker-is-in-range-color: rgba(255, 255, 255, 0.15);
   --litepicker-is-start-color: #fff;
-  --litepicker-is-start-color-bg: #022133;
+  --litepicker-is-start-color-bg: #edeff0;
   --litepicker-is-end-color: #fff;
-  --litepicker-is-end-color-bg: #022133;
-  --litepicker-button-apply-color-bg: #022133;
-  --litepicker-button-reset-color-hover: #022133;
-  --litepicker-highlighted-day-color: #363d47;
-  --litepicker-highlighted-day-color-bg: rgba(0, 97, 242, 0.15);
+  --litepicker-is-end-color-bg: #fdfeff;
+  --litepicker-button-apply-color-bg: #d8dee1;
+  --litepicker-button-reset-color-hover: #ecf1f4;
+  --litepicker-highlighted-day-color: #e6e8ea;
+  --litepicker-highlighted-day-color-bg: rgba(253, 254, 255, 0.15);
 }
 
 .show-week-numbers {
@@ -19549,6 +20312,20 @@ pre[class*=language-] {
 .token.operator {
   color: #89ddff;
 }
+.ma-classe {
+  font-size: 2.7em; /* Taille de l'icône */
+  color: gray; /* Couleur de l'icône par défaut */
+  margin-left: 5px; /* Marge à gauche */
+  transition: color 0.3s; /* Transition pour l'effet de changement de couleur au survol */
+  position: relative;
+  right: 7px;
+  top: 3px;
+}
+
+.ma-classe:hover {
+  color: white; /* Couleur de l'icône au survol */
+}
+
 
 .token.prolog {
   color: #616161;

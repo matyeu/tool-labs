@@ -32,6 +32,7 @@ const Server = model(
             suspect: String,
             invite: String,
             member: String,
+            logs: String
         },
         maintenance: {
             state: Boolean,
@@ -75,7 +76,7 @@ const Server = model(
 export const def = {
     serverId: "",
     prefix: "!",
-    administrators: "916444775861850175",
+    administrators: "219593025817411585",
     category: {
         challenge: "",
     },
@@ -97,7 +98,8 @@ export const def = {
     roles: {
         suspect: "",
         invite: "",
-        member: ""
+        member: "",
+        logs: "",
     },
     maintenance: {
         state: false,

@@ -7,18 +7,15 @@
     <div id="layoutSidenav_content">
         <main>
             <header class="page-header page-header-dark bg-gradient-primary mb-4">
-                <div class="container-xl px-4">
+                <div class="container-xl px-6">
                     <div class="page-header-content pt-4">
                         <div class="row align-items-center justify-content-between">
                             <div class="col-auto mt-4">
-                                <h1 class="page-header-title">
-                                    <div class="page-header-icon"><i class="fa fa-shop"></i></div>
+                                <h5 class="page-header-title">
+                                    <div class="page-header-icon"><i class="fa fa-book"></i></div>
                                     Boutique Ebooks
-                                </h1>
-                                <div class="page-header-subtitle">Lorem ipsum dolor sit amet consectetur adipisicing
-                                    elit. Earum est unde autem ullam exercitationem delectus deleniti inventore,
-                                    necessitatibus quasi obcaecati deserunt perspiciatis nostrum totam accusantium aut
-                                    illum aliquid. Quo, reiciendis.</div>
+                                </h5>
+                                <div class="page-header-subtitle">Vous trouverez ici tous les e-books !<br>Les e-books payant sont obligatoirement traduis en français.</div>
                             </div>
                         </div>
                     </div>
@@ -31,7 +28,7 @@
                     <div class="col-lg-4 mb-4">
                         <!-- Knowledge base category card 1-->
                         <a class="card lift lift-sm h-100" href="#">
-                            <div class="card-body py-5">
+                            <div class="card-body py-6">
                                 <h5 class="card-title text-primary mb-2">
                                     <%= item.name %>
                                 </h5>
@@ -64,36 +61,44 @@
 
 
                         <!-- Toast container -->
-                        <div style="position: absolute; bottom: 1rem; left: 70rem;">
+                        <div style="position: absolute; bottom: 3rem; left: 70rem;">
                             <!-- Toast -->
                             <div class="toast" id="toastSuccess" role="alert" aria-live="assertive" aria-atomic="true"
                                 data-bs-delay="3000">
                                 <div class="toast-header text-success">
                                     <i data-feather="bell"></i>
                                     <strong class="mr-auto">Merci pour votre achat !</strong>
-                                    <button class="ml-2 mb-1 btn-close" type="button" data-bs-dismiss="toast"
-                                        aria-label="Close"></button>
+                                    <button class="ml-2 mb-1 btn-close" type="button" data-bs-dismiss="toast" aria-label="Close" style="margin-left: 8px;"></button>
                                 </div>
                                 <div class="toast-body">Regarde tes messages privés pour récupérés ton produit.</div>
                             </div>
                         </div>
 
                         <!-- Toast container -->
-                        <div style="position: absolute; bottom: 1rem; left: 70rem;">
+                        <div style="position: absolute; bottom: 3rem; left: 70rem;">
                             <!-- Toast -->
                             <div class="toast" id="toastError" role="alert" aria-live="assertive" aria-atomic="true"
-                                data-bs-delay="3000">
+                                data-bs-delay="10000">
                                 <div class="toast-header text-danger">
                                     <i data-feather="bell"></i>
-                                    <strong class="mr-auto">Achat refusé !</strong>
-                                    <button class="ml-2 mb-1 btn-close" type="button" data-bs-dismiss="toast"
-                                        aria-label="Close"></button>
+                                    <strong class="mr-auto">  Achat refusé !</strong>
+                                    <button class="ml-2 mb-1 btn-close" type="button" data-bs-dismiss="toast" aria-label="Close" style="margin-left: 8px;"></button>
+
+
                                 </div>
-                                <div class="toast-body">Il vous manque NaN
+                                <div class="toast-body">Il vous manque quelques
                                     points pour acheter ce produit.</div>
                             </div>
                         </div>
-
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('toastSuccessId').addEventListener('click', function() {
+      setTimeout(function() {
+        location.reload();
+      }, 2000); 
+    });
+  });
+</script>
         </main>
 
         <%- include('../includes/footer'); %>
