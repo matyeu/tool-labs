@@ -14,6 +14,9 @@ const MemoryStore = require("memorystore")(session);
 const infosSite = require('../infos-site');
 const bodyParser = require('body-parser');
 
+const https = require('https');
+const fs = require('fs');
+
 
 const Logger = require("../Library/logger");
 
@@ -24,6 +27,18 @@ module.exports = (client: ToolClient) => {
     const templatesDirectory = path.resolve(`${dashboardDirectory}${path.sep}Templates`)
 
     dashboard.use("/Public", express.static(path.resolve(`${dashboardDirectory}${path.sep}Public`)))
+
+    const privateKey = fs.readFileSync('chemin/vers/votre/clé-privée.pem', 'utf8');
+    const certificate = fs.readFileSync('chemin/vers/votre/certificat.pem', 'utf8');
+    const credentials = { key: privateKey, cert: certificate };
+
+    const httpsServer = https.createServer(credentials, express);
+
+    const port = 443
+
+    httpsServer.listen(port, () => {
+    console.log(`Serveur HTTPS écoutant sur le port ${port}`);
+});
 
     passport.serializeUser((user: any, done: any) => {
         done(null, user);
