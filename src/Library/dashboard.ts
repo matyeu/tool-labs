@@ -32,13 +32,7 @@ module.exports = (client: ToolClient) => {
     const certificate = fs.readFileSync('chemin/vers/votre/certificat.pem', 'utf8');
     const credentials = { key: privateKey, cert: certificate };
 
-    const httpsServer = https.createServer(credentials, express);
-
-    const port = 443
-
-    httpsServer.listen(port, () => {
-    console.log(`Serveur HTTPS écoutant sur le port ${port}`);
-});
+    const httpsServer = https.createServer(credentials, dashboard);
 
     passport.serializeUser((user: any, done: any) => {
         done(null, user);
@@ -259,7 +253,7 @@ dashboard.post('/api/update/server/buyer', async (req: any, res: any) => {
 
 
 
-    client.site = dashboard.listen(process.env.PORT);
+    client.site = httpsServer.listen(process.env.PORT);
     Logger.client(`Dashboard on: http://${process.env.DOMAIN}:${process.env.PORT}`)
 
 
