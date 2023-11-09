@@ -15,17 +15,22 @@ export async function slash(client: ToolClient, interaction: CommandInteraction)
 
     const embed = new EmbedBuilder()
     .setColor(EMBED_INFO)
+    .setFooter({
+  text: 'Pourquoi ne pas dépenser vos jetons ?',
+})
+    .setThumbnail("https://tool-labs.com/port3.png")
     .setDescription( `**${member.id === interaction.user.id ? "Vous possédez" : `${member.displayName}`} actuellement \`${memberConfig.shop.amount}\`  point${memberConfig.shop.amount > 1 ? "s" : ""}**`);
 
     const button = new ActionRowBuilder<ButtonBuilder>()
     .addComponents(
         new ButtonBuilder()
-            .setLabel("Accéder au dashboard")
+            .setLabel("Accéder à la boutique")
             .setURL(LINK_DASHBOARD)
             .setStyle(ButtonStyle.Link)
     );
 
-   return interaction.reply({embeds: [embed], components: [button]});
+   return interaction.reply({embeds: [embed], components: [button], ephemeral: true});
+
 
 }
 
@@ -41,12 +46,16 @@ export async function command(client: ToolClient, message: Message, args: any) {
 
     const embed = new EmbedBuilder()
     .setColor(EMBED_INFO)
-    .setDescription( `**${member.id === message.author.id ? "Vous possédez" : `${member.displayName}`} actuellement \`${memberConfig.shop.amount}\`  point${memberConfig.shop.amount > 1 ? "s" : ""}**`);
-
+    .setFooter({
+  text: 'Pourquoi ne pas dépenser vos jetons ?',
+})
+    .setThumbnail("https://tool-labs.com/port3.png")
+    .setDescription( `**${member.id === message.author.id ? "Vous possédez" : `${member.displayName}`} actuellement \`${memberConfig.shop.amount}\`  pièces${memberConfig.shop.amount > 1 ? "s" : ""}**`);
+    
     const button = new ActionRowBuilder<ButtonBuilder>()
     .addComponents(
         new ButtonBuilder()
-            .setLabel("Accéder au dashboard")
+            .setLabel("Accéder à la boutique")
             .setURL(LINK_DASHBOARD)
             .setStyle(ButtonStyle.Link)
     );
@@ -60,13 +69,6 @@ export const cmd = {
         description: "Voir le solde d'un membre",
         category: "General",
         permissions: ["SendMessages"],
-        options: [
-            {
-                name: "utilisateur",
-                description: "Pour qui souhaitez-vous voir le solde ?",
-                type: ApplicationCommandOptionType.User
-            }
-        ]
+        
     }
 }
-

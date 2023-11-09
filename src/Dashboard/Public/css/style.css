@@ -227,6 +227,7 @@ address {
   line-height: inherit;
 }
 
+
 ol,
 ul {
   padding-left: 2rem;
@@ -5362,6 +5363,7 @@ textarea.form-control-lg {
   border-radius: 0 0 var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius);
   position: relative;
   bottom: 6px;
+  margin-right: 15px;
 }
 
 .card-header-tabs {
@@ -10309,12 +10311,15 @@ textarea.form-control-lg {
   padding-bottom: 2.5rem !important;
   background-color: #282b30;
   border-radius: 8px;
+  margin-right: 15px;
 }
 .py-6 {
-  padding-top: 2.5rem !important;
+    padding-top: 2.5rem !important;
   padding-bottom: 2.5rem !important;
   background-color: #282b30;
   border-radius: 8px;
+  margin-right: 15px;
+  
 }
 
 .py-10 {
@@ -19397,11 +19402,12 @@ body {
 }
 
 .sidenav-light {
-  background-color: #fff;
+  background-color: #36393e;
   color: #212832;
 }
 .sidenav-light .sidenav-menu .sidenav-menu-heading {
   color: #fff;
+
 }
 .sidenav-light .sidenav-menu .nav-link {
   color: #b2b2b2;
@@ -19414,6 +19420,7 @@ body {
 }
 .sidenav-light .sidenav-menu .nav-link:hover {
   color: #fff;
+  
 }
 .sidenav-light .sidenav-menu .nav-link.active {
   color: #fff;

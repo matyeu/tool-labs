@@ -28,8 +28,8 @@ module.exports = (client: ToolClient) => {
 
     dashboard.use("/Public", express.static(path.resolve(`${dashboardDirectory}${path.sep}Public`)))
 
-    const privateKey = fs.readFileSync('chemin/vers/votre/clé-privée.pem', 'utf8');
-    const certificate = fs.readFileSync('chemin/vers/votre/certificat.pem', 'utf8');
+    const privateKey = fs.readFileSync('/etc/letsencrypt/live/discord.tool-labs.com/privkey.pem', 'utf8');
+    const certificate = fs.readFileSync('/etc/letsencrypt/live/discord.tool-labs.com/cert.pem', 'utf8');
     const credentials = { key: privateKey, cert: certificate };
 
     const httpsServer = https.createServer(credentials, dashboard);
