@@ -23,7 +23,8 @@
             </header>
             <hr class="mt-2 mb-4" />
             <div style="margin-left: 1rem" class="row">
-                <% const shopAccounts=serverConfig.shop.accounts; shopAccounts.forEach(item=> { %>
+                <% const shopAccounts=serverConfig.shop.accounts; shopAccounts.forEach(item=> { 
+                    %>
                     <div class="col-lg-4 mb-4">
                         <!-- Knowledge base category card 1-->
                         <a class="card lift lift-sm h-100" href="#">
@@ -38,12 +39,12 @@
                             </div>
                             <div class="card-footer">
                                 <div class="small text-muted">
-                                    <% if (memberConfig.shop.amount>= item.amount) { %>
-                                        <center><button class="btn btn-primary" type="button" id="toastSuccessId"
-                                                name="<%= item.name %>">Acheter ce produit pour : <%= item.amount %>
+                                    <% if (memberConfig.shop.amount >= item.amount) { 
+                                        %>
+                                        <center><button class="btn btn-primary toastTrigger" type="button" data-toast-id="toastSuccess_<%= item.name %>" id="toastSuccessId_<%= item.name %>">Acheter ce produit pour : <%= item.amount %>
                                             </button>
                                             <% } else {%>
-                                                <center><button class="btn btn-primary" type="button" id="toastErrorId">Acheter ce produit
+                                                <center><button class="btn btn-primary toastTrigger" type="button" data-toast-id="toastError_<%= item.name %>" id="toastErrorId_<%= item.name %>">Acheter ce produit
                                                         pour : <%= item.amount %>
                                                     </button>
                                                     <% }%>
@@ -54,14 +55,12 @@
                             </div>
                         </a>
                     </div>
-                    <% }); %>
 
-
-                        <!-- Toast container -->
+                     <!-- Toast container -->
                          <!-- Toast container -->
-                        <div style="position: absolute; bottom: 3rem; left: 70rem;">
+                         <div style="position: absolute; bottom: 3rem; left: 70rem;">
                             <!-- Toast -->
-                            <div class="toast" id="toastSuccess" role="alert" aria-live="assertive" aria-atomic="true"
+                            <div class="toast" id="toastSucces<%= item.name %>" role="alert" aria-live="assertive" aria-atomic="true"
                                 data-bs-delay="3000">
                                 <div class="toast-header text-success">
                                     <i data-feather="bell"></i>
@@ -75,7 +74,7 @@
                         <!-- Toast container -->
                         <div style="position: absolute; bottom: 3rem; left: 70rem;">
                             <!-- Toast -->
-                            <div class="toast" id="toastError" role="alert" aria-live="assertive" aria-atomic="true"
+                            <div class="toast" id="toastError_<%= item.name %>" role="alert" aria-live="assertive" aria-atomic="true"
                                 data-bs-delay="10000">
                                 <div class="toast-header text-danger">
                                     <i data-feather="bell"></i>
@@ -88,6 +87,9 @@
                                     points pour acheter ce produit.</div>
                             </div>
                         </div>
+
+                    <% }); %>
+
 
         </main>
 

@@ -28,11 +28,18 @@ module.exports = (client: ToolClient) => {
 
     dashboard.use("/Public", express.static(path.resolve(`${dashboardDirectory}${path.sep}Public`)))
 
+    let server: any;
+    let port = 3030;
+
+    if (process.env.MODE !== "development") {
+    console.log('test')
     const privateKey = fs.readFileSync('/etc/letsencrypt/live/discord.tool-labs.com/privkey.pem', 'utf8');
     const certificate = fs.readFileSync('/etc/letsencrypt/live/discord.tool-labs.com/cert.pem', 'utf8');
     const credentials = { key: privateKey, cert: certificate };
 
-    const httpsServer = https.createServer(credentials, dashboard);
+    server = https.createServer(credentials, dashboard);
+    port = 443
+    }
 
     passport.serializeUser((user: any, done: any) => {
         done(null, user);
@@ -160,6 +167,43 @@ dashboard.post('/api/update/server/buyer', async (req: any, res: any) => {
           res.status(500).json({ error: 'Erreur lors de la mise à jour' });
         }
       });
+
+      dashboard.post('/api/update/accounts', async (req: any, res: any) => {
+        try {
+            const data = req.body;
+            const serverConfig: any = await findServer(SERVER_DEV);
+              serverConfig.shop.accounts[data.product].buyer = data.buyer
+            editServer(SERVER_DEV, serverConfig);  
+        } catch (error) {
+          console.error('Erreur lors de la mise à jour :', error);
+          res.status(500).json({ error: 'Erreur lors de la mise à jour' });
+        }
+      });
+
+      dashboard.post('/api/update/logs', async (req: any, res: any) => {
+        try {
+            const data = req.body;
+            const serverConfig: any = await findServer(SERVER_DEV);
+              serverConfig.shop.logs[data.product].buyer = data.buyer
+            editServer(SERVER_DEV, serverConfig);  
+        } catch (error) {
+          console.error('Erreur lors de la mise à jour :', error);
+          res.status(500).json({ error: 'Erreur lors de la mise à jour' });
+        }
+      });
+
+      dashboard.post('/api/update/divers', async (req: any, res: any) => {
+        try {
+            const data = req.body;
+            const serverConfig: any = await findServer(SERVER_DEV);
+              serverConfig.shop.divers[data.product].buyer = data.buyer
+            editServer(SERVER_DEV, serverConfig);  
+        } catch (error) {
+          console.error('Erreur lors de la mise à jour :', error);
+          res.status(500).json({ error: 'Erreur lors de la mise à jour' });
+        }
+      });
+
     dashboard.get("/callback", passport.authenticate("discord"), async (req: any, res: any) => {
         for (const guild of client.guilds.cache.map(guild => guild)) {
             if (guild.id !== SERVER_LIVE && guild.id !== SERVER_DEV) continue;
@@ -253,8 +297,8 @@ dashboard.post('/api/update/server/buyer', async (req: any, res: any) => {
 
 
 
-    client.site = httpsServer.listen(process.env.PORT);
-    Logger.client(`Dashboard on: http://${process.env.DOMAIN}:${process.env.PORT}`)
+    client.site = process.env.MODE === "development" ? dashboard.listen(port) : server(port);
+    Logger.client(`Dashboard on: http://${process.env.DOMAIN}:${port}`);
 
 
 }

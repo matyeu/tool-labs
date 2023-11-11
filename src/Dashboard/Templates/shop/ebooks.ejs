@@ -28,7 +28,7 @@
                     <div class="col-lg-4 mb-4">
                         <!-- Knowledge base category card 1-->
                         <a class="card lift lift-sm h-100" href="#">
-                            <div class="card-body py-6">
+                            <div class="card-body py-5">
                                 <h5 class="card-title text-primary mb-2">
                                     <%= item.name %>
                                 </h5>
@@ -39,30 +39,28 @@
                             </div>
                             <div class="card-footer">
                                 <div class="small text-muted">
-                                    <% if (memberConfig.shop.amount >= item.amount) {%>
-                                        <center><button class="btn btn-primary" type="button" name="<%= item.name %>" id="toastSuccessId">Acheter ce produit pour : <%= item.amount %>
+                                    <% if (memberConfig.shop.amount >= item.amount) { 
+                                        %>
+                                        <center><button class="btn btn-primary toastTrigger" type="button" data-toast-id="toastSuccess_<%= item.name %>" id="toastSuccessId_<%= item.name %>">Acheter ce produit pour : <%= item.amount %>
                                             </button>
-                                            <% } else {
-                                                console.log('test')%>
-                                                <center><button class="btn btn-primary" type="button" id="toastErrorId">Acheter ce produit
+                                            <% } else {%>
+                                                <center><button class="btn btn-primary toastTrigger" type="button" data-toast-id="toastError_<%= item.name %>" id="toastErrorId_<%= item.name %>">Acheter ce produit
                                                         pour : <%= item.amount %>
                                                     </button>
                                                     <% }%>
 
                                                         <br><br>
-                                                        
-                                                </center>
+                                                                                                       </center>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <% }); %>
 
-
-                        <!-- Toast container -->
-                        <div style="position: absolute; bottom: 3rem; left: 70rem;">
+                     <!-- Toast container -->
+                         <!-- Toast container -->
+                         <div style="position: absolute; bottom: 3rem; left: 70rem;">
                             <!-- Toast -->
-                            <div class="toast" id="toastSuccess" role="alert" aria-live="assertive" aria-atomic="true"
+                            <div class="toast" id="toastSucces<%= item.name %>" role="alert" aria-live="assertive" aria-atomic="true"
                                 data-bs-delay="3000">
                                 <div class="toast-header text-success">
                                     <i data-feather="bell"></i>
@@ -76,7 +74,7 @@
                         <!-- Toast container -->
                         <div style="position: absolute; bottom: 3rem; left: 70rem;">
                             <!-- Toast -->
-                            <div class="toast" id="toastError" role="alert" aria-live="assertive" aria-atomic="true"
+                            <div class="toast" id="toastError_<%= item.name %>" role="alert" aria-live="assertive" aria-atomic="true"
                                 data-bs-delay="10000">
                                 <div class="toast-header text-danger">
                                     <i data-feather="bell"></i>
@@ -89,6 +87,8 @@
                                     points pour acheter ce produit.</div>
                             </div>
                         </div>
+
+                    <% }); %>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('toastSuccessId').addEventListener('click', function() {

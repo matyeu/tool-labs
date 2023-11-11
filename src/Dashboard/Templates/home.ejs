@@ -38,13 +38,39 @@
                     <div class="col-xl-8 col-xxl-8 d-flex align-items-center"> <!-- Colonne pour le texte -->
                         <div class="text-center" style="margin-left: 1cm;">
                             <h1 class="text-primary">Bienvenue <%= member.displayName %> !</h1> 
-                            <div class="h1 word">Vous trouverez ici de quoi dépenser vos pièces durement gagnées grâce aux challenges !<br>Soyez indulgent, le shop est en cours de création...
+                            <div class="h1 word">Vous trouverez ici de quoi dépenser vos pièces durement gagnées grâce aux challenges !<br>Soyez indulgent, le shop est en cours de création...</div>
+                          
+                            <div class="h1 word">Catégorie : <%
+
+                                const flags = memberConfig.challenge.flags;
+                                const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length + flags.webServer.length + flags.realiste.length + flags.forensic.length + flags.machine.length
+                        
+                                const flagTop = [
+                                    { name: 'steganographie', data: flags.steganographie },
+                                    { name: 'crackingReverse', data: flags.crackingReverse },
+                                    { name: 'osint', data: flags.osint },
+                                    { name: 'webClient', data: flags.webClient },
+                                    { name: 'misc', data: flags.misc },
+                                    { name: 'webServer', data: flags.webServer },
+                                    { name: 'realiste', data: flags.realiste },
+                                    { name: 'forensic', data: flags.forensic },
+                                    { name: 'machine', data: flags.machine },
+                                ];
+
+                                flagTop.sort((a, b) => b.data - a.data);
+                                const categoryView = flagsTotal > 0 ? flagTop[0].name : "Aucune"
+
+                            %> <%= categoryView %>
+                             
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        
-  
+        </div>
+    </div>
+</div>
 
 
   
