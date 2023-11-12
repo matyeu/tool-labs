@@ -41,7 +41,7 @@
                                 <div class="small text-muted">
                                     <% if (memberConfig.shop.amount >= item.amount) { 
                                         %>
-                                        <center><button class="btn btn-primary toastTrigger" type="button" data-toast-id="toastSuccess_<%= item.name %>" id="toastSuccessId_<%= item.name %>">Acheter ce produit pour : <%= item.amount %>
+                                        <center><button class="btn btn-primary toastTrigger" type="button" data-toast-id="toastSuccess_<%= item.name %>" id="toastSuccessId_<%= item.name %>" name="<%= item.name %>">Acheter ce produit pour : <%= item.amount %>
                                             </button>
                                             <% } else {%>
                                                 <center><button class="btn btn-primary toastTrigger" type="button" data-toast-id="toastError_<%= item.name %>" id="toastErrorId_<%= item.name %>">Acheter ce produit

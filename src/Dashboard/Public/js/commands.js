@@ -1,5 +1,7 @@
 const produitNetflixId = document.querySelector("[name='Compte Netflix Premium']");
 
+console.log(produitNetflixId)
+
 produitNetflixId.addEventListener('click', event => {
     const linkDownload = document.createElement("a");
     linkDownload.href = "http://discord.tool-labs.com:3030/Public/assets/images/tool-labs/profil.png";
