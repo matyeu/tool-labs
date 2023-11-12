@@ -134,17 +134,7 @@ module.exports = (client: ToolClient) => {
             res.status(500).json({ error: 'Erreur lors de la récupération des données' });
         }
     });
-dashboard.post('/api/update/server/buyer', async (req: any, res: any) => {
-        try {
-            const data = req.body;
-            const serverConfig: any = await findServer(SERVER_DEV);
-            serverConfig.shop[data.produit][data.buyer]
-            editServer(SERVER_DEV, serverConfig);  
-        } catch (error) {
-          console.error('Erreur lors de la mise à jour :', error);
-          res.status(500).json({ error: 'Erreur lors de la mise à jour' });
-        }
-      });
+
     dashboard.post('/api/update/members/amount', async (req: any, res: any) => {
         try {
             const data = req.body;
@@ -156,54 +146,7 @@ dashboard.post('/api/update/server/buyer', async (req: any, res: any) => {
           res.status(500).json({ error: 'Erreur lors de la mise à jour' });
         }
       });
-       dashboard.post('/api/update/ebooks', async (req: any, res: any) => {
-        try {
-            const data = req.body;
-            const serverConfig: any = await findServer(SERVER_DEV);
-              serverConfig.shop.ebooks[data.product].buyer = data.buyer
-            editServer(SERVER_DEV, serverConfig);  
-        } catch (error) {
-          console.error('Erreur lors de la mise à jour :', error);
-          res.status(500).json({ error: 'Erreur lors de la mise à jour' });
-        }
-      });
-
-      dashboard.post('/api/update/accounts', async (req: any, res: any) => {
-        try {
-            const data = req.body;
-            const serverConfig: any = await findServer(SERVER_DEV);
-              serverConfig.shop.accounts[data.product].buyer = data.buyer
-            editServer(SERVER_DEV, serverConfig);  
-        } catch (error) {
-          console.error('Erreur lors de la mise à jour :', error);
-          res.status(500).json({ error: 'Erreur lors de la mise à jour' });
-        }
-      });
-
-      dashboard.post('/api/update/logs', async (req: any, res: any) => {
-        try {
-            const data = req.body;
-            const serverConfig: any = await findServer(SERVER_DEV);
-              serverConfig.shop.logs[data.product].buyer = data.buyer
-            editServer(SERVER_DEV, serverConfig);  
-        } catch (error) {
-          console.error('Erreur lors de la mise à jour :', error);
-          res.status(500).json({ error: 'Erreur lors de la mise à jour' });
-        }
-      });
-
-      dashboard.post('/api/update/divers', async (req: any, res: any) => {
-        try {
-            const data = req.body;
-            const serverConfig: any = await findServer(SERVER_DEV);
-              serverConfig.shop.divers[data.product].buyer = data.buyer
-            editServer(SERVER_DEV, serverConfig);  
-        } catch (error) {
-          console.error('Erreur lors de la mise à jour :', error);
-          res.status(500).json({ error: 'Erreur lors de la mise à jour' });
-        }
-      });
-
+  
     dashboard.get("/callback", passport.authenticate("discord"), async (req: any, res: any) => {
         for (const guild of client.guilds.cache.map(guild => guild)) {
             if (guild.id !== SERVER_LIVE && guild.id !== SERVER_DEV) continue;
