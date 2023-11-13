@@ -225,6 +225,7 @@ produitSteamId.addEventListener('click', event => {
     }, 1000);
 });
 
+
 const produitSpotifyId = document.querySelector("[name='Compte Spotify Premium']");
 
 produitSpotifyId.addEventListener('click', event => {
