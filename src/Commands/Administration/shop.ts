@@ -20,7 +20,7 @@ export async function slash(client: ToolClient, interaction: CommandInteraction)
 
         if (getItem) return interaction.replyErrorMessage(client, `Le produit **${nameOption}** est déjà présent dans la base de données`, true);
         
-        arrayShop.push({name: nameOption, description: descriptionOption, buyer: 0, amount: amountOption});
+        arrayShop.push({name: nameOption.replace(/\s/g, ''), description: descriptionOption, buyer: 0, amount: amountOption});
         await edit(interaction.guild!.id, serverConfig);
 
         await interaction.replySuccessMessage(client, `Le produit **${nameOption}** a été ajouté`, true);
