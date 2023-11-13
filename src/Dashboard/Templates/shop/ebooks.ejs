@@ -7,15 +7,15 @@
     <div id="layoutSidenav_content">
         <main>
             <header class="page-header page-header-dark bg-gradient-primary mb-4">
-                <div class="container-xl px-6">
+                <div class="container-xl px-4">
                     <div class="page-header-content pt-4">
                         <div class="row align-items-center justify-content-between">
                             <div class="col-auto mt-4">
                                 <h5 class="page-header-title">
-                                    <div class="page-header-icon"><i class="fa fa-book"></i></div>
+                                    <div class="page-header-icon"><i class="fa-solid fa-user"></i></div>
                                     Boutique Ebooks
                                 </h5>
-                                <div class="page-header-subtitle">Vous trouverez ici tous les e-books !<br>Les e-books payant sont obligatoirement traduis en français.</div>
+                                <div class="page-header-subtitle">Vous trouverez ici tous les comptes !<br>Netflix, Disney Plus, Steam et tant d'autres sont disponbiles ici.</div>
                             </div>
                         </div>
                     </div>
@@ -29,9 +29,7 @@
                         <!-- Knowledge base category card 1-->
                         <a class="card lift lift-sm h-100" href="#">
                             <div class="card-body py-5">
-                                <h5 class="card-title text-primary mb-2">
-                                    <%= item.name %>
-                                </h5>
+                                <h5 class="card-title text-primary mb-2"><%= item.name %></h5>
                                 <p class="card-text">
                                     <%= item.description %>
                                 </p>
@@ -90,6 +88,6 @@
 
                     <% }); %>
 
-        </main>
 
+        </main>
         <%- include('../includes/footer'); %>
