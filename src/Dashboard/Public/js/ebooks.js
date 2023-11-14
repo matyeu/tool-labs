@@ -1,19 +1,10 @@
-const produitTestId = document.querySelector("[name='test'");
+const produitEbooks1Id = document.querySelector("[name='Ebook Refund [FR & à jour]'");
 
-produitTestId.addEventListener('click', event => {
+produitEbooks1Id.addEventListener('click', event => {
     event.preventDefault();
 
-    fetch("https://cdn.discordapp.com/attachments/1171505930593116200/1173347494781005935/logo_yourhub.jpeg?ex=6563a002&is=65512b02&hm=dd49e8c89b7fbf1d8f666e1723fc0841002626953bd3627e0fd1941c165a8b6f&")
-        .then(response => response.blob())
-        .then(blob => {
-            const url = window.URL.createObjectURL(blob);
-            const linkDownload = document.createElement("a");
-            linkDownload.href = url;
-            linkDownload.setAttribute("download", "profil.png");
-            document.body.appendChild(linkDownload);
-            linkDownload.click();
-            linkDownload.remove();
-        });
+    // Ouvre le lien dans un nouvel onglet
+    window.open("https://tool-labs.com/divers1isddsreuujhsqevbkhjkc/index.php", '_blank'); // Remplacez l'URL par celle vers laquelle vous souhaitez rediriger
 
     fetch('/api/get/server')
         .then(response => response.json())
@@ -21,7 +12,7 @@ produitTestId.addEventListener('click', event => {
             fetch('/api/get/members')
                 .then(response => response.json())
                 .then(dataMember => { 
-                    const arrayAccounts = dataServer.shop.ebooks.find((e) => e.name == "test");
+                    const arrayAccounts = dataServer.shop.ebooks.find((e) => e.name == "Ebook Refund [FR & à jour]");
                     const amount = dataMember.shop.amount -= arrayAccounts.amount;
 
                     fetch('/api/update/members/amount', {
@@ -32,7 +23,6 @@ produitTestId.addEventListener('click', event => {
                         body: JSON.stringify({
                             amount
                         }),
-
                     })
                         .then(response => response.json())
                         .then(updatedData => {
@@ -42,15 +32,17 @@ produitTestId.addEventListener('click', event => {
                             console.error('Erreur lors de la mise à jour :', error);
                         });
                         
-                }).catch(error => {
+                })
+                .catch(error => {
                     console.error(error);
                 });
-        }).catch(error => {
+        })
+        .catch(error => {
             console.error(error);
         });
 
-        setTimeout(() => {
+    // Recharge l'onglet d'origine après un délai
+    setTimeout(() => {
         location.reload();
-        }, 1000);
-
+    }, 1000);
 });
