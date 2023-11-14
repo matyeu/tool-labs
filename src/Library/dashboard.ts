@@ -32,7 +32,6 @@ module.exports = (client: ToolClient) => {
     let port = 3030;
 
     if (process.env.MODE !== "development") {
-    console.log('test')
     const privateKey = fs.readFileSync('/etc/letsencrypt/live/discord.tool-labs.com/privkey.pem', 'utf8');
     const certificate = fs.readFileSync('/etc/letsencrypt/live/discord.tool-labs.com/cert.pem', 'utf8');
     const credentials = { key: privateKey, cert: certificate };
