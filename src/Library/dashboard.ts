@@ -115,7 +115,7 @@ module.exports = (client: ToolClient) => {
 
     dashboard.get('/api/get/server', async (req: any, res: any) => {
         try {
-            const data = await findServer(SERVER_DEV);
+            const data = await findServer(SERVER_LIVE);
             res.json(data);
         } catch (error) {
             console.error('Erreur lors de la récupération des données :', error);
@@ -126,7 +126,7 @@ module.exports = (client: ToolClient) => {
 
     dashboard.get('/api/get/members', async (req: any, res: any) => {
         try {
-            const data = await findMember(SERVER_DEV, req.user.id);
+            const data = await findMember(SERVER_LIVE, req.user.id);
             res.json(data);
         } catch (error) {
             console.error('Erreur lors de la récupération des données :', error);
@@ -137,9 +137,9 @@ module.exports = (client: ToolClient) => {
     dashboard.post('/api/update/members/amount', async (req: any, res: any) => {
         try {
             const data = req.body;
-            const memberConfig: any = await findMember(SERVER_DEV, req.user.id);
+            const memberConfig: any = await findMember(SERVER_LIVE, req.user.id);
             memberConfig.shop.amount = data.amount
-            editMember(SERVER_DEV, req.user.id, memberConfig);  
+            editMember(SERVER_LIVE, req.user.id, memberConfig);  
         } catch (error) {
           console.error('Erreur lors de la mise à jour :', error);
           res.status(500).json({ error: 'Erreur lors de la mise à jour' });
@@ -148,7 +148,7 @@ module.exports = (client: ToolClient) => {
   
     dashboard.get("/callback", passport.authenticate("discord"), async (req: any, res: any) => {
         for (const guild of client.guilds.cache.map(guild => guild)) {
-            if (guild.id !== SERVER_LIVE && guild.id !== SERVER_DEV) continue;
+            if (guild.id !== SERVER_LIVE && guild.id !== SERVER_LIVE) continue;
 
             const member = await guild.members.cache.get(req.user.id)!;
 
