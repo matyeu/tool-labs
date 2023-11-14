@@ -239,7 +239,7 @@ module.exports = (client: ToolClient) => {
 
 
 
-    client.site = process.env.MODE === "development" ? dashboard.listen(port) : server(port);
+    client.site = process.env.MODE === "development" ? dashboard.listen(port) : server.listen(port);
     Logger.client(`Dashboard on: http://${process.env.DOMAIN}:${port}`);
 
 
