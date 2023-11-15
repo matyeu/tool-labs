@@ -400,25 +400,25 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
                 options.push(
                     {
                         label: "Challenge Stéganographie Image #1 (Facile)",
-                        emoji: `${client.getEmoji(EMOJIS.facile)}`,
+                        emoji: EMOJIS.facile,
                         description: "Trouve le FLAG dans l'image",
                         value: `steganographie-challenge-1`,
                     },
                     {
                         label: "Challenge Stéganographie Image #2 (Facile)",
-                        emoji: `${client.getEmoji(EMOJIS.facile)}`,
+                        emoji: EMOJIS.facile,
                         description: "Trouve le FLAG dans l'image",
                         value: `steganographie-challenge-2`,
                     },
                     {
                         label: "Challenge Stéganographie Audio #3 (Moyen)",
-                        emoji: `${client.getEmoji(EMOJIS.facile)}`,
+                        emoji: EMOJIS.facile,
                         description: "Trouve le FLAG dans l'image",
                         value: `steganographie-challenge-3`,
                         },
                     {
                         label: "Challenge Stéganographie #4 Image (Moyen)",
-                        emoji: `${client.getEmoji(EMOJIS.moyen)}`,
+                        emoji: EMOJIS.facile,
                         description: "Trouve le FLAG dans l'image",
                         value: `steganographie-challenge-4`,
 
