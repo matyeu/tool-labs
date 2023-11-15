@@ -50,15 +50,16 @@ export async function slash(client: ToolClient, interaction: CommandInteraction)
     const joinedTimestamp = parseInt(String(member.joinedTimestamp! / 1000));
     const createdTimestamp = parseInt(String(member.user.createdTimestamp! / 1000));
 
-    const getAchievedSteganographie = (flagsMember.steganographie.length / flagsServer.steganographie.length) * 100
-    const getAchievedCrackingReverse = (flagsMember.crackingReverse.length / flagsServer.crackingReverse.length) * 100
-    const getAchievedOsint = (flagsMember.osint.length / flagsServer.osint.length) * 100
-    const getAchievedWebClient = (flagsMember.webClient.length / flagsServer.webClient.length) * 100
-    const getAchievedWebServer = (flagsMember.webServer.length / flagsServer.webServer.length) * 100
-    const getAchievedMisc = (flagsMember.misc.length / flagsServer.misc.length) * 100
-    const getAchievedRealiste = (flagsMember.realiste.length / flagsServer.realiste.length) * 100
-    const getAchievedForensic = (flagsMember.forensic.length / flagsServer.forensic.length) * 100
-    const getAchievedMachine = (flagsMember.machine.length / flagsServer.machine.length) * 100
+    const getAchievedSteganographie = Math.floor((flagsMember.steganographie.length / flagsServer.steganographie.length) * 100);
+const getAchievedCrackingReverse = Math.floor((flagsMember.crackingReverse.length / flagsServer.crackingReverse.length) * 100);
+const getAchievedOsint = Math.floor((flagsMember.osint.length / flagsServer.osint.length) * 100);
+const getAchievedWebClient = Math.floor((flagsMember.webClient.length / flagsServer.webClient.length) * 100);
+const getAchievedWebServer = Math.floor((flagsMember.webServer.length / flagsServer.webServer.length) * 100);
+const getAchievedMisc = Math.floor((flagsMember.misc.length / flagsServer.misc.length) * 100);
+const getAchievedRealiste = Math.floor((flagsMember.realiste.length / flagsServer.realiste.length) * 100);
+const getAchievedForensic = Math.floor((flagsMember.forensic.length / flagsServer.forensic.length) * 100);
+const getAchievedMachine = Math.floor((flagsMember.machine.length / flagsServer.machine.length) * 100);
+
 
     async function getIconeChall() {
         const canvas = Canvas.createCanvas(1800, 250),
