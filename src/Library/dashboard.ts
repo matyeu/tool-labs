@@ -163,7 +163,7 @@ module.exports = (client: ToolClient) => {
                 const embedLogin = new EmbedBuilder()
                     .setColor(EMBED_SUCCESS)
                     .setAuthor({ name: `${member.displayName} (${member.id})`, iconURL: member.user.displayAvatarURL() })
-                    .setDescription(`**${member} vient de se connecter au dashboard !**`)
+                    .setDescription(`**${member} vient de se connecter à la boutique !**`)
                     .setTimestamp()
                     .setFooter({ text: FOOTER_DASHBOARD, iconURL: client.user?.displayAvatarURL() })
 
@@ -224,7 +224,7 @@ module.exports = (client: ToolClient) => {
             const embedLogin = new EmbedBuilder()
                 .setColor(EMBED_ERROR)
                 .setAuthor({ name: `${member.displayName} (${member.id})`, iconURL: member.user.displayAvatarURL() })
-                .setDescription(`**${member} vient de se déconnecter du dashboard !**`)
+                .setDescription(`**${member} vient de se déconnecter de la boutique !**`)
                 .setTimestamp()
                 .setFooter({ text: FOOTER_DASHBOARD, iconURL: client.user?.displayAvatarURL() })
 

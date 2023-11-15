@@ -39,35 +39,12 @@
                         <div class="text-center" style="margin-left: 1cm;">
                             <h1 class="text-primary">Bienvenue <%= member.displayName %> !</h1> 
                             <div class="h4 word">Vous trouverez ici de quoi dépenser vos pièces durement gagnées grâce aux challenges !<br>Soyez indulgent, le shop est en cours de création...</div>
-                            T'es rôles de merde : <%= member.roles.cache.map(role => role.name).join(', ').replace(', @everyone', ' ') %>
+                            
                           
-                            <div class="h4 word">Best Catégorie : <%
-
-                                const flags = memberConfig.challenge.flags;
-                                const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length + flags.webServer.length + flags.realiste.length + flags.forensic.length + flags.machine.length
-                        
-                                const flagTop = [
-            { name: 'steganographie', data: flags.steganographie.length },
-            { name: 'crackingReverse', data: flags.crackingReverse.length },
-            { name: 'osint', data: flags.osint.length },
-            { name: 'webClient', data: flags.webClient.length },
-            { name: 'misc', data: flags.misc.length },
-            { name: 'webServer', data: flags.webServer.length },
-            { name: 'realiste', data: flags.realiste.length },
-            { name: 'forensic', data: flags.forensic.length },
-            { name: 'machine', data: flags.machine.length },
-        ];
-
-                                flagTop.sort((a, b) => b.data - a.data);
-                                const categoryView = flagsTotal > 0 ? flagTop[0].name : "Aucune"
-
-                            %> <%= categoryView %>
+                             
                              
                                 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                          
             </div>
         </div>
     </div>
@@ -76,7 +53,10 @@
 
   
         
+</div>
 
-    </div>
+</div>
+  <iframe src="https://discord.com/widget?id=1151851676618215526&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 
 <%- include('./includes/footer'); %>
+

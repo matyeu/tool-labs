@@ -17,7 +17,7 @@ export const FOOTER_CTF = "Tool-Labs - CTF"
 export const FOOTER_DASHBOARD = "Tool-Labs - DASHBOARD";
 
 export const LINK_DISCORD = "https://disboard.org/fr/server/1151851676618215526";
-export const LINK_DASHBOARD = "http://discord.tool-labs.com:3030";
+export const LINK_DASHBOARD = "https://discord.tool-labs.com:443";
 
 
 export const IDLE_BUTTON = 60000;
