@@ -18,7 +18,7 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
 
             embed.setTitle("CHALLENGE STEGANOGRAPHIE #1")
                 .setDescription(" **Trouvez le FLAG dans cette image et écrivez le dans le chat pour validé ce challenge** ")
-                .setImage("https://tool-labs.com/steg1.png")
+                .setImage("https://tool-labs.com/steganographie1.png")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/facile2.png");
 
@@ -27,7 +27,7 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
 
             embed.setTitle("CHALLENGE STEGANOGRAPHIE #2")
                 .setDescription(" **Trouvez le FLAG dans cette l'image et écrivez le dans le chat pour validé ce challenge**")
-                .setImage("https://tool-labs.com/steg2.png")
+                .setImage("https://tool-labs.com/steganographie2.png")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/facile2.png");
 
@@ -35,7 +35,7 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
         case 'steganographie-challenge-3':
 
             embed.setTitle("CHALLENGE STEGANOGRAPHIE #3")
-                .setDescription(" **Trouvez le FLAG dans cet audio et écrivez le dans le chat pour validé ce challenge**\n\n [Téllecharger l'audio](https://tool-labs.com/steg_easy.wav) ")
+                .setDescription(" **Trouvez le FLAG dans cet audio et écrivez le dans le chat pour validé ce challenge**\n\n [Téllecharger l'audio](https://tool-labs.com/steganoaudio.mp3) ")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/facile.png");
                 break;
@@ -74,8 +74,8 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
         case 'osint-challenge-1':
 
             embed.setTitle("CHALLENGE OSINT #1")
-                .setDescription("**Quelle belle ville !**\n\n ** Pouvez-vous m'indiquer le nom du magasin qui se trouve sur ma gauche ? ** \n\n **Ecrivez le flag en minuscule (exemple: carrefour)**")
-                .setImage("https://tool-labs.com/osint1.png")
+                .setDescription("**Quelle beau batiment !**\n\n ** Pouvez-vous m'indiquer le numéro et le nom de la rue dans laquelle je suis ? ** \n\n **Ecrivez le flag en minuscule (exemple: 5ruedeparis)**")
+                .setImage("https://tool-labs.com/osintxfdughygofyuodg/imageosint1.png")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/facile2.png");
             break;
@@ -179,12 +179,12 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
         case 'suspect-challenge-1':
 
             embed.setTitle("CHALLENGE [OBLIGATOIRE] ")
-                .setDescription("**Si vous êtes sur ce chalenge c'est que vous êtes suspecter d'avoir tricher\nPour retrouver vos rôles, veuillez validé ce challenge** \n\n Infos Challenge : *** R.C.E & Bruteforce *** \n\n **Pour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis !**\n\n[Aller sur le challenge](https://discord.tool-labs.com/obligatoire/index.php)")
+                .setDescription("**Si vous êtes sur ce chalenge c'est que vous êtes suspecter d'avoir tricher\nPour retrouver vos rôles, veuillez validé ce challenge** \n\n Infos Challenge : *** R.C.E & Bruteforce *** \n\n **Pour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis !**\n\n[Aller sur le challenge](https://challctf.tool-labs.com/obligatoireggfgfdikujyhgfvdsc//index.php)")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/dur1.png");
 
             break;
-        default: return interaction.replyErrorMessage(client, `**Le topic \`${interaction.values[0]}\` est introuvable par le bo**`, true);
+        default: return interaction.replyErrorMessage(client, `**Le topic \`${interaction.values[0]}\` est introuvable par le bot**`, true);
     }
 
     await interaction.update({ content: null })
