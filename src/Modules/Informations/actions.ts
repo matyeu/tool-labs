@@ -61,15 +61,15 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
         const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length + flags.webServer.length + flags.realiste.length + flags.forensic.length + flags.machine.length
 
         const flagTop = [
-            { name: 'steganographie', data: flags.steganographie },
-            { name: 'crackingReverse', data: flags.crackingReverse },
-            { name: 'osint', data: flags.osint },
-            { name: 'webClient', data: flags.webClient },
-            { name: 'misc', data: flags.misc },
-            { name: 'webServer', data: flags.webServer },
-            { name: 'realiste', data: flags.realiste },
-            { name: 'forensic', data: flags.forensic },
-            { name: 'machine', data: flags.machine },
+            { name: 'steganographie', data: flags.steganographie.length },
+            { name: 'crackingReverse', data: flags.crackingReverse.length },
+            { name: 'osint', data: flags.osint.length },
+            { name: 'webClient', data: flags.webClient.length },
+            { name: 'misc', data: flags.misc.length },
+            { name: 'webServer', data: flags.webServer.length },
+            { name: 'realiste', data: flags.realiste.length },
+            { name: 'forensic', data: flags.forensic.length },
+            { name: 'machine', data: flags.machine.length },
         ];
 
         flagTop.sort((a, b) => b.data - a.data);
