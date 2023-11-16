@@ -8,7 +8,7 @@ export default async function (client: ToolClient, oldMember: GuildMember) {
 
     const memberConfig: any = await find(oldMember.guild!.id, oldMember.user.id);
     
-    if (memberConfig) await memberConfig.delete();
+    if (memberConfig) await memberConfig.deleteOne();
 
     await Logger.client(`${oldMember.user.tag} has just left ${oldMember.guild.name}`);
 }
