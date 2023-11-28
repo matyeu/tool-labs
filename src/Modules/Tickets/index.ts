@@ -3,6 +3,7 @@ import { ToolClient } from "../../Library";
 import { find } from "../../Models/server";
 import { createChallengeEmbed, createChallengeSuspectEmbed, ticketAlreadyOpenEmbed } from "./embeds";
 import { createCollector, createTicket, tickets, warnSurcharge } from "./actions";
+import { edit as editMember, find as findMember } from "../../Models/member";
 
 const Logger = require("../../Library/logger");
 
@@ -60,6 +61,24 @@ export default async function (client: ToolClient, guild: Guild) {
 
     for (let challengeChannel of openedTickets) {
         await createCollector(client, challengeChannel);
+        const idMember = challengeChannel.topic?.split(":")[1].replace('(', '').replace(')', '');
+        const member = challengeChannel.guild.members.cache.get(`${idMember}`)!;
+
+        const memberConfig: any = await findMember(member.guild.id, member.id);
+        const getMessage = await challengeChannel.messages.fetch(memberConfig.challenge.lastChallengeId);
+        const getCategory = await challengeChannel.messages.fetch(memberConfig.challenge.lastCategoryMessageId);
+
+        if (getMessage) {
+            await getMessage.delete();
+            memberConfig.challenge.lastChallengeId = "";
+        };  
+        
+        if (getCategory) {
+            await getCategory.delete();
+            memberConfig.challenge.lastCategoryMessageId = "";
+        };
+
+        await editMember(member.guild.id, member.id, memberConfig);
     }
 
     Logger.module(`Loading tickets for the ${guild.name} server - SUCCESS (${openedTickets.length} ticket(s) reloaded)`)
