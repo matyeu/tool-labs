@@ -60,7 +60,6 @@ export default async function (client: ToolClient, guild: Guild) {
 
 
     for (let challengeChannel of openedTickets) {
-        await createCollector(client, challengeChannel);
         const idMember = challengeChannel.topic?.split(":")[1].replace('(', '').replace(')', '');
         const member = challengeChannel.guild.members.cache.get(`${idMember}`)!;
 
@@ -68,6 +67,8 @@ export default async function (client: ToolClient, guild: Guild) {
         const channelMessages = fetchedMessages.filter(msg => msg.channel.id === challengeChannel.id);
 
         channelMessages.forEach(msg => msg.delete());
+
+        await createCollector(client, challengeChannel);
 
        /* const memberConfig: any = await findMember(member.guild.id, member.id);
        const getMessage = await challengeChannel.messages.fetch(memberConfig.challenge.lastChallengeId);
