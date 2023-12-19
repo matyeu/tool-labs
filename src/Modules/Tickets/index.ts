@@ -64,8 +64,13 @@ export default async function (client: ToolClient, guild: Guild) {
         const idMember = challengeChannel.topic?.split(":")[1].replace('(', '').replace(')', '');
         const member = challengeChannel.guild.members.cache.get(`${idMember}`)!;
 
-        const memberConfig: any = await findMember(member.guild.id, member.id);
-        const getMessage = await challengeChannel.messages.fetch(memberConfig.challenge.lastChallengeId);
+        const fetchedMessages = await challengeChannel.messages.fetch({ limit: 100 });
+        const channelMessages = fetchedMessages.filter(msg => msg.channel.id === challengeChannel.id);
+
+        channelMessages.forEach(msg => msg.delete());
+
+       /* const memberConfig: any = await findMember(member.guild.id, member.id);
+       const getMessage = await challengeChannel.messages.fetch(memberConfig.challenge.lastChallengeId);
         const getCategory = await challengeChannel.messages.fetch(memberConfig.challenge.lastCategoryMessageId);
 
         if (getMessage) {
@@ -78,7 +83,7 @@ export default async function (client: ToolClient, guild: Guild) {
             memberConfig.challenge.lastCategoryMessageId = "";
         };
 
-        await editMember(member.guild.id, member.id, memberConfig);
+        await editMember(member.guild.id, member.id, memberConfig);*/
     }
 
     Logger.module(`Loading tickets for the ${guild.name} server - SUCCESS (${openedTickets.length} ticket(s) reloaded)`)
