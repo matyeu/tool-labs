@@ -22,31 +22,31 @@ export default async function (client: ToolClient, message: Message) {
         if (channelSend.topic === `(TOOL-LABS:${member.id})`) {
 
             const flagsSteganographie = serverConfig.challenge.flags.steganographie
-            const getFlagSteganographie = flagsSteganographie.find((e: any) => e.name == message.content);
+            const getFlagSteganographie = flagsSteganographie.find((e: any) => e.name == message.content.toLowerCase());
 
             const flagsCrackingReverse = serverConfig.challenge.flags.crackingReverse
-            const getFlagCrackingReverse = flagsCrackingReverse.find((e: any) => e.name == message.content);
+            const getFlagCrackingReverse = flagsCrackingReverse.find((e: any) => e.name == message.content.toLowerCase());
 
             const flagsOsint = serverConfig.challenge.flags.osint
-            const getFlagosint = flagsOsint.find((e: any) => e.name == message.content);
+            const getFlagosint = flagsOsint.find((e: any) => e.name == message.content.toLowerCase());
 
             const flagsWebClient = serverConfig.challenge.flags.webClient
-            const getFlagWebClient = flagsWebClient.find((e: any) => e.name == message.content);
+            const getFlagWebClient = flagsWebClient.find((e: any) => e.name == message.content.toLowerCase());
 
             const flagsMisc = serverConfig.challenge.flags.misc
-            const getFlagMisc = flagsMisc.find((e: any) => e.name == message.content);
+            const getFlagMisc = flagsMisc.find((e: any) => e.name == message.content.toLowerCase());
 
             const flagsWebServer = serverConfig.challenge.flags.webServer
-            const getFlagWebServer = flagsWebServer.find((e: any) => e.name == message.content);
+            const getFlagWebServer = flagsWebServer.find((e: any) => e.name == message.content.toLowerCase());
 
             const flagsRealiste = serverConfig.challenge.flags.realiste
-            const getFlagRealiste = flagsRealiste.find((e: any) => e.name == message.content);
+            const getFlagRealiste = flagsRealiste.find((e: any) => e.name == message.content.toLowerCase());
 
             const flagsForensic = serverConfig.challenge.flags.forensic
-            const getFlagForensic = flagsForensic.find((e: any) => e.name == message.content);
+            const getFlagForensic = flagsForensic.find((e: any) => e.name == message.content.toLowerCase());
 
             const flagsMachine = serverConfig.challenge.flags.machine
-            const getFlagMachine = flagsMachine.find((e: any) => e.name == message.content);
+            const getFlagMachine = flagsMachine.find((e: any) => e.name == message.content.toLowerCase());
 
 
             const embedInfo = new EmbedBuilder()
@@ -72,7 +72,7 @@ export default async function (client: ToolClient, message: Message) {
 
             if (getFlagSteganographie) {
                 const arrayFlags = memberConfig.challenge.flags.steganographie
-                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getFlag: boolean = researchArray(message.content.toLowerCase(), arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagSteganographie.role)
 
                 if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagSteganographie.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
@@ -93,7 +93,7 @@ export default async function (client: ToolClient, message: Message) {
                 });
             } else if (getFlagCrackingReverse) {
                 const arrayFlags = memberConfig.challenge.flags.crackingReverse
-                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getFlag: boolean = researchArray(message.content.toLowerCase(), arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagCrackingReverse.role)
 
                 if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagCrackingReverse.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
@@ -114,7 +114,7 @@ export default async function (client: ToolClient, message: Message) {
                 });
             } else if (getFlagosint) {
                 const arrayFlags = memberConfig.challenge.flags.osint
-                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getFlag: boolean = researchArray(message.content.toLowerCase(), arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagosint.role)
 
                 if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagosint.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
@@ -135,7 +135,7 @@ export default async function (client: ToolClient, message: Message) {
                 });
             } else if (getFlagWebClient) {
                 const arrayFlags = memberConfig.challenge.flags.webClient
-                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getFlag: boolean = researchArray(message.content.toLowerCase(), arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagWebClient.role)
 
                 if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagWebClient.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
@@ -157,7 +157,7 @@ export default async function (client: ToolClient, message: Message) {
             }
             else if (getFlagMisc) {
                 const arrayFlags = memberConfig.challenge.flags.misc
-                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getFlag: boolean = researchArray(message.content.toLowerCase(), arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagMisc.role)
 
                 if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagMisc.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
@@ -178,7 +178,7 @@ export default async function (client: ToolClient, message: Message) {
                 });
             } else if (getFlagWebServer) {
                 const arrayFlags = memberConfig.challenge.flags.webServer
-                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getFlag: boolean = researchArray(message.content.toLowerCase(), arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagWebServer.role)
 
                 if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagWebServer.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
@@ -199,7 +199,7 @@ export default async function (client: ToolClient, message: Message) {
                 });
             } else if (getFlagRealiste) {
                 const arrayFlags = memberConfig.challenge.flags.realiste
-                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getFlag: boolean = researchArray(message.content.toLowerCase(), arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagRealiste.role)
 
                 if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagRealiste.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
@@ -220,7 +220,7 @@ export default async function (client: ToolClient, message: Message) {
                 });
             } else if (getFlagForensic) {
                 const arrayFlags = memberConfig.challenge.flags.forensic
-                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getFlag: boolean = researchArray(message.content.toLowerCase(), arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagForensic.role)
 
                 if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagForensic.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
@@ -241,7 +241,7 @@ export default async function (client: ToolClient, message: Message) {
                 });
             } else if (getFlagMachine) {
                 const arrayFlags = memberConfig.challenge.flags.machine
-                const getFlag: boolean = researchArray(message.content, arrayFlags);
+                const getFlag: boolean = researchArray(message.content.toLowerCase(), arrayFlags);
                 const getRole = client.getRole(member.guild, getFlagMachine.role)
 
                 if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagMachine.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
@@ -269,7 +269,7 @@ export default async function (client: ToolClient, message: Message) {
         message.delete();
 
         const flagsSuspect = serverConfig.challenge.flags.suspect
-        const getSuspect = flagsSuspect.find((e: any) => e.name == message.content);
+        const getSuspect = flagsSuspect.find((e: any) => e.name == message.content.toLowerCase());
 
         if (getSuspect) {
             await member.roles.remove(serverConfig.roles.suspect);
