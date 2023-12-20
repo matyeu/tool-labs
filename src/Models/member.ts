@@ -7,6 +7,12 @@ const Logger = require("../Library/logger");
 const Members = model("Members", new Schema({
     guildId: String,
     userId: String,
+    profil: {
+        status: String,
+        color: String,
+        siteWeb: String,
+        biographie: String,
+    },
     challenge: {
         channelId: String,
         lastChallengeId: String,
@@ -44,6 +50,12 @@ const Members = model("Members", new Schema({
 export const def = {
     guildId: "",
     userId: "",
+    profil: {
+        status: "Membre",
+        color: "",
+        siteWeb: "",
+        biographie: "",
+    },
     challenge: {
         channelId: "",
         lastChallengeId: "",

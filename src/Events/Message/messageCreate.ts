@@ -17,11 +17,11 @@ export default async function (client: ToolClient, message: Message) {
 
     const memberConfig: any = await findMember(message.guild!.id, message.author.id);
 
+    memberConfig.stats.messageCount++
+    await editMember(member.guild!.id, member.id, memberConfig)
+
     // MESSAGE
-    if (memberConfig.stats.messageCount < 5) {
-        memberConfig.stats.messageCount++
-        await editMember(member.guild!.id, member.id, memberConfig)
-    } else {
+    if (memberConfig.stats.messageCount = 5) {
         const roleInvite = client.getRole(member.guild, serverConfig.roles.invite);
         if (roleInvite) await member.roles.add(serverConfig.roles.invite)
     }

@@ -3,7 +3,7 @@ import {
     ButtonInteraction,
     Client,
     ClientOptions,
-    Collection, CommandInteraction, EmbedBuilder, Guild, Message, Snowflake, StringSelectMenuInteraction, TextChannel
+    Collection, CommandInteraction, EmbedBuilder, Guild, Message, ModalSubmitInteraction, Snowflake, StringSelectMenuInteraction, TextChannel
 } from 'discord.js';
 import * as fs from "fs";
 import { EMBED_ERROR, EMBED_INFO, EMBED_SUCCESS, EMOJIS } from '../config';
@@ -102,6 +102,18 @@ declare module "discord.js" {
 
         editErrorMessage(client: ToolClient, content: string): any;
     }
+
+    interface ModalSubmitInteraction {
+        replySuccessMessage(client: ToolClient, content: string, ephemeral: boolean): Promise<void>;
+
+        replyErrorMessage(client: ToolClient, content: string, ephemeral: boolean): Promise<void>;
+
+        replyInfoMessage(client: ToolClient, content: string, ephemeral: boolean): Promise<void>;
+
+        editSuccessMessage(client: ToolClient, content: string): any;
+
+        editErrorMessage(client: ToolClient, content: string): any;
+    }
 }
 
 CommandInteraction.prototype.replySuccessMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
@@ -178,6 +190,22 @@ StringSelectMenuInteraction.prototype.editSuccessMessage = async function (clien
 StringSelectMenuInteraction.prototype.editErrorMessage = async function (client: ToolClient, content: string) {
     embed.setColor(EMBED_ERROR).setDescription(`${client.getEmoji(EMOJIS.error)} | ${content}`);
     await this.editReply({ embeds: [embed] });
+};
+
+ModalSubmitInteraction.prototype.replySuccessMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
+    await this.reply({ content: `${client.getEmoji(EMOJIS.check)} | ${content}`, ephemeral: ephemeral });
+};
+ModalSubmitInteraction.prototype.replyErrorMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
+    await this.reply({ content: `${client.getEmoji(EMOJIS.error)} | ${content}`, ephemeral: ephemeral });
+};
+ModalSubmitInteraction.prototype.replyInfoMessage = async function (client: ToolClient, content: string, ephemeral: boolean) {
+    await this.reply({ content: `${client.getEmoji(EMOJIS.information)} | ${content}`, ephemeral: ephemeral });
+};
+ModalSubmitInteraction.prototype.editSuccessMessage = async function (client: ToolClient, content: string) {
+    await this.editReply({ content: `${client.getEmoji(EMOJIS.check)} | ${content}` });
+};
+ModalSubmitInteraction.prototype.editErrorMessage = async function (client: ToolClient, content: string) {
+    await this.editReply({ content: `${client.getEmoji(EMOJIS.error)} | ${content}` });
 };
 
 export function getFilesRecursive(directory: string, aFiles?: string[]) {
