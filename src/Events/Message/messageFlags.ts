@@ -42,9 +42,6 @@ export default async function (client: ToolClient, message: Message) {
             const flagsRealiste = serverConfig.challenge.flags.realiste
             const getFlagRealiste = flagsRealiste.find((e: any) => e.name == message.content.toLowerCase());
 
-            const flagsForensic = serverConfig.challenge.flags.forensic
-            const getFlagForensic = flagsForensic.find((e: any) => e.name == message.content.toLowerCase());
-
             const flagsMachine = serverConfig.challenge.flags.machine
             const getFlagMachine = flagsMachine.find((e: any) => e.name == message.content.toLowerCase());
 
@@ -212,27 +209,6 @@ export default async function (client: ToolClient, message: Message) {
 
                 arrayFlags.push(getFlagRealiste.name);
                 if (getFlagRealiste.amount) memberConfig.shop.amount += getFlagRealiste.amount;
-
-                await editMember(member.guild.id, member.id, memberConfig);
-
-                return message.channel.send({ embeds: [embed], components: [button] }).then((msg: Message) => {
-                    setTimeout(async () => { await msg.delete() }, 5000);
-                });
-            } else if (getFlagForensic) {
-                const arrayFlags = memberConfig.challenge.flags.forensic
-                const getFlag: boolean = researchArray(message.content.toLowerCase(), arrayFlags);
-                const getRole = client.getRole(member.guild, getFlagForensic.role)
-
-                if (getFlag) return message.channel.send({ embeds: [embedInfo.setDescription(`**Le flag \`${getFlagForensic.name}\` est déjà enregistré sur votre compt**`)] }).then((msg: Message) => {
-                    setTimeout(async () => { await msg.delete() }, 5000);
-                });
-
-                if (getRole) await member.roles.add(getRole)
-
-                embed.setDescription(`${member.displayName}, vous avez un nouveau flag sauvegardé\n\n Le FLAG "**${getFlagForensic.name}**" est enregistré\n\nCliquer sur le bouton du dessous pour afficher le reste`);
-
-                arrayFlags.push(getFlagForensic.name);
-                if (getFlagForensic.amount) memberConfig.shop.amount += getFlagForensic.amount;
 
                 await editMember(member.guild.id, member.id, memberConfig);
 

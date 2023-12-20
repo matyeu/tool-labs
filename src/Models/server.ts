@@ -54,7 +54,6 @@ const Server = model(
                 misc: Array,
                 webServer: Array,
                 realiste: Array,
-                forensic: Array,
                 machine: Array,
                 suspect: Array
             }
@@ -122,7 +121,6 @@ export const def = {
             misc: Array,
             webServer: Array,
             realiste: Array,
-            forensic: Array,
             machine: Array,
             suspect: Array
         }

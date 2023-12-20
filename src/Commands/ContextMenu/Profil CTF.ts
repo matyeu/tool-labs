@@ -19,7 +19,7 @@ export async function slash(client: ToolClient, interaction: ChatInputCommandInt
 
     const memberConfig: any = await findMember(member.guild!.id, member.id);
     const flagsMember = memberConfig.challenge.flags;
-    const flagsTotal = flagsMember.steganographie.length + flagsMember.crackingReverse.length + flagsMember.osint.length + flagsMember.webClient.length + flagsMember.misc.length + flagsMember.webServer.length + flagsMember.realiste.length + flagsMember.forensic.length + flagsMember.machine.length
+    const flagsTotal = flagsMember.steganographie.length + flagsMember.crackingReverse.length + flagsMember.osint.length + flagsMember.webClient.length + flagsMember.misc.length + flagsMember.webServer.length + flagsMember.realiste.length + flagsMember.machine.length
 
     const separator = new AttachmentBuilder('./assets/images/barredeseparation.png');
 

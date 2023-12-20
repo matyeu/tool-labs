@@ -28,9 +28,9 @@ export async function createClassementEmbed(client: ToolClient, channel: TextCha
         .setFooter({ text: FOOTER, iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
     const sortedClassement = memberServerConfig.sort((a: any, b: any) =>
         a.challenge.flags.steganographie.length + a.challenge.flags.crackingReverse.length + a.challenge.flags.osint.length + a.challenge.flags.webClient.length + a.challenge.flags.misc.length
-            + a.challenge.flags.webServer.length + a.challenge.flags.realiste.length + a.challenge.flags.forensic.length + a.challenge.flags.machine.length < b.challenge.flags.steganographie.length
+            + a.challenge.flags.webServer.length + a.challenge.flags.realiste.length + a.challenge.flags.machine.length < b.challenge.flags.steganographie.length
             + b.challenge.flags.crackingReverse.length + b.challenge.flags.osint.length + b.challenge.flags.webClient.length + b.challenge.flags.misc.length + b.challenge.flags.webServer.length
-            + b.challenge.flags.realiste.length + b.challenge.flags.forensic.length + b.challenge.flags.machine.length ? 1 : -1
+            + b.challenge.flags.realiste.length + b.challenge.flags.machine.length ? 1 : -1
     );
     for (const e of sortedClassement.splice(0, 10)) {
 
@@ -39,7 +39,7 @@ export async function createClassementEmbed(client: ToolClient, channel: TextCha
 
         const memberConfig: any = await find(channel.guild!.id, member.id)
         const flags = memberConfig.challenge.flags;
-        const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length + flags.webServer.length + flags.realiste.length + flags.forensic.length + flags.machine.length
+        const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length + flags.webServer.length + flags.realiste.length + flags.machine.length
 
         const flagTop = [
             { name: 'steganographie', data: flags.steganographie.length },
@@ -49,7 +49,6 @@ export async function createClassementEmbed(client: ToolClient, channel: TextCha
             { name: 'misc', data: flags.misc.length },
             { name: 'webServer', data: flags.webServer.length },
             { name: 'realiste', data: flags.realiste.length },
-            { name: 'forensic', data: flags.forensic.length },
             { name: 'machine', data: flags.machine.length },
         ];
 

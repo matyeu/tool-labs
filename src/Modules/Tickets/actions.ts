@@ -129,16 +129,10 @@ export function createSelectChallenge(client: ToolClient) {
                     value: "category-7"
                 },
                 {
-                    label: "Forensic",
-                    description: "0 challenges Forensic disponibles",
-                    emoji: "🔎",
-                    value: "category-8"
-                },
-                {
                     label: "Machine",
                     description: "0 challenges Machine disponibles",
                     emoji: "👾",
-                    value: "category-9"
+                    value: "category-8"
                 },
             ])
     );
@@ -280,7 +274,7 @@ export async function getFlags(client: ToolClient, interaction: StringSelectMenu
     const memberConfig: any = await findMember(interaction.guild!.id, interaction.user.id);
     const flags = memberConfig.challenge.flags;
 
-    const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length + flags.webServer.length + flags.realiste.length + flags.forensic.length + flags.machine.length;
+    const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length + flags.webServer.length + flags.realiste.length + flags.machine.length;
 
     if (!flagsTotal) return interaction.replyInfoMessage(client, `**Vous avez actuellement 0 flag !**`, true);
 
@@ -318,10 +312,6 @@ export async function getFlags(client: ToolClient, interaction: StringSelectMenu
                 value: `${flags.realiste.length <= 0 ? "`Aucun flag actuellement dans cette catégorie`" : flags.realiste.join('\n')}`
             },
             {
-                name: `Forensic (${flags.forensic.length})`,
-                value: `${flags.forensic.length <= 0 ? "`Aucun flag actuellement dans cette catégorie`" : flags.forensic.join('\n')}`
-            },
-            {
                 name: `Machine (${flags.machine.length})`,
                 value: `${flags.machine.length <= 0 ? "`Aucun flag actuellement dans cette catégorie`" : flags.machine.join('\n')}`
             }
@@ -351,9 +341,9 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
         .setFooter({ text: FOOTER, iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
     const sortedClassement = memberServerConfig.sort((a: any, b: any) =>
         a.challenge.flags.steganographie.length + a.challenge.flags.crackingReverse.length + a.challenge.flags.osint.length + a.challenge.flags.webClient.length + a.challenge.flags.misc.length
-            + a.challenge.flags.webServer.length + a.challenge.flags.realiste.length + a.challenge.flags.forensic.length + a.challenge.flags.machine.length < b.challenge.flags.steganographie.length
+            + a.challenge.flags.webServer.length + a.challenge.flags.realiste.length + a.challenge.flags.machine.length < b.challenge.flags.steganographie.length
             + b.challenge.flags.crackingReverse.length + b.challenge.flags.osint.length + b.challenge.flags.webClient.length + b.challenge.flags.misc.length + b.challenge.flags.webServer.length
-            + b.challenge.flags.realiste.length + b.challenge.flags.forensic.length + b.challenge.flags.machine.length ? 1 : -1
+            + b.challenge.flags.realiste.length + b.challenge.flags.machine.length ? 1 : -1
     );
     for (const e of sortedClassement.splice(0, 10)) {
 
@@ -362,7 +352,7 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
 
         memberConfig = await findMember(interaction.guild!.id, member.id)
         const flags = memberConfig.challenge.flags;
-        const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length + flags.webServer.length + flags.realiste.length + flags.forensic.length + flags.machine.length
+        const flagsTotal = flags.steganographie.length + flags.crackingReverse.length + flags.osint.length + flags.webClient.length + flags.misc.length + flags.webServer.length + flags.realiste.length + flags.machine.length
 
         const flagTop = [
             { name: 'steganographie', data: flags.steganographie.length },
@@ -372,7 +362,6 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
             { name: 'misc', data: flags.misc.length },
             { name: 'webServer', data: flags.webServer.length },
             { name: 'realiste', data: flags.realiste.length },
-            { name: 'forensic', data: flags.forensic.length },
             { name: 'machine', data: flags.machine.length },
         ];
 
@@ -578,18 +567,6 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
 
                 break
             case 'category-8':
-                embed.setAuthor({ name: "FORENSIC", iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
-
-                options.push(
-                    {
-                        label: "Challenge Forensic (Facile)",
-                        emoji: `🟡`,
-                        description: "En cours de construction",
-                        value: `forensic-challenge-4`,
-                    })
-
-                break
-            case 'category-9':
                 embed.setAuthor({ name: "Machine", iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
 
                 options.push(

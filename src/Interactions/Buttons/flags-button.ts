@@ -43,10 +43,6 @@ export default async function (client: ToolClient, interaction: ButtonInteractio
                 value: `${flags.realiste.length <= 0 ? "`Aucun flag actuellement dans cette catégorie`" : flags.realiste.join('\n')}`
             },
             {
-                name: `Forensic (${flags.forensic.length})`,
-                value: `${flags.forensic.length <= 0 ? "`Aucun flag actuellement dans cette catégorie`" : flags.forensic.join('\n')}`
-            },
-            {
                 name: `Machine (${flags.machine.length})`,
                 value: `${flags.machine.length <= 0 ? "`Aucun flag actuellement dans cette catégorie`" : flags.machine.join('\n')}`
             }

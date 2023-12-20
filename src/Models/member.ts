@@ -25,7 +25,6 @@ const Members = model("Members", new Schema({
             misc: Array,
             webServer: Array,
             realiste: Array,
-            forensic: Array,
             machine: Array,
         }
     },
@@ -68,7 +67,6 @@ export const def = {
             misc: Array,
             webServer: Array,
             realiste: Array,
-            forensic: Array,
             machine: Array,
         }
     },
