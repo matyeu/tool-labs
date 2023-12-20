@@ -217,7 +217,7 @@ ctx.fillStyle = '#61d18b';
 ctx.fillRect(progressBarX, progressBarY, progressBarWidth * progress, progressBarHeight);
 
 ctx.fillStyle = '#ffffff';
-ctx.font = '16px Arial'; // Vous pouvez ajuster la police et la taille du texte
+ctx.font = '16px Arial'; // Police et taille du texte
 ctx.textAlign = 'center';
 ctx.textBaseline = 'middle';
 const percentageText = Math.round(progress * 100) + '%';
@@ -444,7 +444,7 @@ ctx.fillStyle = '#61d18b';
 ctx.fillRect(progressBarX, progressBarY, progressBarWidth * progress, progressBarHeight);
 
 ctx.fillStyle = '#ffffff';
-ctx.font = '16px Arial'; // Vous pouvez ajuster la police et la taille du texte
+ctx.font = '16px Arial'; // Police et taille du texte
 ctx.textAlign = 'center';
 ctx.textBaseline = 'middle';
 const percentageText = Math.round(progress * 100) + '%';
