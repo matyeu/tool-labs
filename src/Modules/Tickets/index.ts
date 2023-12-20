@@ -3,7 +3,6 @@ import { ToolClient } from "../../Library";
 import { find } from "../../Models/server";
 import { createChallengeEmbed, createChallengeSuspectEmbed, ticketAlreadyOpenEmbed } from "./embeds";
 import { createCollector, createTicket, tickets, warnSurcharge } from "./actions";
-//import { edit as editMember, find as findMember } from "../../Models/member";
 
 const Logger = require("../../Library/logger");
 
@@ -60,50 +59,11 @@ export default async function (client: ToolClient, guild: Guild) {
 
 
     for (let challengeChannel of openedTickets) {
-        const fetchedMessages = await challengeChannel.messages.fetch({ limit: 100 });
-        const channelMessages = fetchedMessages.filter(msg => msg.channel.id === challengeChannel.id);
-
-        try {
-            await channelMessages.forEach(msg => msg.delete());
-        }
-        catch (err: any) {
-            if (err.message.match("You can only bulk delete messages that are under 14 days old")) {
-                const channelNew = await challengeChannel.clone()
-                const position = channelNew.position;
-                const topic = channelNew.topic;
-
-                channelNew.setPosition(position);
-                channelNew.setTopic(topic);
-                await challengeChannel.delete();
-            } else {
-                Logger.error(err);
-            }
-        }
-
-        await createCollector(client, challengeChannel);
-
-        /* 
-        
-        const idMember = challengeChannel.topic?.split(":")[1].replace('(', '').replace(')', '');
-        const member = challengeChannel.guild.members.cache.get(`${idMember}`)!;
-        
-        const memberConfig: any = await findMember(member.guild.id, member.id);
-        const getMessage = await challengeChannel.messages.fetch(memberConfig.challenge.lastChallengeId);
-         const getCategory = await challengeChannel.messages.fetch(memberConfig.challenge.lastCategoryMessageId);
- 
-         if (getMessage) {
-             await getMessage.delete();
-             memberConfig.challenge.lastChallengeId = "";
-         };  
-         
-         if (getCategory) {
-             await getCategory.delete();
-             memberConfig.challenge.lastCategoryMessageId = "";
-         };
- 
-         await editMember(member.guild.id, member.id, memberConfig);*/
+        await createCollector(client, challengeChannel);    
     }
 
-    Logger.module(`Loading tickets for the ${guild.name} server - SUCCESS (${openedTickets.length} ticket(s) reloaded)`)
+    client.getChannel(challengeChannel.guild, serverConfig.channels.annonceCtf, {content: "## > @everyone une mise à jour à été effectué sur le serveur, si vous rencontrez un problème merci de bien fermer vos tickets"});
+
+    Logger.module(`Loading tickets for the ${guild.name} server - SUCCESS (${openedTickets.length} ticket(s) reloaded)`);
 
 }

@@ -26,7 +26,8 @@ const Server = model(
             staff: String,
             documentation: String,
             fluxDash: String,
-            fluxCommand: String
+            fluxCommand: String,
+            annonceCtf: String,
         },
         roles: {
             suspect: String,
@@ -93,7 +94,8 @@ export const def = {
         staff: "",
         documentation: "",
         fluxDash: "",
-        fluxCommand: ""
+        fluxCommand: "",
+        annonceCtf: "",
     },
     roles: {
         suspect: "",

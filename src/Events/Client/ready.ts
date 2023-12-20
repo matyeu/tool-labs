@@ -47,7 +47,7 @@ export default async function (client: ToolClient) {
 
         const serverConfig: any = await findServer(guild.id);
 
-        if (serverConfig.dashboard) require("../../Library/dashboard")(client);
+       if (serverConfig.dashboard) require("../../Library/dashboard")(client);
         console.log(chalk.grey('--------------------------------'));
         
         await updateServer(guild.id);

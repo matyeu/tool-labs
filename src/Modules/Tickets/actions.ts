@@ -199,6 +199,9 @@ export async function createTicket(client: ToolClient, category: CategoryChannel
         type: ChannelType.GuildText
     });
 
+    const channelAnnonceCtf = <TextChannel>category.guild.channels.cache.get(serverConfig.channels.annonceCtf);
+    await channelAnnonceCtf.permissionOverwrites.set([{ id: member.id, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages] }]);
+
     await channel.permissionOverwrites.set([{
         id: member.id,
         allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages]
@@ -235,6 +238,9 @@ export async function closeTicket(client: ToolClient, channel: TextChannel, memb
 
     const logChannelId = serverConfig.channels.logs.tickets;
     const logChannel = <TextChannel>channel.guild.channels.cache.get(logChannelId);
+
+    const channelAnnonceCtf = <TextChannel>channel.guild.channels.cache.get(serverConfig.channels.annonceCtf);
+    await channelAnnonceCtf.permissionOverwrites.set([{ id: member.id, deny: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages]}]);
 
     if (logChannel) {
         await logChannel.send({ embeds: [closeEmbed(client, channel, member)] });
