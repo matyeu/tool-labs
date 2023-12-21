@@ -67,7 +67,7 @@ export async function updateClassement(client: ToolClient, interaction: ButtonIn
             { name: 'webClient', data: flags.webClient.length },
             { name: 'misc', data: flags.misc.length },
             { name: 'webServer', data: flags.webServer.length },
-            { name: 'realiste', data: flags.realiste.length },
+            { name: 'cryptographie', data: flags.realiste.length },
             { name: 'machine', data: flags.machine.length },
         ];
 
@@ -191,18 +191,28 @@ export async function pagesDocumentation(client: ToolClient, interaction: Button
     const embedHome = new EmbedBuilder()
         .setColor(EMBED_GENERAL)
         .setTitle("Documentation C.T.F")
-        .setDescription(`${client.getEmoji(EMOJIS.documentation)} **Vous pouvez consulter vos données et celle des autres participants CTF en tapant la commande :\n
-    \`\`\`/profil @utilisateur\`\`\`
-ou en vous rendant sur** ***le profil de l'utilisateur > Applications > Profil C.T.F ***
-        
-${client.getEmoji(EMOJIS.uno)} Les FLAGS doivent être écris dans votre salon C.T.F privé, le bot réagira si vous trouvez le bon flag
+        .setDescription(`${client.getEmoji(EMOJIS.information)} **Vous trouverez ici la documentation qui concerne les challenges C.T.F **
+       
+
+${client.getEmoji(EMOJIS.uno)} **Les FLAGS doivent être écris dans votre salon C.T.F privé, le bot réagira si vous trouvez le bon flag.
+Si un flag est composé de cette manière TL{flagtest} , le flag sera ainsi flagtest
+
     
-${client.getEmoji(EMOJIS.deux)} Tous les challenges sont testés et fonctionnels, et nous ne donnons\n **aucun indice(s) supplémentaire(s).** 
-Si un challenge ne vous donne pas d'indice dans la trame, cela veut dire que le challenge est réalisable sans\n
+
+${client.getEmoji(EMOJIS.deux)} Tous les challenges sont testés et fonctionnels, et nous ne donnons
+ aucun indice(s) supplémentaire(s)
+Si un challenge ne vous donne pas d'indice dans la trame, cela veut dire que le challenge est réalisable sans, soyez attentif.
+
     
-${client.getEmoji(EMOJIS.trois)} Si vous validé un challenge et que vous ne gagniez aucun rôle, ou récompenses c'est normal !\n**Tous les challenges n'offre pas de récompense(s).**
+
+${client.getEmoji(EMOJIS.trois)} Si vous validé un challenge et que vous ne gagniez aucun rôle, ou récompenses c'est normal !
+Tous les challenges n'offre pas de récompense(s).
     
-${client.getEmoji(EMOJIS.quatre)} Les challenges de Tool-Labs sont pour la plupart fait maison cependant certains peuvent provenir d'une célèbre plateforme permettant de mettre à disposition des challenges **(libre d'utilisation)** néanmoins l'ensemble du code aura été modifier pour vous empêcher de reverse le code sur internet.") 
+
+
+${client.getEmoji(EMOJIS.quatre)} Vous pouvez consulter vos données ainsi que celles des autres participants CTF en tapant la commande :**
+
+    \`\`\`/profil + utilisateur\`\`\`
 `)
         .setFooter({ text: FOOTER_CTF, iconURL: client.user!.displayAvatarURL({ extension: "png" }) })
 
@@ -233,16 +243,22 @@ ${client.getEmoji(EMOJIS.quatre)} Les challenges de Tool-Labs sont pour la plupa
 
     }
     else if (getPage === "page2") {
-        embed.setTitle("Informations C.T.F")
-        embed.setDescription(`${client.getEmoji(EMOJIS.information)} **Vous trouverez ici les informations qui concerne les challenges C.T.F **
+        embed.setTitle("Informations complémentaires C.T.F")
+        embed.setDescription(`${client.getEmoji(EMOJIS.information)} **Vous trouverez ici les informations complémentaires qui concerne les challenges C.T.F 
         
+
 ${client.getEmoji(EMOJIS.uno)} Si vous avez un challenge à nous soumettre veuillez ouvrir un ticket dans 
 <#1151868897545420872> afin qu'il soit testé & approuvé puis posté.
     
-${client.getEmoji(EMOJIS.deux)} Le système de C.T.F est constement mis à jour, mais vous pouvez laissez vos salons privés ouvert les changements seront immédiats.
 
-${client.getEmoji(EMOJIS.trois)} Utilise la commande ci-dessous pour nous faire part d'amélioration(s) que tu aimerais voir. 
-L'ensemble des utilisateurs voteront et nous ajouteront vos  demandes en conséquence
+
+${client.getEmoji(EMOJIS.deux)} Le système de C.T.F est constement mis à jour, restez informer des nouveautées pour update votre salon C.T.F
+
+
+
+${client.getEmoji(EMOJIS.trois)} Utilisez la commande ci-dessous pour nous faire part d'amélioration(s) que tu aimerais voir. 
+[L'ensemble des utilisateurs voteront et nous ajouteront vos demandes en conséquence]**
+
 
 \`\`\`/suggest + votre suggestion\`\`\`
 `)
@@ -262,12 +278,21 @@ L'ensemble des utilisateurs voteront et nous ajouteront vos  demandes en conséq
         );
 
     } else {
-        embed.setTitle("Règles C.T.F")
-        embed.setDescription(`${client.getEmoji(EMOJIS.interdit)} **Vous trouverez ici les règles qui concerne les challenges C.T.F **
+        embed.setTitle("Règlement C.T.F")
+        embed.setDescription(`${client.getEmoji(EMOJIS.information)} **Vous trouverez ici les règles qui concerne les challenges C.T.F **
         
-${client.getEmoji(EMOJIS.uno)} Les FLAGS changent de temps en temps.
-**[Le partage de solution est interdit] & [Les demandes de flags en privé sont interdits]** , si nous constatons que cette règle est outrepassé le bannissement sera immédiat.\n
-${client.getEmoji(EMOJIS.deux)} **Le classement n'est pas un moyen de trashtalk les autres utilisateurs, on avance tous à une vitesse différente, ne l'oubliez pas.**
+
+${client.getEmoji(EMOJIS.uno)} **Les FLAGS changent de temps en temps.
+  [Le partage de solution est interdit] & [Les demandes de flags en privé sont interdits] , si nous constatons que cette règle est outrepassé le bannissement sera immédiat.
+
+
+
+${client.getEmoji(EMOJIS.deux)} Si l'équipe de Tool-Labs suspecte une triche, nous sommes en droit de vous imposer un challenges.
+ Pendant ce temps vous serez isoler de l'ensemble du serveur avant de retrouver vos rôles si le challenge est réussi.
+
+
+
+${client.getEmoji(EMOJIS.trois)} Le classement n'est pas un moyen de trashtalk les autres utilisateurs, on avance tous à une vitesse différente, ne l'oubliez pas.**
 `)
         buttons.addComponents(
             new ButtonBuilder()

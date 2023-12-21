@@ -39,7 +39,7 @@ ${client.getEmoji(EMOJIS.info)} Pour ouvrir un salon privé et commencer les cha
 <#1161679951209168966> et cliquez sur le bouton ci-dessous.
     
 `)
-        .setImage('https://tool-labs.com/tl.gif')
+        .setImage('https://tool-labs.com/tlgif.gif')
         .setFooter({
             text: `${FOOTER_CTF}`,
             iconURL: client.user?.displayAvatarURL()

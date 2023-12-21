@@ -86,53 +86,59 @@ export function createSelectChallenge(client: ToolClient) {
             .setCustomId("select-challenge")
             .setPlaceholder("Selectionnez une catégorie")
             .addOptions([
-                {
+                 {
                     label: "Stéganographie",
-                    description: "4 challenges Stéganographie disponibles",
+                    description: "7 challenges Stéganographie disponibles",
                     emoji: "🖌️",
                     value: "category-1"
                 },
                 {
                     label: "Cracking & Reverse",
-                    description: "3 challenges Cracking/Reverse disponibles",
+                    description: "1 challenge Cracking/Reverse disponibles",
                     emoji: "🔐",
                     value: "category-2"
+                    },
+                 {
+                    label: "Cryptographie",
+                    description: "8 challenges Cryptographie disponibles",
+                    emoji: "🗝️",
+                    value: "category-7"
                 },
                 {
                     label: "O.S.I.N.T",
-                    description: "3 challenges Cracking/Reverse disponibles",
+                    description: "4 challenges O.S.I.N.T disponibles",
                     emoji: "🕵️‍♂️",
                     value: "category-3"
                 },
                 {
                     label: "Web Client",
-                    description: "6 challenges Web Client disponibles",
+                    description: "4 challenges Web Client disponibles",
                     emoji: "🌐",
                     value: "category-4"
                 },
                 {
                     label: "Web Server",
-                    description: "0 challenges Web Server disponibles",
+                    description: "En cours de construction",
                     emoji: "🖥",
                     value: "category-5"
                 },
                 {
                     label: "M.I.S.C",
-                    description: "1 challenges M.I.S.C disponibles",
+                    description: "1 challenges M.I.S.C disponible",
                     emoji: "⚒️",
                     value: "category-6"
                 },
-                {
-                    label: "Réaliste",
-                    description: "0 challenges Réaliste disponibles",
-                    emoji: "📋",
-                    value: "category-7"
+               {
+                    label: "Forensic",
+                    description: "En cours de construction",
+                    emoji: "🔎",
+                    value: "category-8"
                 },
                 {
                     label: "Machine",
-                    description: "0 challenges Machine disponibles",
+                    description: "En cours de construction",
                     emoji: "👾",
-                    value: "category-8"
+                    value: "category-9"
                 },
             ])
     );
@@ -308,7 +314,7 @@ export async function getFlags(client: ToolClient, interaction: StringSelectMenu
                 value: `${flags.misc.length <= 0 ? "`Aucun flag actuellement dans cette catégorie`" : flags.misc.join('\n')}`
             },
             {
-                name: `Réaliste (${flags.realiste.length})`,
+                name: `Cryptographie (${flags.realiste.length})`,
                 value: `${flags.realiste.length <= 0 ? "`Aucun flag actuellement dans cette catégorie`" : flags.realiste.join('\n')}`
             },
             {
@@ -415,17 +421,35 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
                         value: `steganographie-challenge-2`,
                     },
                     {
-                        label: "Challenge Stéganographie Audio #3 (Moyen)",
+                        label: "Challenge Stéganographie Audio #3 (Facile)",
                         emoji: EMOJIS.facile,
                         description: "Trouve le FLAG dans l'image",
                         value: `steganographie-challenge-3`,
-                        },
+                    },
                     {
-                        label: "Challenge Stéganographie #4 Image (Moyen)",
-                        emoji: EMOJIS.moyen,
+                        label: "Challenge Stéganographie Audio #4 (Facile)",
+                        emoji: EMOJIS.facile,
                         description: "Trouve le FLAG dans l'image",
                         value: `steganographie-challenge-4`,
+                    },
+                    {
+                        label: "Challenge Stéganographie Image #5 (Moyen)",
+                        emoji: EMOJIS.moyen,
+                        description: "Trouve le FLAG dans l'image",
+                        value: `steganographie-challenge-5`,
 
+ },
+                    {
+                        label: "Challenge Stéganographie Image #6 (Moyen)",
+                        emoji: EMOJIS.moyen,
+                        description: "Trouve le FLAG dans l'image",
+                        value: `steganographie-challenge-6`,
+                        },
+                    {
+                        label: "Challenge Stéganographie Image #7 (Difficile)",
+                        emoji: EMOJIS.difficile,
+                        description: "Trouve le FLAG dans l'image",
+                        value: `steganographie-challenge-7`,
                     })
 
 
@@ -439,18 +463,7 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
                         emoji: EMOJIS.facile,
                         description: "Trouve le FLAG dans l'image",
                         value: `cracking-challenge-1`,
-                    },
-                    {
-                        label: "Challenge Reverse #2 (Moyen)",
-                        emoji: EMOJIS.moyen,
-                        description: "Trouve le FLAG dans l'image",
-                        value: `cracking-challenge-2`,
-                    },
-                    {
-                        label: "Challenge Reverse #3 (Moyen)",
-                        emoji: EMOJIS.moyen,
-                        description: "Trouve le FLAG dans l'image",
-                        value: `cracking-challenge-3`,
+                    
                     })
 
 
@@ -461,18 +474,27 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
                 options.push(
                     {
                         label: "Challenge O.S.I.N.T #1 (Facile)",
+                        emoji: EMOJIS.facile,
                         description: "Trouvez le lieu d'après une photo",
                         value: `osint-challenge-1`,
                     },
                     {
                         label: "Challenge O.S.I.N.T #2 (Moyen)",
-                        description: "Trouvez le lieu d'après une photo",
+                        emoji: EMOJIS.moyen,
+                        description: "Trouvez l'établissement d'après une photo",
                         value: `osint-challenge-2`,
                     },
                     {
                         label: "Challenge O.S.I.N.T #3 (Moyen)",
+                        emoji: EMOJIS.moyen,
                         description: "Trouvez l'établissement d'après une photo",
                         value: `osint-challenge-3`,
+                         },
+                    {
+                        label: "Challenge O.S.I.N.T #4 (Difficile)",
+                        emoji: EMOJIS.difficile,
+                        description: "Trouvez l'établissement d'après une photo",
+                        value: `osint-challenge-4`,
                     })
 
                 break
@@ -482,61 +504,39 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
                 options.push(
                     {
                         label: "Find FLAG (Facile)",
-                        emoji: `🟡`,
+                        emoji: EMOJIS.facile,
                         description: "Trouvez le FLAG dans le code source",
                         value: `webclient-challenge-1`,
                     },
                     {
                         label: "HTML OBFUSCATOR (Facile)",
-                        emoji: `🟡`,
-                        description: "Trouvez le FLAG dans le code source",
+                        emoji: EMOJIS.facile,
+                        description: "Trouvez le FLAG dans le code source obfuscé",
                         value: `webclient-challenge-2`,
                     },
                     {
                         label: "Session Hijacking (Facile)",
-                        emoji: `🟡`,
+                        emoji: EMOJIS.facile,
                         description: "Trouvez le FLAG en commandant un cookie",
                         value: `webclient-challenge-3`,
                     },
-                    {
-                        label: "Copis et colle (Facile)",
-                        emoji: `🟡`,
-                        description: "Trouvez le FLAG en copiant et collant le flag",
-                        value: `webclient-challenge-4`,
-                    },
-                    {
-                        label: "Safe Locker (Facile)",
-                        emoji: `🟡`,
-                        description: "Trouvez le FLAG en déverouillant le locker",
-                        value: `webclient-challenge-5`,
-                    },
-                    {
-                        label: "Safe Locker ++ (Moyen)",
-                        emoji: `🟠`,
-                        description: "Trouvez le FLAG en déverouillant le locker",
-                        value: `webclient-challenge-6`,
-                    },
-                    {
-                        label: "Etes-vous un robot ? (Moyen)",
-                        emoji: `🟠`,
-                        description: "Trouvez le FLAG mais êtes-vous un robot ?",
-                        value: `webclient-challenge-7`,
-                    },
+            
+                   
                     {
                         label: "Notes Personnelles (Moyen)",
-                        emoji: `🟠`,
-                        description: "Trouvez le FLAG en accèdant à mes notes",
-                        value: `webclient-challenge-8`,
+                        emoji: EMOJIS.moyen,
+                        description: "Trouvez le FLAG en accèdant à mes notes personnelles",
+                        value: `webclient-challenge-5`,
                     })
 
                 break
             case 'category-5':
-                embed.setAuthor({ name: "WEB SERVER", iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
+                embed.setAuthor({ name: "CHALLENGES WEB SERVER", iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
 
                 options.push(
                     {
                         label: "Challenge WebServer (Facile)",
-                        emoji: `🟡`,
+                        emoji: EMOJIS.facile,
                         description: "En cours de construction",
                         value: `webserver-challenge-1`,
                     })
@@ -548,26 +548,81 @@ export async function selectChallenge(client: ToolClient, ticketChannel: TextCha
                 options.push(
                     {
                         label: "Challenge M.I.S.C (Facile)",
-                        emoji: `🟡`,
-                        description: "Trouvez le flag dans le Q.R Code",
+                        emoji: EMOJIS.facile,
+                        description: "Trouvez le flag grâce au fichier texte",
                         value: `misc-challenge-1`,
+                       
                     })
 
                 break
             case 'category-7':
-                embed.setAuthor({ name: "REALISTE", iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
+                embed.setAuthor({ name: "CHALLENGES CRYPTOGRAPHIE", iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
 
                 options.push(
                     {
-                        label: "Challenge Realiste (Facile)",
-                        emoji: `🟡`,
-                        description: "En cours de construction",
-                        value: `realiste-challenge-3`,
+                        label: "Challenge Cryptographie (Facile)",
+                        emoji: EMOJIS.facile,
+                        description: "Déchiffre la clef pour obenir le flag",
+                        value: `crypto-challenge-1`,
+                        },
+                    {
+                        label: "Challenge Cryptographie (Facile)",
+                        emoji: EMOJIS.facile,
+                        description: "Déchiffre la clef pour obenir le flag",
+                        value: `crypto-challenge-2`,
+                           },
+                    {
+                        label: "Challenge Cryptographie (Facile)",
+                        emoji: EMOJIS.facile,
+                        description: "Déchiffre la clef pour obenir le flag",
+                        value: `crypto-challenge-3`,
+                             },
+                    {
+                        label: "Challenge Cryptographie (Facile)",
+                        emoji: EMOJIS.facile,
+                        description: "Déchiffre la clef pour obenir le flag",
+                        value: `crypto-challenge-4`,
+                               },
+                    {
+                        label: "Challenge Cryptographie (Facile)",
+                        emoji: EMOJIS.facile,
+                        description: "Introduction R.S.A Factorisation",
+                        value: `crypto-challenge-5`,
+                                  },
+                    {
+                        label: "Challenge Cryptographie (Moyen)",
+                        emoji: EMOJIS.moyen,
+                        description: "R.S.A #1",
+                        value: `crypto-challenge-6`,
+                               },
+                    {
+                        label: "Challenge Cryptographie (Moyen)",
+                        emoji: EMOJIS.moyen,
+                        description: "R.S.A Factorisation",
+                        value: `crypto-challenge-7`,
+                               },
+                    {
+                        label: "Challenge Cryptographie (Moyen)",
+                        emoji: EMOJIS.moyen,
+                        description: "Déchiffre la clef pour obenir le flag",
+                        value: `crypto-challenge-8`,
                     })
 
                 break
             case 'category-8':
-                embed.setAuthor({ name: "Machine", iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
+                embed.setAuthor({ name: "CHALLENGES FORENSIC", iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
+
+                options.push(
+                    {
+                        label: "Challenge Forensic (Facile)",
+                        emoji: `🟡`,
+                        description: "En cours de construction",
+                        value: `forensic-challenge-4`,
+                    })
+
+                break
+            case 'category-9':
+                embed.setAuthor({ name: "CHALLENGES MACHINE", iconURL: client.user?.displayAvatarURL({ extension: "png" }) })
 
                 options.push(
                     {

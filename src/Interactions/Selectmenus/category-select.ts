@@ -35,42 +35,49 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
         case 'steganographie-challenge-3':
 
             embed.setTitle("CHALLENGE STEGANOGRAPHIE #3")
-                .setDescription(" **Trouvez le FLAG dans cet audio et écrivez le dans le chat pour validé ce challenge**\n\n [Téllecharger l'audio](https://tool-labs.com/steganoaudio.mp3) ")
+                .setDescription(" **Trouvez le FLAG dans cet audio et écrivez le dans le chat pour validé ce challenge**\n\n [Télecharger l'audio](https://tool-labs.com/steganoaudio.mp3) ")
                 .setColor(EMBED_GENERAL)
-                .setThumbnail("https://tool-labs.com/facile.png");
+                .setThumbnail("https://tool-labs.com/facile2.png");
                 break;
-        case 'steganographie-challenge-4':
+                case 'steganographie-challenge-4':
 
             embed.setTitle("CHALLENGE STEGANOGRAPHIE #4")
-                .setDescription(" **Trouvez le FLAG dans cette image et écrivez le dans le chat pour validé ce challenge** ")
-                .setImage("https://tool-labs.com/steg3.png")
+                .setDescription(" **Trouvez le FLAG dans cet audio et écrivez le dans le chat pour validé ce challenge**\n\n [Télecharger l'audio](https://tool-labs.com/steg_easy.wav) ")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/facile2.png");
+                break;
+        case 'steganographie-challenge-5':
+
+            embed.setTitle("CHALLENGE STEGANOGRAPHIE #5")
+                .setDescription(" **Trouvez le FLAG dans cette image et écrivez le dans le chat pour validé ce challenge**\n\n [Télécharger le fichier texte](https://tool-labs.com/steg.zip) ")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/moyen2.png");
+                break;
 
-            break;
+                case 'steganographie-challenge-6':
+
+            embed.setTitle("CHALLENGE STEGANOGRAPHIE #6")
+                .setDescription(" **Trouvez le FLAG dans cette image et écrivez le dans le chat pour validé ce challenge**\n\nIndice : ***AES 256 & RGB***\n\n [Télecharger l'archive](https://tool-labs.com/RGBcRYPT.rar) ")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/moyen2.png");
+                break;
+                case 'steganographie-challenge-7':
+
+            embed.setTitle("CHALLENGE STEGANOGRAPHIE #7")
+                .setDescription(" **Trouvez le FLAG dans cette image et écrivez le dans le chat pour validé ce challenge**\n\nRetrouvez le flag à partir de ces techniques de stéganographie\n\n [Télecharger l'archive](https://tool-labs.com/Stegozaure.zip) ")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/dur1.png");
+                break;
+
+            
         case 'cracking-challenge-1':
             embed.setTitle("CHALLENGE CRACKING #1 ")
-                .setDescription("Dans le jardin d'Eden, Adam rencontra une compagne, mais après un discret décalage, il furent séparer par les septs nains... \n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n[Téléchargez l'archive](https://tool-labs.com/Cracking.zip)")
+                .setDescription("Aie, je veux absolument ouvrir ce fichier zip mis il possède un mot de passe, tu pourrais m'aide ? \n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n[Téléchargez l'archive](https://tool-labs.com/flag.zip)")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/facile2.png");
 
             break;
-        case 'cracking-challenge-2':
-
-            embed.setTitle("CHALLENGE REVERSE #2 ")
-                .setDescription("Qui à dit que Java était ennuyeux ?\n\nRecopiez le flag en minuscule ! \n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n[Téléchargez l'archive](https://discord.tool-labs.com/reverse/app-debug.apk)")
-                .setColor(EMBED_GENERAL)
-                .setThumbnail("https://tool-labs.com/moyen2.png");
-
-            break;
-        case 'cracking-challenge-3':
-
-            embed.setTitle("CHALLENGE REVERSE #3 ")
-                .setDescription("Pas de description pour ce challenge !\n\nRecopiez le flag en minuscule ! \n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n[Téléchargez le fichier](https://discord.tool-labs.com/reverse/debug.exe)")
-                .setColor(EMBED_GENERAL)
-                .setThumbnail("https://tool-labs.com/moyen2.png");
-
-            break;
+       
         case 'osint-challenge-1':
 
             embed.setTitle("CHALLENGE OSINT #1")
@@ -81,8 +88,8 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
             break;
         case 'osint-challenge-2':
             embed.setTitle("CHALLENGE O.S.I.N.T #2 ")
-                .setDescription('**Quelle tristesse... **\n\n**Pouvez-vous nous dire dans quelle ville cette photo à été prise ? **\n\n **Ecrivez le flag en minuscule (exemple: amsterdam)**')
-                .setImage("https://tool-labs.com/osint3.png")
+                .setDescription('**Mince... Je dois trouver une boutique spécialisé dans les panneaux solaires pour remplacer les anciens panneaux que je possède**\n\n**Pouvez-vous trouver la boutique spécialisée dans les panneaux solaire la plus proche de moi sur cette photo ? **\n\n **Ecrivez le flag en minuscule (exemple: leaderprice)**')
+                .setImage("https://tool-labs.com/osintxfdughygofyuodg/imageosint2.png")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/moyen2.png");
 
@@ -90,17 +97,30 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
         case 'osint-challenge-3':
 
             embed.setTitle("CHALLENGE OSINT #3")
-                .setDescription("**J'ai une petite faim !** \n\n**Quel est le nom du restaurant le plus proche d'où je suis sur la photo et qui propose des nouilles chinoises ?** \n\n**Ecrivez le flag en minuscule (exemple: buffalogrill)**")
-                .setImage("https://tool-labs.com/osint2.jpg")
+                .setDescription("**Je suis si fatigué...** \n\n**Quel est le nom des chambres d'hôte les plus proche d'où je suis sur la photo ?** \n\n**Ecrivez le flag en minuscule (exemple: lacabaneenchantée)**")
+                .setImage("https://tool-labs.com/osintxfdughygofyuodg/imageosint3.png")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/moyen2.png");
 
 
             break;
+        case 'osint-challenge-4':
+
+            embed.setTitle("CHALLENGE OSINT #4")
+                .setDescription("**Oupss, je suis en vacances aux phillipines mais mon ordinateur à cessé de fonctionner.** \n\n**Quel est le nom du réparateur d'ordinateur est le plus proche d'où je suis sur la photo ?** \n\n**Ecrivez le flag en minuscule (exemple: repairexpress)**")
+                .setImage("https://tool-labs.com/osintxfdughygofyuodg/imageosint4.png")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/dur1.png");
+
+
+            break;
+        
+
+          
         case 'misc-challenge-1':
 
             embed.setTitle("CHALLENGE M.I.S.C #1 ")
-                .setDescription("Trouvez le flag dans le Q.R Code \n\nRecopiez le flag en minuscule ! \n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n[Téléchargez l'archive](https://discord.tool-labs.com/misc/qrcode.png)")
+                .setDescription("Trouvez le flag en déchiffrant le contenu du fichier et souvenez-vous que tout est une question de hashage !\n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n[Téléchargez le](https://tool-labs.com/goodluck.txt)")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/facile2.png");
 
@@ -108,62 +128,42 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
         case 'webclient-challenge-1':
 
             embed.setTitle("CHALLENGE [FIND FLAG] ")
-                .setDescription("Scénario :\n```Je viens de télécharger un site vitrine en HTML/CSS & JS mais je ne trouve pas le flag dans le code source\nLe code est bien clair mais je n'arrive pas à le trouvé, tu m'aides ?```\n[Je suis déjà perdu](https://www.synacktiv.com/ressources/presentation_ctf_42.pdf)\n\nTrouvez le FLAG dans le code source \n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis ! \n\n[Challenge WEB](https://discord.tool-labs.com/web7/index.html)")
+                .setDescription("Scénario :\n```Je viens de télécharger un site vitrine en HTML/CSS & JS mais je ne trouve pas le flag dans le code source\nLe code est bien clair mais je n'arrive pas à le trouvé, tu m'aides ?```\n[Je suis déjà perdu](https://www.synacktiv.com/ressources/presentation_ctf_42.pdf)\n\nTrouvez le FLAG dans le code source \n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis ! \n\n[Challenge WEB](https://challctf.tool-labs.com/wclientxx157fsd8f/index.html)")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/facile2.png");
 
             break;
+
         case 'webclient-challenge-2':
 
             embed.setTitle("CHALLENGE [HTML OBFUSCATOR] ")
-                .setDescription("Scénario :\n```Je viens de télécharger une page de maintenance en HTML mais je ne trouve pas le flag\nLe code est obfusqué mais je ne sais pas trop comment faire, tu peux m'aider ?```\n[C'est quoi l'obfuscation ?](https://code-garage.fr/blog/quest-ce-que-lobfuscation-de-code-et-a-quoi-ca-sert/)\n\nTrouvez le FLAG dans le code source \n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis ! \n\n[Challenge WEB](https://discord.tool-labs.com/web/index.html)")
+                .setDescription("Scénario :\n```Je viens de télécharger une page de maintenance en HTML mais je ne trouve pas le flag\nLe code est obfusqué mais je ne sais pas trop comment faire, tu peux m'aider ?```\n[C'est quoi l'obfuscation ?](https://code-garage.fr/blog/quest-ce-que-lobfuscation-de-code-et-a-quoi-ca-sert/)\n\nTrouvez le FLAG dans le code source \n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis ! \n\n[Challenge WEB](https://challctf.tool-labs.com/wclient2xxfdgf1dg54/index.html)")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/facile2.png");
 
             break;
-        case 'webclient-challenge-3':
-            embed.setTitle("CHALLENGE [Etes-vous une machine ? Un robot ? ?]  ")
-                .setDescription("Scénario :\n```J'ai cru comprendre qu'en lisant les fichiers robot.txt je pouvais avoir pleins d'informations censé être protéger (ou non)\nJe sais que je dois trouvé un flag mais je sais pas faire, tu peux m'aider ?```\n[Comment se servir de robot.txt ?](https://arav02.medium.com/humanoid-traboda-web-ctf-write-up-f18413a13397)\n\nTrouve le FLAG pour validé ce challenge\n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis !\n\n[Challenge WEB](https://discord.tool-labs.com/web2/index.php)")
-                .setColor(EMBED_GENERAL)
-                .setThumbnail("https://tool-labs.com/moyen2.png");
 
-            break;
-        case 'webclient-challenge-4':
+        case 'webclient-challenge-3':
 
             embed.setTitle("CHALLENGE [Un cookie, pas deux !]  ")
-                .setDescription("Scénario :\n```Je devais commander des cookies mais je me rend compte que seul les admins peuvent le faire\nJe dois absolument devenir admin pour en commander , tu peux m'aider ?```\n[C'est quoi Session Hijacking ?](https://www.vaadata.com/blog/fr/detournement-de-session-hijacking-principes-types-dattaques-et-exploitations/)\n\nTrouvez le FLAG en commandant un cookie \n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis !\n\n[Challenge WEB](https://discord.tool-labs.com/web1/index.html)")
+                .setDescription("Scénario :\n```Je dois commander des cookies mais je me rend compte que seul les admins peuvent le faire\nJ'ai cru entendre qu'il était possible de manipulé des données pour me faire passer pour un admin, tu m'aides ? ```\n[C'est quoi Session Hijacking ?](https://www.vaadata.com/blog/fr/detournement-de-session-hijacking-principes-types-dattaques-et-exploitations/)\n\nTrouvez le FLAG en commandant un cookie \n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis !\n\n[Challenge WEB](https://challctf.tool-labs.com/wclient3xxdf1f2sdf4ff/index.html)")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/facile2.png");
+
+            break;
+    
+        case 'webclient-challenge-4':
+
+            embed.setTitle("CHALLENGE [JS Lock ++]  ")
+                .setDescription("Scénario :\n```Essayez de débloquer le locker JS ! Le flag sera le code de déverouillage```\n[En savoir plus sur le Javascript ?](https://gregit.medium.com/ringzer0-team-online-ctf-javascript-challenges-d15d7ce44f33)\n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis !\n\nIndice : ***WebAssembly***\n\n[Challenge WEB](https://challctf.tool-labs.com/wclient4xxgfddg54fg5fg/index.html)")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/moyen2.png");
 
             break;
         case 'webclient-challenge-5':
 
-            embed.setTitle("CHALLENGE [Copis et colle]  ")
-                .setDescription("Scénario :\n```Un ami vient de m'envoyer son site et je dois copier & coller le flag\nJe n'ai pas de souris et ma touche pour copier est cassée, tu peux m'aider ?```\n[Comment copier & coller ?](https://support.google.com/docs/answer/161768?hl=fr&co=GENIE.Platform%3DDesktop)\n\nTrouvez le FLAG et copier/coller le ici \n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis !\n\n[Challenge WEB](https://discord.tool-labs.com/web3/index.html)")
-                .setColor(EMBED_GENERAL)
-                .setThumbnail("https://tool-labs.com/facile2.png");
-
-            break;
-        case 'webclient-challenge-6':
-
-            embed.setTitle("CHALLENGE [JS Lock]  ")
-                .setDescription("Scénario :\n```Apparement il est possible de connaître le code mais je suis pas capable de trouver les infos même dans les .txt, tu peux m'aider ?```\n[En savoir plus sur le Javascript ?](https://gregit.medium.com/ringzer0-team-online-ctf-javascript-challenges-d15d7ce44f33)\n\nTrouvez le FLAG en déverouillant le locker \n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis !\n\n[Challenge WEB](https://discord.tool-labs.com/web4/index.html)")
-                .setColor(EMBED_GENERAL)
-                .setThumbnail("https://tool-labs.com/facile2.png");
-
-            break;
-        case 'webclient-challenge-7':
-
-            embed.setTitle("CHALLENGE [JS Lock ++]  ")
-                .setDescription("Scénario :\n```Apparement il est possible de connaître le code mais je suis pas capable de trouver les infos même dans les .txt, tu peux m'aider ?```\n[En savoir plus sur le Javascript ?](https://gregit.medium.com/ringzer0-team-online-ctf-javascript-challenges-d15d7ce44f33)\n\nTrouvez le FLAG en déverouillant le locker \n\nRecopiez le flag en minuscule ! \n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis !\n\n[Challenge WEB](https://discord.tool-labs.com/web5/index.html)")
-                .setColor(EMBED_GENERAL)
-                .setThumbnail("https://tool-labs.com/moyen2.png");
-
-            break;
-        case 'webclient-challenge-8':
-
-            embed.setTitle("CHALLENGE [Notes personelles](Moyen) ")
-                .setDescription("Trouvez le FLAG en accèdant à mes notes personnellles \n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis !\n\n[Challenge WEB](https://discord.tool-labs.com/web8/index.php)")
+              embed.setTitle("CHALLENGE [Notes personelles](Moyen) ")
+                .setDescription("Scénario :\n```Vous devez accèder à mes notes personnelles pour trouver le flag mais il me semble qu'elles sont protéger si vous n'êtes pas chez moi```\n[En savoir plus sur la manipulation d'en-têtes?](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html)\n\nPour réalisé ce challenge vous devez vous rendre sur un lien externe, mais rassurez-vous la totalité des fichiers sont hébérgé chez Tool-Labs.\n\nIl ne vous arrivera rien, c'est promis !\n\nIndice : *** En-têtes***\n\n[Challenge WEB](https://challctf.tool-labs.com/wclient8xx154df15d8d1f1/index.php)")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/moyen2.png");
 
@@ -174,6 +174,63 @@ export default async function (client: ToolClient, interaction: StringSelectMenu
                 .setDescription("Challenge en cours de construction")
                 .setColor(EMBED_GENERAL)
                 .setThumbnail("https://tool-labs.com/facile2.png");
+
+            break;
+        case 'crypto-challenge-1':
+
+            embed.setTitle("CHALLENGE Cryptographie #1")
+                .setDescription("**Commençons par les bases !**\n\n```Pouvez-vous trouver le flag en dechiffrant la clef ?```\nIndice : **Pour l'apéro c'est Bacon et Bilitère à base de T L**\n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n [Télecharger le fichier texte](https://tool-labs.com/crypto.txt) ")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/facile2.png");
+
+            break;
+        case 'crypto-challenge-2':
+            embed.setTitle("CHALLENGE Cryptographie #2")
+            .setDescription("**Trouvez le flag dans le fichier text**\n\nIndice : **Le chiffrement est rail fence**  \n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n[Téléchargez le fichier](https://tool-labs.com/crypt0.txt)")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/facile2.png");
+
+            break;
+             case 'crypto-challenge-3':
+            embed.setTitle("CHALLENGE Cryptographie #3")
+            .setDescription("**Trouvez le flag dans le fichier texte**\n\nIndice : **Morse x 64**  \n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n[Téléchargez le fichier](https://tool-labs.com/otarie.txt)")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/facile2.png");
+
+            break;
+             case 'crypto-challenge-4':
+            embed.setTitle("CHALLENGE Cryptographie #4")
+            .setDescription("**Trouvez le flag dans le fichier texte**\n\nIndice : **Circular Bit Shift, 24,12-13,33**  \n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n[Téléchargez le fichier](https://tool-labs.com/crypt0b.txt)")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/facile2.png");
+
+            break;
+             case 'crypto-challenge-5':
+            embed.setTitle("CHALLENGE Cryptographie #5")
+            .setDescription("**Trouvez le flag dans le fichier texte**\n\n**Enoncé :** RSA introduction, le flag sera composé des 2 derniers chiffres des valeurs e,d,p,q soit, flagTL{e,d,p,q}\n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n[Téléchargez le fichier](https://tool-labs.com/introrsa.txt)")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/facile2.png");
+
+            break;
+case 'crypto-challenge-6':
+            embed.setTitle("CHALLENGE Cryptographie #6")
+            .setDescription("**RSA Strange Values** \n\n**Scénario : ** \n```Votre famille a été capturée par John Kramer par votre faute. Retrouvez le code permettant de déverrouiller le cadenas et de la libérer de la pièce, dans le cas contraire, vous savez ce qu'il se passera...```\n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n[Téléchargez le fichier](https://tool-labs.com/rsa.txt)")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/moyen2.png");
+
+            break;
+        case 'crypto-challenge-7':
+            embed.setTitle("CHALLENGE Cryptographie #7")
+            .setDescription("**Trouvez le flag dans le fichier texte**\n\n En savoir plus sur la factorisation R.S.A ? \n[Documentation](https://maths.ens2m.fr/Barrere%20Remi/students/pages/projects/2001.RSA.pdf)\n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n[Téléchargez le fichier](https://tool-labs.com/rsafacto.txt)")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/moyen2.png");
+
+            break;
+        case 'crypto-challenge-8':
+            embed.setTitle("CHALLENGE Cryptographie #8")
+            .setDescription("**Trouvez le flag dans le fichier texte**\n\nIndice : **Vigenère, 24** \n\nTélécharger le fichier (héberger sur Tool-Labs) et trouvez le FLAG\n\n[Téléchargez l'archive](https://tool-labs.com/crypto.rar)")
+                .setColor(EMBED_GENERAL)
+                .setThumbnail("https://tool-labs.com/moyen2.png");
 
             break;
         case 'suspect-challenge-1':

@@ -48,7 +48,7 @@ export async function createClassementEmbed(client: ToolClient, channel: TextCha
             { name: 'webClient', data: flags.webClient.length },
             { name: 'misc', data: flags.misc.length },
             { name: 'webServer', data: flags.webServer.length },
-            { name: 'realiste', data: flags.realiste.length },
+            { name: 'cryptographie', data: flags.realiste.length },
             { name: 'machine', data: flags.machine.length },
         ];
 
@@ -153,18 +153,28 @@ export async function createDocumentationEmbed(client: ToolClient, channel: Text
     const embed = new EmbedBuilder()
         .setColor(EMBED_GENERAL)
         .setTitle("Documentation C.T.F")
-        .setDescription(`${client.getEmoji(EMOJIS.documentation)} **Vous pouvez consulter vos données et celle des autres participants CTF en tapant la commande :\n
-        \`\`\`/profil @utilisateur\`\`\`
-ou en vous rendant sur** ***le profil de l'utilisateur > Applications > Profil C.T.F ***
-        
-${client.getEmoji(EMOJIS.uno)} Les FLAGS doivent être écris dans votre salon C.T.F privé, le bot réagira si vous trouvez le bon flag
+        .setDescription(`${client.getEmoji(EMOJIS.information)} **Vous trouverez ici la documentation qui concerne les challenges C.T.F **
+       
+
+${client.getEmoji(EMOJIS.uno)} **Les FLAGS doivent être écris dans votre salon C.T.F privé, le bot réagira si vous trouvez le bon flag.
+Si un flag est composé de cette manière TL{flagtest} , le flag sera ainsi flagtest
     
-${client.getEmoji(EMOJIS.deux)} Tous les challenges sont testés et fonctionnels, et nous ne donnons\n **aucun indice(s) supplémentaire(s).** 
-Si un challenge ne vous donne pas d'indice dans la trame, cela veut dire que le challenge est réalisable sans\n
+
+
+${client.getEmoji(EMOJIS.deux)} Tous les challenges sont testés et fonctionnels, et nous ne donnons
+ aucun indice(s) supplémentaire(s).
+Si un challenge ne vous donne pas d'indice dans la trame, cela veut dire que le challenge est réalisable sans, soyez attentif.
+
     
-${client.getEmoji(EMOJIS.trois)} Si vous validé un challenge et que vous ne gagniez aucun rôle, ou récompenses c'est normal !\n**Tous les challenges n'offre pas de récompense(s).**
+
+${client.getEmoji(EMOJIS.trois)} Si vous validé un challenge et que vous ne gagniez aucun rôle, ou récompenses c'est normal !
+Tous les challenges n'offre pas de récompense(s).
     
-${client.getEmoji(EMOJIS.quatre)} Les challenges de Tool-Labs sont pour la plupart fait maison cependant certains peuvent provenir d'une célèbre plateforme permettant de mettre à disposition des challenges **(libre d'utilisation)** néanmoins l'ensemble du code aura été modifier pour vous empêcher de reverse le code sur internet.") 
+
+
+${client.getEmoji(EMOJIS.quatre)} Vous pouvez consulter vos données ainsi que celles des autres participants CTF en tapant la commande :**
+
+    \`\`\`/profil + utilisateur\`\`\`
 `)
         .setFooter({ text: FOOTER_CTF, iconURL: client.user!.displayAvatarURL({ extension: "png" }) })
 
