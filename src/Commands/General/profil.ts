@@ -217,23 +217,55 @@ ${infoProfil.length > 0 ? infoProfil.join("\n") : ""}
 
 
     const progressBarWidth = 600;
-    const progressBarHeight = 20;
+    const progressBarHeight = 30;
     const progressBarX = (canvas.width - progressBarWidth) / 2;
     const progressBarY = 300;
+    const cornerRadius = 10;
     const progress = (getAchievedSteganographie + getAchievedCrackingReverse + getAchievedOsint + getAchievedWebClient + getAchievedWebServer + getAchievedMisc + getAchievedRealiste + getAchievedMachine) / 8;
+    
 
+    ctx.beginPath();
+    ctx.moveTo(progressBarX + cornerRadius, progressBarY);
+    ctx.lineTo(progressBarX + progressBarWidth - cornerRadius, progressBarY);
+    ctx.arcTo(progressBarX + progressBarWidth, progressBarY, progressBarX + progressBarWidth, progressBarY + cornerRadius, cornerRadius);
+    ctx.lineTo(progressBarX + progressBarWidth, progressBarY + progressBarHeight - cornerRadius);
+    ctx.arcTo(progressBarX + progressBarWidth, progressBarY + progressBarHeight, progressBarX + progressBarWidth - cornerRadius, progressBarY + progressBarHeight, cornerRadius);
+    ctx.lineTo(progressBarX + cornerRadius, progressBarY + progressBarHeight);
+    ctx.arcTo(progressBarX, progressBarY + progressBarHeight, progressBarX, progressBarY + progressBarHeight - cornerRadius, cornerRadius);
+    ctx.lineTo(progressBarX, progressBarY + cornerRadius);
+    ctx.arcTo(progressBarX, progressBarY, progressBarX + cornerRadius, progressBarY, cornerRadius);
+    ctx.closePath();
+    
     ctx.fillStyle = '#032133';
-    ctx.fillRect(progressBarX, progressBarY, progressBarWidth, progressBarHeight);
+    ctx.fill();
 
+    
+    if (progress > 0) {
+    ctx.beginPath();
+    ctx.moveTo(progressBarX + cornerRadius, progressBarY);
+    ctx.lineTo(progressBarX + progressBarWidth * progress - cornerRadius, progressBarY);
+    ctx.arcTo(progressBarX + progressBarWidth * progress, progressBarY, progressBarX + progressBarWidth * progress, progressBarY + progressBarHeight / 2, cornerRadius);
+    ctx.arcTo(progressBarX + progressBarWidth * progress, progressBarY + progressBarHeight, progressBarX + progressBarWidth * progress - cornerRadius, progressBarY + progressBarHeight, cornerRadius);
+    ctx.arcTo(progressBarX + progressBarWidth, progressBarY + progressBarHeight, progressBarX + progressBarWidth - cornerRadius, progressBarY + progressBarHeight, cornerRadius);
+    ctx.lineTo(progressBarX + cornerRadius, progressBarY + progressBarHeight);
+    ctx.arcTo(progressBarX, progressBarY + progressBarHeight, progressBarX, progressBarY + progressBarHeight - cornerRadius, cornerRadius);
+    ctx.lineTo(progressBarX, progressBarY + cornerRadius);
+    ctx.arcTo(progressBarX, progressBarY, progressBarX + cornerRadius, progressBarY, cornerRadius);
+    ctx.closePath();
+
+    
     ctx.fillStyle = '#61d18b';
-    ctx.fillRect(progressBarX, progressBarY, progressBarWidth * progress, progressBarHeight);
+    ctx.fill();
 
+    }
+    
     ctx.fillStyle = '#ffffff';
     ctx.font = '16px Arial'; // Police et taille du texte
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     const percentageText = Math.round(progress * 100) + '%';
     ctx.fillText(percentageText, progressBarX + progressBarWidth / 2, progressBarY + progressBarHeight / 2);
+    
 
 
     const attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'validations.png' });
@@ -455,17 +487,48 @@ ${infoProfil.length > 0 ? infoProfil.join("\n") : ""}
 
 
     const progressBarWidth = 600;
-    const progressBarHeight = 20;
+    const progressBarHeight = 30;
     const progressBarX = (canvas.width - progressBarWidth) / 2;
     const progressBarY = 300;
+    const cornerRadius = 10;
     const progress = (getAchievedSteganographie + getAchievedCrackingReverse + getAchievedOsint + getAchievedWebClient + getAchievedWebServer + getAchievedMisc + getAchievedRealiste + getAchievedMachine) / 8;
+    
 
+    ctx.beginPath();
+    ctx.moveTo(progressBarX + cornerRadius, progressBarY);
+    ctx.lineTo(progressBarX + progressBarWidth - cornerRadius, progressBarY);
+    ctx.arcTo(progressBarX + progressBarWidth, progressBarY, progressBarX + progressBarWidth, progressBarY + cornerRadius, cornerRadius);
+    ctx.lineTo(progressBarX + progressBarWidth, progressBarY + progressBarHeight - cornerRadius);
+    ctx.arcTo(progressBarX + progressBarWidth, progressBarY + progressBarHeight, progressBarX + progressBarWidth - cornerRadius, progressBarY + progressBarHeight, cornerRadius);
+    ctx.lineTo(progressBarX + cornerRadius, progressBarY + progressBarHeight);
+    ctx.arcTo(progressBarX, progressBarY + progressBarHeight, progressBarX, progressBarY + progressBarHeight - cornerRadius, cornerRadius);
+    ctx.lineTo(progressBarX, progressBarY + cornerRadius);
+    ctx.arcTo(progressBarX, progressBarY, progressBarX + cornerRadius, progressBarY, cornerRadius);
+    ctx.closePath();
+    
     ctx.fillStyle = '#032133';
-    ctx.fillRect(progressBarX, progressBarY, progressBarWidth, progressBarHeight);
+    ctx.fill();
 
+    
+    if (progress > 0) {
+    ctx.beginPath();
+    ctx.moveTo(progressBarX + cornerRadius, progressBarY);
+    ctx.lineTo(progressBarX + progressBarWidth * progress - cornerRadius, progressBarY);
+    ctx.arcTo(progressBarX + progressBarWidth * progress, progressBarY, progressBarX + progressBarWidth * progress, progressBarY + progressBarHeight / 2, cornerRadius);
+    ctx.arcTo(progressBarX + progressBarWidth * progress, progressBarY + progressBarHeight, progressBarX + progressBarWidth * progress - cornerRadius, progressBarY + progressBarHeight, cornerRadius);
+    ctx.arcTo(progressBarX + progressBarWidth, progressBarY + progressBarHeight, progressBarX + progressBarWidth - cornerRadius, progressBarY + progressBarHeight, cornerRadius);
+    ctx.lineTo(progressBarX + cornerRadius, progressBarY + progressBarHeight);
+    ctx.arcTo(progressBarX, progressBarY + progressBarHeight, progressBarX, progressBarY + progressBarHeight - cornerRadius, cornerRadius);
+    ctx.lineTo(progressBarX, progressBarY + cornerRadius);
+    ctx.arcTo(progressBarX, progressBarY, progressBarX + cornerRadius, progressBarY, cornerRadius);
+    ctx.closePath();
+
+    
     ctx.fillStyle = '#61d18b';
-    ctx.fillRect(progressBarX, progressBarY, progressBarWidth * progress, progressBarHeight);
+    ctx.fill();
 
+    }
+    
     ctx.fillStyle = '#ffffff';
     ctx.font = '16px Arial'; // Police et taille du texte
     ctx.textAlign = 'center';
