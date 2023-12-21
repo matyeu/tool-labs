@@ -62,7 +62,7 @@ export default async function (client: ToolClient, guild: Guild) {
         await createCollector(client, challengeChannel);    
     }
 
-    client.getChannel(challengeChannel.guild, serverConfig.channels.annonceCtf, {content: "## > une mise à jour à été effectué sur le serveur, si vous rencontrez un problème merci de bien fermer vos tickets"});
+    client.getChannel(challengeChannel.guild, serverConfig.channels.annonceCtf, {content: "***Une mise à jour a eu lieu ! Relancez votre salon C.T.F pour voir les mises à jour appliquées.***"});
 
     Logger.module(`Loading tickets for the ${guild.name} server - SUCCESS (${openedTickets.length} ticket(s) reloaded)`);
 

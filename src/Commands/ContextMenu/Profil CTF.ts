@@ -41,14 +41,25 @@ ${infoProfil.length > 0 ? infoProfil.join("\n") : ""}
 `)
     .setImage('attachment://barredeseparation.png');
 
-    const button = new ActionRowBuilder<ButtonBuilder>()
-    .addComponents(
+    const buttons = new ActionRowBuilder<ButtonBuilder>()
+
+    if (isMemberId) buttons.addComponents(
         new ButtonBuilder()
             .setCustomId(`profil-button:${member.id}`)
             .setEmoji(EMOJIS.avatar)
             .setLabel("Modifier votre profil")
             .setStyle(ButtonStyle.Secondary)
-    );
+
+    )
+
+    if (memberConfig.profil.siteWeb)
+        buttons.addComponents(
+            new ButtonBuilder()
+                .setCustomId(`link-button:${member.id}`)
+                .setEmoji(EMOJIS.internet)
+                .setLabel("Visitier le site web")
+                .setStyle(ButtonStyle.Secondary)
+        );
 
 if (!isMemberId) embedInfo.setAuthor({ name: `${member.displayName} - ${member.id}`, iconURL: member.user.displayAvatarURL() });
 
@@ -227,7 +238,7 @@ ctx.fillText(percentageText, progressBarX + progressBarWidth / 2, progressBarY +
 const attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'validations.png' });
 
 
-return interaction.reply({ embeds: [embedInfo, embedValidate], files: [separator, attachment], components: isMemberId ? [button] : [] });
+return interaction.reply({ embeds: [embedInfo, embedValidate], files: [separator, attachment],  components: isMemberId || memberConfig.profil.siteWeb ? [buttons] : [] });
 }
 
 
