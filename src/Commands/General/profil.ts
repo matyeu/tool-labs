@@ -55,10 +55,10 @@ ${infoProfil.length > 0 ? infoProfil.join("\n") : ""}
     if (memberConfig.profil.siteWeb)
         buttons.addComponents(
             new ButtonBuilder()
-                .setCustomId(`link-button:${member.id}`)
                 .setEmoji(EMOJIS.internet)
                 .setLabel("Visitier le site web")
-                .setStyle(ButtonStyle.Secondary)
+                .setURL(memberConfig.profil.siteWeb)
+                .setStyle(ButtonStyle.Link)
         );
 
     if (!isMemberId) embedInfo.setAuthor({ name: `${member.displayName} - ${member.id}`, iconURL: member.user.displayAvatarURL() });
@@ -292,13 +292,13 @@ ${infoProfil.length > 0 ? infoProfil.join("\n") : ""}
         )
     
         if (memberConfig.profil.siteWeb)
-            buttons.addComponents(
-                new ButtonBuilder()
-                    .setCustomId(`link-button:${member.id}`)
-                    .setEmoji(EMOJIS.internet)
-                    .setLabel("Visitier le site web")
-                    .setStyle(ButtonStyle.Secondary)
-            );
+        buttons.addComponents(
+            new ButtonBuilder()
+                .setEmoji(EMOJIS.internet)
+                .setLabel("Visitier le site web")
+                .setURL(memberConfig.profil.siteWeb)
+                .setStyle(ButtonStyle.Link)
+        );
 
     if (!isMemberId) embedInfo.setAuthor({ name: `${member.displayName} - ${member.id}`, iconURL: member.user.displayAvatarURL() });
 
